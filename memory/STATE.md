@@ -75,6 +75,9 @@ Playwright walkthroughs passed at 1024 px, 1280 px, and 1440 px with no page-lev
 
 Fingerprint regression
 The first three prototype CI runs exposed that generated Playwright artifacts were included in local heartbeat fingerprints but absent in clean CI. The artifacts are now excluded from both Git and fingerprinting, with a regression test; the suite contains 10 tests.
+
+GitHub Actions corrective run 31705516125
+Conclusion: success
 ```
 
 ## Not Yet Implemented

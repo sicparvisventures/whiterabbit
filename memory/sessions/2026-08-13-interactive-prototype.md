@@ -37,7 +37,8 @@ The initial prototype CI runs then revealed an environment-specific fingerprint 
 local generated Playwright files were fingerprinted but not committed, so clean CI
 correctly reported a stale heartbeat. A failing regression test reproduced the issue;
 `.playwright-cli/` and `output/` are now excluded from Git and fingerprinting, and all
-10 tests pass. The corrective CI run is the authoritative publication check.
+10 tests pass. Corrective GitHub Actions run `31705516125` succeeded and is the
+authoritative publication check.
 
 ## Next Verified Action
 
