@@ -43,6 +43,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Compliance 0001 defines profile routing and gates for product scope, provenance, legal authority, DPIA/FRIA/AI classification, security/hosting, model/device validation, human procedure, real pilot, scale, publication, and federation.
 - Plan 0001 sequences the synthetic product into phases P1–P11 with dependency batches, test-first tasks, five-file implementation limits, acceptance evidence, atomic pushes, and explicit stop conditions.
 - A dependency-free interactive prototype now covers the complete mobile field flow plus a desktop command center with overview, synchronized operations workspace, candidate review, governed watchlists, node health, effective policy, audit stream, density controls, and a keyboard command palette. It is demonstrative only: no camera, inference, network, identity, or backend capability is present.
+- Product Experience 0002 and the prototype README record the review routes, interaction inventory, responsive evidence, accessibility limits, non-capabilities, and the owner approval checklist.
 
 ## Verification Evidence
 
@@ -83,7 +84,7 @@ Playwright walkthroughs passed at 1024 px, 1280 px, and 1440 px with no page-lev
 
 ## Next Action
 
-Document the interactive review path and request owner approval of the combined
-mobile/desktop experience. Product implementation, dependency batch D1, cloud
-provisioning, model artifacts, camera access, and real data remain paused until that
-approval.
+Request owner approval or revision of the combined mobile/desktop experience using
+Product Experience 0002. Product implementation, dependency batch D1, cloud
+provisioning, model artifacts, camera access, and real data remain paused until
+explicit approval.

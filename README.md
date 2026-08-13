@@ -6,8 +6,8 @@ The product direction is simple: turn an old phone, laptop, webcam, or compatibl
 
 Belgian Defence is the first intended deployment. Municipalities and police are also target controllers, each with a strictly separate legal, data, oversight, hosting, and publication profile. ALPR and object detection remain the core; an optional biometric watchlist capability is now specified as a separate, fail-closed module.
 
-> **Project status:** planning package complete; product runtime not started. The
-> durable-memory tooling is implemented and tested. The camera, ALPR, biometric,
+> **Project status:** planning package and interactive synthetic prototype complete;
+> owner review is next. Product runtime is not started. The camera, ALPR, biometric,
 > Supabase, Vercel, review, and map applications are not yet operational.
 
 ## Why WhiteRabbit
@@ -60,10 +60,22 @@ locked-screen or hidden capture.
 - [Repository-grounded threat model](docs/security/whiterabbit-threat-model.md)
 - [Compliance and institutional review gates](docs/compliance/0001-review-gates.md)
 - [Phased synthetic implementation plan](docs/plans/0001-synthetic-defence-implementation.md)
+- [Interactive mobile and desktop prototype](docs/design/0002-interactive-prototype.md)
 
-The next decision is explicit implementation plus dependency batch D1 authorization.
-No cloud resource, production dependency, model weight, dataset, or real data has
-been approved or added by this planning package.
+## Review the Interactive Prototype
+
+The dependency-free prototype contains generated data and no camera, inference,
+authentication, network, persistence, or cloud behavior.
+
+```bash
+python3 -m http.server 4173 --directory prototypes/interactive
+```
+
+Open <http://localhost:4173> and follow the [mobile and desktop walkthrough](prototypes/interactive/README.md).
+
+The next decision is owner approval of this product direction followed by separate
+implementation and dependency batch D1 authorization. No cloud resource, production
+dependency, model weight, dataset, or real data has been approved or added.
 
 ## Durable Project Memory
 

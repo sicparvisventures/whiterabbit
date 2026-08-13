@@ -31,6 +31,7 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 
 - [Architecture 0001: Mobile edge and government control plane](../docs/architecture/0001-system-architecture.md)
 - [Product Experience 0001: Native field app and operational command center](../docs/design/0001-product-experience.md)
+- [Product Experience 0002: Interactive mobile and desktop prototype](../docs/design/0002-interactive-prototype.md)
 
 ## Security
 
