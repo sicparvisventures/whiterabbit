@@ -110,6 +110,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   OTP types and local next paths, exchanges the token through the request-scoped server
   client and strips secrets from success/error redirects. Signup supports an approved
   HTTPS or local-development redirect origin.
+- Password-update contracts and Auth services validate a strong matching replacement,
+  call the authenticated provider session and return a credential-free
+  `PASSWORD_UPDATED` outcome. Missing backend, invalid input and provider failure stay
+  within the stable fail-closed result union.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -249,6 +253,10 @@ Email confirmation slice
 Four confirmation parsing tests plus the updated signup redirect assertion pass as
 part of thirty-one web tests. The production route table includes dynamic
 `/auth/confirm`; lint, types and build pass.
+
+Password update logic slice
+Two new contract assertions and one provider-service assertion pass. Contracts expose
+twelve tests and the web suite thirty-two; formatting, lint and type checks pass.
 ```
 
 ## Not Yet Implemented

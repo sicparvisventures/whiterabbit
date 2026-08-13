@@ -3,6 +3,7 @@ import {
   createAccountInputSchema,
   passwordResetInputSchema,
   signInInputSchema,
+  updatePasswordInputSchema,
   type AccountMutationResult,
 } from "@whiterabbit/contracts/account";
 
@@ -29,6 +30,10 @@ export type AccountAuthProvider = Readonly<{
     email: string,
     options: { redirectTo: string },
   ): Promise<{ error: ProviderError }>;
+  updateUser(attributes: { password: string }): Promise<{
+    data: { user: ProviderUser };
+    error: ProviderError;
+  }>;
 }>;
 
 const invalidInputResult: AccountMutationResult = {
@@ -161,4 +166,28 @@ export async function requestPasswordReset(
   }
 
   return { status: "PASSWORD_RESET_REQUESTED" };
+}
+
+export async function updatePassword(
+  provider: AccountAuthProvider | null,
+  input: unknown,
+): Promise<AccountMutationResult> {
+  const parsed = updatePasswordInputSchema.safeParse(input);
+  if (!parsed.success) return invalidInputResult;
+  if (!provider) return { status: "BACKEND_NOT_CONFIGURED" };
+
+  let response: Awaited<ReturnType<AccountAuthProvider["updateUser"]>>;
+  try {
+    response = await provider.updateUser({ password: parsed.data.password });
+  } catch {
+    return serviceUnavailable();
+  }
+
+  if (response.error || !response.data.user) {
+    return providerRejected(
+      "We could not update the password. Request a new link.",
+    );
+  }
+
+  return { status: "PASSWORD_UPDATED" };
 }

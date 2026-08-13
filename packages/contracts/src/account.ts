@@ -46,6 +46,21 @@ export const passwordResetInputSchema = z.object({
   email: emailSchema,
 });
 
+export const updatePasswordInputSchema = z
+  .object({
+    password: passwordSchema,
+    passwordConfirmation: z.string(),
+  })
+  .superRefine((input, context) => {
+    if (input.password !== input.passwordConfirmation) {
+      context.addIssue({
+        code: "custom",
+        message: "Passwords do not match",
+        path: ["passwordConfirmation"],
+      });
+    }
+  });
+
 export const accountMutationResultSchema = z.discriminatedUnion("status", [
   z.object({
     status: z.literal("CREATED"),
@@ -58,6 +73,7 @@ export const accountMutationResultSchema = z.discriminatedUnion("status", [
   }),
   z.object({ status: z.literal("SIGNED_OUT") }),
   z.object({ status: z.literal("PASSWORD_RESET_REQUESTED") }),
+  z.object({ status: z.literal("PASSWORD_UPDATED") }),
   z.object({ status: z.literal("BACKEND_NOT_CONFIGURED") }),
   z.object({
     status: z.literal("REJECTED"),
@@ -70,3 +86,4 @@ export type AccountMutationResult = z.infer<typeof accountMutationResultSchema>;
 export type CreateAccountInput = z.infer<typeof createAccountInputSchema>;
 export type PasswordResetInput = z.infer<typeof passwordResetInputSchema>;
 export type SignInInput = z.infer<typeof signInInputSchema>;
+export type UpdatePasswordInput = z.infer<typeof updatePasswordInputSchema>;

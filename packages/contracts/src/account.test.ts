@@ -4,6 +4,7 @@ import {
   accountMutationResultSchema,
   createAccountInputSchema,
   signInInputSchema,
+  updatePasswordInputSchema,
 } from "./account";
 
 describe("createAccountInputSchema", () => {
@@ -60,5 +61,22 @@ describe("accountMutationResultSchema", () => {
 
     expect(result).toEqual({ status: "BACKEND_NOT_CONFIGURED" });
     expect(result).not.toHaveProperty("userId");
+  });
+
+  it("represents a completed password update without returning credentials", () => {
+    expect(
+      accountMutationResultSchema.parse({ status: "PASSWORD_UPDATED" }),
+    ).toEqual({ status: "PASSWORD_UPDATED" });
+  });
+});
+
+describe("updatePasswordInputSchema", () => {
+  it("requires a strong matching password", () => {
+    expect(
+      updatePasswordInputSchema.safeParse({
+        password: "correct horse battery staple",
+        passwordConfirmation: "different secure phrase",
+      }).success,
+    ).toBe(false);
   });
 });

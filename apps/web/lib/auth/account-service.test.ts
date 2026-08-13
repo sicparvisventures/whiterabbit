@@ -5,6 +5,7 @@ import {
   requestPasswordReset,
   signIn,
   type AccountAuthProvider,
+  updatePassword,
 } from "./account-service";
 
 const userId = "2f42fa2e-25f2-42a3-8f36-aab184a56c15";
@@ -20,6 +21,10 @@ function createProvider(): AccountAuthProvider {
       error: null,
     }),
     resetPasswordForEmail: vi.fn().mockResolvedValue({ error: null }),
+    updateUser: vi.fn().mockResolvedValue({
+      data: { user: { id: userId } },
+      error: null,
+    }),
   };
 }
 
@@ -124,5 +129,21 @@ describe("requestPasswordReset", () => {
         "https://app.example.be/account/update-password",
       ),
     ).toEqual({ status: "PASSWORD_RESET_REQUESTED" });
+  });
+});
+
+describe("updatePassword", () => {
+  it("updates through the authenticated provider session", async () => {
+    const provider = createProvider();
+
+    expect(
+      await updatePassword(provider, {
+        password: "correct horse battery staple",
+        passwordConfirmation: "correct horse battery staple",
+      }),
+    ).toEqual({ status: "PASSWORD_UPDATED" });
+    expect(provider.updateUser).toHaveBeenCalledWith({
+      password: "correct horse battery staple",
+    });
   });
 });

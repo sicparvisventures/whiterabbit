@@ -44,6 +44,8 @@ function resultMessage(result: AccountMutationResult): string {
       return "Signed in. Opening your workspace…";
     case "PASSWORD_RESET_REQUESTED":
       return "If the address can receive a reset, instructions are on the way.";
+    case "PASSWORD_UPDATED":
+      return "Password updated. You can continue to your workspace.";
     case "REJECTED":
       return result.message;
     case "SIGNED_OUT":
