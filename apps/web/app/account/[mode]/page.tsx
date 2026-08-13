@@ -7,7 +7,23 @@ import {
   type AccountMode,
 } from "../../../components/account-form";
 
-const modes = new Set<AccountMode>(["create", "sign-in", "recovery"]);
+const modes = new Set<AccountMode>([
+  "create",
+  "sign-in",
+  "recovery",
+  "update-password",
+]);
+
+const reasonMessages: Readonly<Record<string, string>> = {
+  authentication_required: "Sign in to open that workspace.",
+  session_unavailable:
+    "Your session could not be verified. Please sign in again.",
+  backend_configuration_invalid:
+    "Account services are temporarily misconfigured.",
+  confirmation_invalid: "That confirmation link is incomplete or invalid.",
+  confirmation_rejected: "That confirmation link was rejected or has expired.",
+  backend_not_configured: "Account services are not connected yet.",
+};
 
 export const metadata: Metadata = {
   title: "Account",
@@ -20,11 +36,15 @@ export function generateStaticParams() {
 
 export default async function AccountPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ mode: string }>;
+  searchParams: Promise<{ reason?: string | string[] }>;
 }) {
   const { mode } = await params;
   if (!modes.has(mode as AccountMode)) notFound();
+  const query = await searchParams;
+  const reason = typeof query.reason === "string" ? query.reason : undefined;
 
   return (
     <main className="account-page">
@@ -51,7 +71,10 @@ export default async function AccountPage({
             <li>Biometric capability remains disabled by default.</li>
           </ul>
         </div>
-        <AccountForm mode={mode as AccountMode} />
+        <AccountForm
+          mode={mode as AccountMode}
+          notice={reason ? reasonMessages[reason] : undefined}
+        />
       </section>
     </main>
   );

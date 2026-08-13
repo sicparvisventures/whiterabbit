@@ -114,6 +114,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   call the authenticated provider session and return a credential-free
   `PASSWORD_UPDATED` outcome. Missing backend, invalid input and provider failure stay
   within the stable fail-closed result union.
+- Account routes now include the recovery-session password-update form, pass the safe
+  current origin to signup, and translate only allowlisted callback/proxy reason codes
+  into user copy. Unknown query text is never reflected, and unconfigured submission
+  continues to return the explicit backend-unavailable result.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -257,6 +261,11 @@ part of thirty-one web tests. The production route table includes dynamic
 Password update logic slice
 Two new contract assertions and one provider-service assertion pass. Contracts expose
 twelve tests and the web suite thirty-two; formatting, lint and type checks pass.
+
+Account flow completion slice
+The production build exposes dynamic account modes including update-password.
+Playwright verified the allowlisted rejected-confirmation copy and 390 px password
+update form without browser errors; the temporary development server was stopped.
 ```
 
 ## Not Yet Implemented

@@ -9,10 +9,11 @@ import {
   createAccount,
   requestPasswordReset,
   signIn,
+  updatePassword,
 } from "../lib/auth/account-service";
 import { createSupabaseBrowserClient } from "../lib/supabase/browser";
 
-export type AccountMode = "create" | "sign-in" | "recovery";
+export type AccountMode = "create" | "sign-in" | "recovery" | "update-password";
 
 const content = {
   create: {
@@ -29,6 +30,12 @@ const content = {
     title: "Reset your password",
     description: "We will send instructions if an account can receive them.",
     submit: "Send reset link",
+  },
+  "update-password": {
+    title: "Choose a new password",
+    description:
+      "Your verified recovery session authorizes this account change.",
+    submit: "Update password",
   },
 } as const;
 
@@ -53,7 +60,13 @@ function resultMessage(result: AccountMutationResult): string {
   }
 }
 
-export function AccountForm({ mode }: { mode: AccountMode }) {
+export function AccountForm({
+  mode,
+  notice,
+}: {
+  mode: AccountMode;
+  notice?: string | undefined;
+}) {
   const [result, setResult] = useState<AccountMutationResult | null>(null);
   const [pending, setPending] = useState(false);
   const copy = content[mode];
@@ -70,32 +83,42 @@ export function AccountForm({ mode }: { mode: AccountMode }) {
 
     let nextResult: AccountMutationResult;
     if (mode === "create") {
-      nextResult = await createAccount(provider, {
-        email: values.get("email"),
-        password: values.get("password"),
-        passwordConfirmation: values.get("passwordConfirmation"),
-        acceptsTerms: values.get("acceptsTerms") === "on",
-      });
+      nextResult = await createAccount(
+        provider,
+        {
+          email: values.get("email"),
+          password: values.get("password"),
+          passwordConfirmation: values.get("passwordConfirmation"),
+          acceptsTerms: values.get("acceptsTerms") === "on",
+        },
+        window.location.origin,
+      );
     } else if (mode === "sign-in") {
       nextResult = await signIn(provider, {
         email: values.get("email"),
         password: values.get("password"),
       });
-    } else {
+    } else if (mode === "recovery") {
       nextResult = await requestPasswordReset(
         provider,
         { email: values.get("email") },
         `${window.location.origin}/account/update-password`,
       );
+    } else {
+      nextResult = await updatePassword(provider, {
+        password: values.get("password"),
+        passwordConfirmation: values.get("passwordConfirmation"),
+      });
     }
 
     setResult(nextResult);
     setPending(false);
-
-    if (nextResult.status === "SIGNED_IN") {
-      window.location.assign("/app");
-    }
+    if (nextResult.status === "SIGNED_IN") window.location.assign("/app");
   }
+
+  const usesEmail = mode !== "update-password";
+  const usesPassword = mode !== "recovery";
+  const confirmsPassword = mode === "create" || mode === "update-password";
 
   return (
     <div className="account-card">
@@ -106,54 +129,57 @@ export function AccountForm({ mode }: { mode: AccountMode }) {
       </div>
 
       <form className="account-form" onSubmit={onSubmit} noValidate>
-        <label>
-          <span>Email address</span>
-          <input
-            autoComplete="email"
-            inputMode="email"
-            name="email"
-            placeholder="you@organization.be"
-            required
-            type="email"
-          />
-        </label>
+        {usesEmail && (
+          <label>
+            <span>Email address</span>
+            <input
+              autoComplete="email"
+              inputMode="email"
+              name="email"
+              placeholder="you@organization.be"
+              required
+              type="email"
+            />
+          </label>
+        )}
 
-        {mode !== "recovery" && (
+        {usesPassword && (
           <label>
             <span>Password</span>
             <input
               autoComplete={
-                mode === "create" ? "new-password" : "current-password"
+                mode === "sign-in" ? "current-password" : "new-password"
               }
-              minLength={mode === "create" ? 12 : 1}
+              minLength={mode === "sign-in" ? 1 : 12}
               name="password"
               required
               type="password"
             />
-            {mode === "create" && <small>At least 12 characters.</small>}
+            {mode !== "sign-in" && <small>At least 12 characters.</small>}
+          </label>
+        )}
+
+        {confirmsPassword && (
+          <label>
+            <span>Confirm password</span>
+            <input
+              autoComplete="new-password"
+              minLength={12}
+              name="passwordConfirmation"
+              required
+              type="password"
+            />
           </label>
         )}
 
         {mode === "create" && (
-          <>
-            <label>
-              <span>Confirm password</span>
-              <input
-                autoComplete="new-password"
-                minLength={12}
-                name="passwordConfirmation"
-                required
-                type="password"
-              />
-            </label>
-            <label className="check-field">
-              <input name="acceptsTerms" required type="checkbox" />
-              <span>
-                I understand that real-world use requires an authorized
-                controller, purpose and deployment policy.
-              </span>
-            </label>
-          </>
+          <label className="check-field">
+            <input name="acceptsTerms" required type="checkbox" />
+            <span>
+              I understand that real-world use requires an authorized
+              controller, purpose and deployment policy.
+            </span>
+          </label>
         )}
 
         {mode === "sign-in" && (
@@ -170,6 +196,7 @@ export function AccountForm({ mode }: { mode: AccountMode }) {
         </button>
       </form>
 
+      {!result && notice && <p className="form-result error">{notice}</p>}
       {result && (
         <p
           className={
@@ -186,6 +213,11 @@ export function AccountForm({ mode }: { mode: AccountMode }) {
           <p>
             Already have an account?{" "}
             <Link href="/account/sign-in">Sign in</Link>
+          </p>
+        ) : mode === "update-password" ? (
+          <p>
+            Need another link?{" "}
+            <Link href="/account/recovery">Start recovery</Link>
           </p>
         ) : (
           <p>

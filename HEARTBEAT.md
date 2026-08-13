@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:40:19Z
-- Content-Fingerprint: sha256:fd537222ec869d01702fc6687cac3c5905c33196aafeda459b8e95c6382bd82f
+- Last-Updated: 2026-08-13T16:43:47Z
+- Content-Fingerprint: sha256:6128a8bb7dec8e9ee5cfd37750e12e518995f1b6bc9b2d790d18a6c297d6e008
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 4a28997
-- Last-Summary: Password update contracts and real-provider mutation are tested; next expose the recovery-session form and safe account status copy.
+- Commit: c09cf82
+- Last-Summary: Signup, sign-in, recovery, confirmation, password update and sign-out UI paths are complete; next refresh core docs and verify deployment automation.
 
 ## Current Task
 
