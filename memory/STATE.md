@@ -165,6 +165,12 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - CI now installs the frozen lockfile, verifies peers and formatting, lints,
   typechecks, tests, builds Next.js, audits critical advisories, runs the Python memory
   tests and validates durable memory.
+- A dependency-free repository supply-chain validator scans tracked and untracked
+  text for high-risk credential assignments, private keys, known token shapes and
+  service-role JWTs without echoing values. It also validates the reviewed production
+  licence families and a lockfile-derived CycloneDX 1.6 dependency graph. Seven unit
+  tests cover passing and failing secret, licence and SBOM boundaries; CI/release
+  wiring is the next slice.
 - The `apps/web` monorepo project is connected to the public GitHub repository in
   Vercel with root directory `apps/web`, Node 24 and production branch `main`. The
   first production deployment is available at https://whiterabbit-theta.vercel.app.

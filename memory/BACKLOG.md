@@ -47,7 +47,9 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 - [ ] Complete P1 workspace and quality gates.
   - Progress: pinned pnpm/Node tooling, TypeScript quality bases, shared tokens,
     Next.js PWA production builds, peer checks and CI are implemented. Expo and its
-    parser finding were removed.
+    parser finding were removed. A dependency-free repository secret scanner plus
+    reviewed-licence and CycloneDX 1.6 validators are test-green locally; CI and
+    release attachment are still being wired.
   - Acceptance: add repository-wide secret scanning plus durable licence/SBOM checks;
     preserve zero unaccepted critical/high runtime findings.
   - Verify: frozen install, peer check, format, lint, typecheck, tests, builds, audit,

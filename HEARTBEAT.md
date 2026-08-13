@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T17:31:48Z
-- Content-Fingerprint: sha256:95166cc2da984e664230d929e607d81078ac7a70a969998895e48089e5ae2aa4
+- Last-Updated: 2026-08-13T17:36:01Z
+- Content-Fingerprint: sha256:e6c1ffe31735cee300028baf59b89709abc2685f69a91725e67b67df1198cf06
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 148754c
-- Last-Summary: Baseline candidate and human-review state contracts are test-green; complete repository supply-chain gates next.
+- Commit: d968028
+- Last-Summary: Repository secret, reviewed-licence and CycloneDX validators are test-green; wire them into CI and release next.
 
 ## Current Task
 
