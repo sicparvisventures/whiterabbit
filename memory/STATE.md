@@ -84,6 +84,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Organization onboarding contracts validate the five distinct Belgian controller
   profiles, purpose, deployment label, classification acknowledgement and only the
   ALPR/object baseline capabilities. Biometrics cannot enter through ordinary setup.
+- A responsive product workspace now provides the desktop rail and mobile field
+  navigation for overview, Sentry, candidates, watchlists, nodes, policies, audit and
+  settings. Overview readiness is derived from configuration; every operational route
+  renders a truthful empty state rather than a fabricated row, metric or map.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -188,6 +192,11 @@ Organization contract slice
 Five onboarding tests pass after the expected missing-module red run. They cover
 normalization, unknown controller rejection, biometric baseline rejection, mandatory
 classification acknowledgement and a storage-missing state with no invented IDs.
+
+Empty product workspace slice
+The production build prerenders `/app`, `/app/setup` and eight product destinations.
+Playwright verified the 1440 px command center, 390 px field navigation and Operations
+empty state without browser errors; the temporary development server was stopped.
 ```
 
 ## Not Yet Implemented

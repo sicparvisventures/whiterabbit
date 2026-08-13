@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:18:27Z
-- Content-Fingerprint: sha256:5ae1b866d3b5103c8e455c8ab4b72963043335db3156b71266f77ae2adb44b44
+- Last-Updated: 2026-08-13T16:23:06Z
+- Content-Fingerprint: sha256:c55d84675b26222fb19ce83c6e417a2ded255846b8e00c6c09b7e74ddb23ad56
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: dd7d924
-- Last-Summary: Controller-scoped onboarding contracts are executable and exclude biometrics from baseline setup; next build the responsive empty workspace.
+- Commit: 9dba9f2
+- Last-Summary: Responsive mobile/desktop product routes now show only real readiness and empty states; next implement the browser camera lifecycle.
 
 ## Current Task
 
