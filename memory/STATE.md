@@ -74,6 +74,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   validation succeeds. Absent or invalid configuration returns a typed unavailable
   result, and the committed environment example contains names and safety guidance
   but no values.
+- Account services validate before calling the provider, normalize email, call real
+  signup/signin/recovery methods when available and map provider/network failures to
+  stable non-sensitive results. They neither store passwords nor manufacture sessions.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -163,6 +166,11 @@ Supabase browser-client slice
 Three factory cases pass alongside the configuration suite. The red run failed on the
 absent factory; the green implementation creates no client in either unavailable
 state and constructs `@supabase/ssr` only from validated browser values.
+
+Account service slice
+Six account-service cases pass, including no-provider, invalid-input, real provider
+result, generic credential rejection, account-neutral recovery and thrown network
+failure. The service suite contains thirteen passing web tests in total.
 ```
 
 ## Not Yet Implemented
@@ -175,7 +183,7 @@ state and constructs `@supabase/ssr` only from validated browser values.
 
 ## Next Action
 
-Finish Plan 0003 phase 2 by adding the optional Supabase Auth adapter test-first.
-Then replace the deployed sample dashboard with real public,
-account, setup-required and empty product states before implementing the foreground
-camera lifecycle. Supabase, models and operational data remain separately gated.
+Replace the deployed sample dashboard with real public/account forms, setup-required
+and empty product states bound to the implemented Auth services. Then implement the
+foreground camera lifecycle. Supabase, models and operational data remain separately
+gated.

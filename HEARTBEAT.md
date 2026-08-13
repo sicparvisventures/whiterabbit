@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:08:17Z
-- Content-Fingerprint: sha256:1ba81fd09454bcbba0f1bc677bd0a103046d5cc9aacebbcbf3f94312ea85376e
+- Last-Updated: 2026-08-13T16:10:17Z
+- Content-Fingerprint: sha256:dbcaf59f985cd1f3c98d01a9fdfbdda6078cf396363d9250a6e91e8c33c7b882
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: cfc7ea8
-- Last-Summary: The browser factory creates a real Supabase client only for validated config; next implement account mutations and forms.
+- Commit: 8c8cdc8
+- Last-Summary: Real-provider account services now validate and fail safely; next replace the mock dashboard with account and empty product routes.
 
 ## Current Task
 
