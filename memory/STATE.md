@@ -58,6 +58,12 @@ Conclusion: success
 
 GitHub release
 https://github.com/sicparvisventures/whiterabbit/releases/tag/v0.1.0-foundation
+
+Planning package commits
+7e05fd6, da4d044, a1ee224, cf49c91
+
+GitHub Actions planning-package run 31698879716
+Conclusion: success
 ```
 
 ## Not Yet Implemented
