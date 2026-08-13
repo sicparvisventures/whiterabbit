@@ -15,6 +15,7 @@
     "format": "prettier --write package.json pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs apps packages",
     "format:check": "prettier --check package.json pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs apps packages",
     "lint": "corepack pnpm -r --if-present lint",
+    "quality:supply-chain": "python3 scripts/quality/supply_chain.py",
     "test": "corepack pnpm -r --if-present test",
     "typecheck": "corepack pnpm -r --if-present typecheck"
   },

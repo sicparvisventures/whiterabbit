@@ -12,19 +12,37 @@ jobs:
   verify-and-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24.18.0"
+
+      - name: Install pinned dependencies
+        run: corepack pnpm install --frozen-lockfile
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
 
       - name: Run tests
         run: python3 -m unittest discover -s tests -v
 
+      - name: Validate repository secrets, licences and SBOM
+        run: corepack pnpm quality:supply-chain
+
       - name: Validate durable memory
         run: python3 scripts/memory/memory_tool.py validate --strict
+
+      - name: Generate release SBOM and checksum
+        run: |
+          corepack pnpm sbom --sbom-format cyclonedx --sbom-spec-version 1.6 --prod --lockfile-only --out "$RUNNER_TEMP/whiterabbit.cdx.json"
+          sha256sum "$RUNNER_TEMP/whiterabbit.cdx.json" > "$RUNNER_TEMP/whiterabbit.cdx.json.sha256"
 
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes --repo "$GITHUB_REPOSITORY"
+        run: |
+          gh release create "$GITHUB_REF_NAME" --verify-tag --generate-notes --repo "$GITHUB_REPOSITORY" \
+            "$RUNNER_TEMP/whiterabbit.cdx.json" \
+            "$RUNNER_TEMP/whiterabbit.cdx.json.sha256"
