@@ -111,6 +111,11 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - A guarded node-enrollment service validates input before calling an optional provider,
   validates untrusted provider output, maps failures to stable non-sensitive results,
   and returns `STORAGE_NOT_PROVISIONED` with no invented node or claim when absent.
+- Strict baseline signed-event primitives validate the closed node/ALPR/object event
+  family, UUIDv7 event identity, deployment and controller scope, canonical unsigned
+  sequence, UTC millisecond time, optional base64url SHA-256 chain digest and
+  fixed-width ES256 JOSE signature. Biometric events, payloads, signing and ingest are
+  not enabled by this contract slice.
 - `/app/settings` is a dedicated responsive readiness surface for account/Auth,
   organization/deployment, capability/policy, data/retention and local device status.
   It derives public Auth configuration and labels every unpersisted control explicitly;
@@ -353,7 +358,8 @@ camera-only permissions policy, frame denial and content-type protection were pr
 - Supabase project, schema, RLS or persisted organization/deployment data. Auth code is
   complete but cannot perform live mutations before project configuration exists.
 - Persistent camera enrollment, browser inference, desktop node packaging, ALPR
-  pipeline, review queue or public map.
+  pipeline, signed payload envelopes, signature verification/ingest, review queue or
+  public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, security
   risk acceptance/mitigation ownership, or deployment authorization.

@@ -1,10 +1,18 @@
 # Specification 0004: Signed Event and Application API Contract
 
-- Status: contract proposal for test-first implementation
+- Status: partially executable; baseline header/signature primitives implemented test-first
 - Date: 2026-08-13
 - API base: `/api/v1`
 - Event schema family: `whiterabbit.event.v1`
 - Depends on: Specifications 0001–0003 and ADR-0006
+
+## Implementation Progress
+
+The executable `@whiterabbit/contracts/signed-event` boundary now validates the
+baseline node, ALPR and object event header plus the fixed-width ES256 signature.
+It intentionally excludes `biometric.candidate.v1` until the separate biometric
+implementation gates are satisfied. Payload envelopes, canonicalization, signing,
+verification and ingest remain unimplemented.
 
 ## Contract Goals
 
@@ -53,14 +61,14 @@ type SignedNodeEvent<TPayload> = Readonly<{
   header: Readonly<{
     schemaVersion: "whiterabbit.event.v1";
     eventType: EventType;
-    eventId: string;              // UUIDv7
-    deploymentId: string;         // UUID
-    spaceId: string;              // UUID
-    nodeId: string;               // UUID
-    keyId: string;                // opaque registered key ID
-    counterEpochId: string;       // UUID bound at enrollment/key rotation
-    sequence: string;             // unsigned decimal string; monotonic per epoch
-    occurredAt: string;           // RFC 3339 UTC with milliseconds
+    eventId: string; // UUIDv7
+    deploymentId: string; // UUID
+    spaceId: string; // UUID
+    nodeId: string; // UUID
+    keyId: string; // opaque registered key ID
+    counterEpochId: string; // UUID bound at enrollment/key rotation
+    sequence: string; // unsigned decimal string; monotonic per epoch
+    occurredAt: string; // RFC 3339 UTC with milliseconds
     controllerProfile: ControllerProfile;
     purposeId: string;
     policyVersion: string;
@@ -72,7 +80,7 @@ type SignedNodeEvent<TPayload> = Readonly<{
   payload: TPayload;
   signature: Readonly<{
     algorithm: "ES256";
-    value: string;                // base64url fixed-width JOSE R || S
+    value: string; // base64url fixed-width JOSE R || S
   }>;
 }>;
 ```
@@ -188,7 +196,10 @@ type BiometricCandidateV1 = Readonly<{
   watchlistId: string;
   watchlistVersion: string;
   subjectRef: string; // opaque, tenant-scoped watchlist entry reference
-  biometricMode: "VERIFICATION_1_TO_1" | "POST_IDENTIFICATION_1_TO_N" | "REALTIME_IDENTIFICATION_1_TO_N";
+  biometricMode:
+    | "VERIFICATION_1_TO_1"
+    | "POST_IDENTIFICATION_1_TO_N"
+    | "REALTIME_IDENTIFICATION_1_TO_N";
   similarityBand: "ABOVE_THRESHOLD" | "STRONGER_CANDIDATE";
   calibratedPolicyId: string;
   corroborationCount: number;
@@ -243,13 +254,13 @@ CONFIRMED | REJECTED | INCONCLUSIVE -> RETRACTED
 
 ## Human and Device Authorization
 
-| Route family | Credential | Additional rule |
-| --- | --- | --- |
-| Human read | Supabase user JWT | active deployment membership and resource policy |
-| Human privileged mutation | Supabase user JWT | `aal2`, role, purpose, classification, resource version |
-| Node enrollment completion | single-use claim + generated public key | claim scope/expiry and administrator approval |
-| Node event ingest | registered node key signature | live node, authority, policy, epoch, sequence, rate policy |
-| Package download | registered node key proof | package scope, expiry, revocation, capability and model compatibility |
+| Route family               | Credential                              | Additional rule                                                       |
+| -------------------------- | --------------------------------------- | --------------------------------------------------------------------- |
+| Human read                 | Supabase user JWT                       | active deployment membership and resource policy                      |
+| Human privileged mutation  | Supabase user JWT                       | `aal2`, role, purpose, classification, resource version               |
+| Node enrollment completion | single-use claim + generated public key | claim scope/expiry and administrator approval                         |
+| Node event ingest          | registered node key signature           | live node, authority, policy, epoch, sequence, rate policy            |
+| Package download           | registered node key proof               | package scope, expiry, revocation, capability and model compatibility |
 
 No user route accepts a service-role key. No node route accepts a user JWT as a
 substitute for a device signature.
@@ -283,22 +294,22 @@ normal logs. Completion also proves possession of the newly generated private ke
 
 ## REST Resources
 
-| Method and path | Purpose | Auth and invariants |
-| --- | --- | --- |
-| `POST /api/v1/node-enrollments` | create a short-lived claim | human `aal2`; admin role; idempotency key |
-| `POST /api/v1/node-enrollments/{id}/complete` | bind node public key | single use; proof of possession; exact claim scope |
-| `GET /api/v1/nodes/{id}/desired-state` | pull disable/config state | node signature; never starts camera |
-| `GET /api/v1/nodes/{id}/packages` | list permitted signed manifests | node signature; live policy and node scope |
-| `GET /api/v1/packages/{id}/content` | download encrypted package | node signature; short response grant; digest verified |
-| `POST /api/v1/events:batch` | ingest ordered signed events | node signatures; max batch policy; atomic per-event result |
-| `GET /api/v1/candidates` | cursor-paginated restricted queue | user membership, role, capability, classification |
-| `GET /api/v1/candidates/{id}` | candidate and authorized evidence metadata | user membership; evidence remains separately granted |
-| `POST /api/v1/candidates/{id}/reviews` | append human review | `aal2`; reviewer role; `If-Match`; idempotency key |
-| `POST /api/v1/evidence/{id}/grants` | issue one-use evidence retrieval | `aal2`; candidate permission; unexpired evidence |
-| `POST /api/v1/watchlists` | create governed synthetic watchlist | `aal2`; maker role; pilot scope |
-| `POST /api/v1/watchlists/{id}/approvals` | maker-checker decision | `aal2`; checker differs from maker; `If-Match` |
-| `POST /api/v1/watchlists/{id}/revoke` | revoke list and packages | `aal2`; authorized role; immediate desired-state update |
-| `GET /api/v1/audit-events` | filtered audit view/export proposal | auditor role; export is separately authorized and logged |
+| Method and path                               | Purpose                                    | Auth and invariants                                        |
+| --------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------- |
+| `POST /api/v1/node-enrollments`               | create a short-lived claim                 | human `aal2`; admin role; idempotency key                  |
+| `POST /api/v1/node-enrollments/{id}/complete` | bind node public key                       | single use; proof of possession; exact claim scope         |
+| `GET /api/v1/nodes/{id}/desired-state`        | pull disable/config state                  | node signature; never starts camera                        |
+| `GET /api/v1/nodes/{id}/packages`             | list permitted signed manifests            | node signature; live policy and node scope                 |
+| `GET /api/v1/packages/{id}/content`           | download encrypted package                 | node signature; short response grant; digest verified      |
+| `POST /api/v1/events:batch`                   | ingest ordered signed events               | node signatures; max batch policy; atomic per-event result |
+| `GET /api/v1/candidates`                      | cursor-paginated restricted queue          | user membership, role, capability, classification          |
+| `GET /api/v1/candidates/{id}`                 | candidate and authorized evidence metadata | user membership; evidence remains separately granted       |
+| `POST /api/v1/candidates/{id}/reviews`        | append human review                        | `aal2`; reviewer role; `If-Match`; idempotency key         |
+| `POST /api/v1/evidence/{id}/grants`           | issue one-use evidence retrieval           | `aal2`; candidate permission; unexpired evidence           |
+| `POST /api/v1/watchlists`                     | create governed synthetic watchlist        | `aal2`; maker role; pilot scope                            |
+| `POST /api/v1/watchlists/{id}/approvals`      | maker-checker decision                     | `aal2`; checker differs from maker; `If-Match`             |
+| `POST /api/v1/watchlists/{id}/revoke`         | revoke list and packages                   | `aal2`; authorized role; immediate desired-state update    |
+| `GET /api/v1/audit-events`                    | filtered audit view/export proposal        | auditor role; export is separately authorized and logged   |
 
 Collection responses use opaque cursor pagination:
 

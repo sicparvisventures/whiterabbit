@@ -11,7 +11,9 @@
   mock operational records were removed.
 - Phase 2 Auth seam complete pending external configuration: account/policy contracts,
   optional browser/server clients, cookie refresh, verified claims, signup/signin,
-  confirmation, recovery, password update and sign-out are implemented.
+  confirmation, recovery, password update and sign-out are implemented. Strict
+  baseline signed-event header/signature primitives are also executable; payload and
+  candidate contracts remain in progress.
 - Phase 3 UI complete but persistence pending: responsive routes, empty states and the
   controller-scoped onboarding form plus account/organization/deployment/capability/
   retention/legal/device settings readiness are implemented; migrations/RLS remain

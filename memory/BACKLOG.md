@@ -60,8 +60,10 @@ Tasks are ordered by dependency. A task is not complete until its verification s
     executable account/policy contracts, guarded Supabase client and real-provider
     Auth services are implemented. Public and account routes contain no runtime mock
     records. Camera/node/install/settings readiness and the exact Supabase handoff
-    runbook are complete; configuration remains optional until the owner creates a
-    project.
+    runbook are complete. The baseline signed-event header/signature schema is now
+    executable and rejects biometric/unknown types plus undeclared fields;
+    ALPR/object payload and candidate contracts are next. Configuration remains
+    optional until the owner creates a project.
   - Acceptance: public/account/setup/product routes contain no invented operational
     records; real Supabase Auth activates without UI changes; policy and camera
     lifecycle contracts deny unavailable capabilities explicitly.

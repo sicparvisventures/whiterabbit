@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T17:20:10Z
-- Content-Fingerprint: sha256:c621c2b5b958c3fa92c942db183d8b6ba7bda62136d18b8079516726940ca95e
+- Last-Updated: 2026-08-13T17:26:21Z
+- Content-Fingerprint: sha256:ab57c6d081e91db6bcb4acd5918339cc7b5697d6b5b15fa8bb2ffa8acb252684
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: d0f139c
-- Last-Summary: Pre-Supabase PWA is CI-green and live on Vercel; next owner creates/configures Supabase from the handoff runbook.
+- Commit: 74fbb6c
+- Last-Summary: Baseline signed-event header and ES256 signature contracts are test-green; implement minimal ALPR/object payload envelopes next.
 
 ## Current Task
 
