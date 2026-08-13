@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T12:01:02Z
-- Content-Fingerprint: sha256:a1ff4783fe29347b5bb188c4b90617a1ea52f041e00cd96fcd48cc7d502f1c29
+- Last-Updated: 2026-08-13T12:06:37Z
+- Content-Fingerprint: sha256:cf4d459ec3c7510cf9a5ce0a2bd6c126b4b7326f3631ba70f4a0bac41e8098c8
 - Status: synthetic-planning-approved
 - Branch: main
-- Commit: 7e05fd6
-- Last-Summary: Defined the synthetic Defence pilot, mobile-edge/web architecture, and native iOS plus premium desktop UX; next specify contracts and threats.
+- Commit: da4d044
+- Last-Summary: Specified signed event and API boundaries and completed the repo-grounded threat model; next define institutional gates and the phased implementation plan.
 
 ## Current Task
 

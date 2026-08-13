@@ -38,6 +38,8 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Spec 0003 fixes the first executable boundary at one fictional `BE-DEFENCE-ADMIN` site, 1–10 iPhone nodes, synthetic ALPR/objects, a maximum 1,000-identity synthetic real-time 1:N benchmark, 24-hour candidate evidence, no public projection, and no federation.
 - Architecture 0001 defines the planned mobile edge, web command center, provider boundaries, separate human/node identity, edge pipeline, storage domains, and deployment topologies.
 - Product Experience 0001 defines a native iOS 26 field instrument and an accessible, premium, information-dense desktop command center without copying third-party trade dress.
+- Spec 0004 defines versioned signed node events, canonical ES256 event/request proofs, monotonic anti-replay context, distinct ALPR/object/biometric payloads, stable REST resources, authorization, idempotency, concurrency, error, and contract-test rules.
+- The repository-grounded threat model identifies cross-tenant access, watchlist abuse, supply-chain substitution, node compromise, false biometric escalation, retention leakage, public projection, account compromise, denial of service, unsafe parsers, federation, and public-repo leakage. Runtime controls are explicitly unimplemented.
 
 ## Verification Evidence
 
@@ -61,7 +63,8 @@ https://github.com/sicparvisventures/whiterabbit/releases/tag/v0.1.0-foundation
 - Web application, Supabase project, schema, RLS, or Vercel project.
 - Camera enrollment, native mobile inference, desktop node, ALPR pipeline, review queue, or public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
-- Production legal assessment, DPIA, controller agreement, retention schedule, or deployment authorization.
+- Production legal assessment, DPIA, controller agreement, retention schedule, security
+  risk acceptance/mitigation ownership, or deployment authorization.
 
 ## Next Action
 

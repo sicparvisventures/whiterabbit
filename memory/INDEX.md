@@ -25,11 +25,16 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [Spec 0001: Belgian controller profiles](../docs/specs/0001-belgian-controller-profiles.md)
 - [Spec 0002: Tenant-scoped biometric watchlists](../docs/specs/0002-biometric-watchlists.md)
 - [Spec 0003: Synthetic Defence administrative pilot](../docs/specs/0003-synthetic-defence-pilot.md)
+- [Spec 0004: Signed event and application API contract](../docs/specs/0004-signed-event-and-api-contract.md)
 
 ## Architecture and Product Experience
 
 - [Architecture 0001: Mobile edge and government control plane](../docs/architecture/0001-system-architecture.md)
 - [Product Experience 0001: Native field app and operational command center](../docs/design/0001-product-experience.md)
+
+## Security
+
+- [WhiteRabbit threat model](../docs/security/whiterabbit-threat-model.md)
 
 ## Research
 

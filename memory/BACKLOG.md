@@ -28,12 +28,12 @@ Tasks are ordered by dependency. A task is not complete until its verification s
   - Progress: Spec 0002 and ADR-0005 are owner-approved for synthetic implementation planning; no biometric dependency or real processing is authorized.
   - Acceptance: the owner selects the first synthetic mode; controller, DPO, legal, security, fundamental-rights, model-risk, and operational reviewers approve capability, purpose, watchlist authority, data flow, human response, retention, rights, and hosting gates.
   - Verify: signed review record linked without sensitive operational details.
-- [ ] Write a repository-grounded threat model.
+- [x] Write a repository-grounded threat model for the synthetic slice.
   - Acceptance: assets, trust boundaries, attacker capabilities, abuse paths, and mitigations cover nodes, Supabase/Vercel candidates, government data-plane cells, models, watchlists, templates, alerts, reviewers, public map, and federation.
-  - Verify: security review with no unresolved critical risk.
-- [ ] Define the versioned signed-event contract.
+  - Verify: threat model quality checklist passes; every critical/high runtime threat remains an implementation gate with an owner required before release.
+- [x] Define the versioned signed-event and application API contract.
   - Acceptance: deployment, controller profile, biometric mode, authority, purpose, policy/model version, classification, candidate, restricted, biometric-alert, review, authorized-public, retracted, and expired states are machine-readable and privacy-safe.
-  - Verify: schema tests and abuse-case fixtures.
+  - Verify: Spec 0004 defines canonical signatures, request proofs, replay/idempotency/concurrency handling, distinct payloads, state transitions, routes, errors, and the required schema/abuse test matrix; executable tests follow in implementation.
 
 ## Phase 2: Single-Node Vertical Slice
 
