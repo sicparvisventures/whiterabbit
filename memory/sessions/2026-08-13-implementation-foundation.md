@@ -27,6 +27,8 @@
 - Expo SDK 57 exported a 2.3 MB iOS Hermes bundle.
 - Dependency audit found no critical issue. R-017 records two high `image-size`
   toolchain findings without a published patched version and one moderate CLI finding.
+- GitHub Actions run `31708721811` passed the expanded clean-checkout pipeline. The
+  official checkout/setup actions were then pinned to immutable Node-24-based v7 SHAs.
 
 ## Next Verified Action
 

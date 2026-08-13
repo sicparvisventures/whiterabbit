@@ -106,6 +106,12 @@ No critical advisory. Two high `image-size@2.0.2` parser findings and one modera
 CLI-only `uuid` finding remain in the Expo toolchain; the registry-named image-size
 patch is not published. P1 accepts no untrusted native/media input and the finding
 blocks operational processing until an Expo-compatible patch is available.
+
+GitHub Actions P1 foundation run 31708721811
+Conclusion: success. Frozen install, peers, format, lint, types, tests, Next build,
+Expo iOS export, critical audit, Python tests and strict memory validation all passed.
+Action dependencies were then updated to immutable Node-24-based v7 release SHAs to
+remove the runner's Node 20 deprecation warning.
 ```
 
 ## Not Yet Implemented

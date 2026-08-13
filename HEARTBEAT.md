@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T14:09:57Z
-- Content-Fingerprint: sha256:94a5956cbb18b73c52e984182ba8c062fdd7d22b63965ab85b62ce5aaf8af41d
+- Last-Updated: 2026-08-13T14:11:48Z
+- Content-Fingerprint: sha256:dd03059a42371f6ac51552a8454ccb5aaf3c9419408c60dca2b18ec1fda83c42
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 5b15334
-- Last-Summary: Light-only Expo and Next.js implementation foundation builds locally; P1 CI and durable risk state updated.
+- Commit: 5bf2638
+- Last-Summary: P1 foundation CI run 31708721811 passed; official actions pinned to Node-24 v7 release SHAs.
 
 ## Current Task
 
