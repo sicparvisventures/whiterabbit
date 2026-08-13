@@ -20,6 +20,7 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [ADR-0005: Isolated tenant-scoped biometric capability](decisions/ADR-0005-isolated-biometric-capability.md)
 - [ADR-0006: Native mobile edge and Supabase authentication](decisions/ADR-0006-native-mobile-and-supabase-auth.md)
 - [ADR-0007: Light-only product and foundation dependencies](decisions/ADR-0007-light-only-foundation-dependencies.md)
+- [ADR-0008: Single Vercel-hosted Next.js PWA](decisions/ADR-0008-single-nextjs-pwa.md)
 
 ## Active Specifications
 
@@ -27,10 +28,12 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [Spec 0002: Tenant-scoped biometric watchlists](../docs/specs/0002-biometric-watchlists.md)
 - [Spec 0003: Synthetic Defence administrative pilot](../docs/specs/0003-synthetic-defence-pilot.md)
 - [Spec 0004: Signed event and application API contract](../docs/specs/0004-signed-event-and-api-contract.md)
+- [Spec 0005: Single responsive PWA product](../docs/specs/0005-single-pwa-product.md)
 
 ## Architecture and Product Experience
 
 - [Architecture 0001: Mobile edge and government control plane](../docs/architecture/0001-system-architecture.md)
+- [Architecture 0002: Single PWA and Supabase adapter](../docs/architecture/0002-single-pwa-architecture.md)
 - [Product Experience 0001: Native field app and operational command center](../docs/design/0001-product-experience.md)
 - [Product Experience 0002: Interactive mobile and desktop prototype](../docs/design/0002-interactive-prototype.md)
 
@@ -43,6 +46,7 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [Compliance 0001: Review and release gates](../docs/compliance/0001-review-gates.md)
 - [Plan 0001: Synthetic Defence vertical slice](../docs/plans/0001-synthetic-defence-implementation.md)
 - [Plan 0002: Frontend-first, Supabase-later delivery](../docs/plans/0002-frontend-first-supabase-later.md)
+- [Plan 0003: Single PWA delivery](../docs/plans/0003-single-pwa-delivery.md)
 
 ## Research
 
