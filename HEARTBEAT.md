@@ -1,22 +1,22 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T14:11:48Z
-- Content-Fingerprint: sha256:dd03059a42371f6ac51552a8454ccb5aaf3c9419408c60dca2b18ec1fda83c42
+- Last-Updated: 2026-08-13T15:50:54Z
+- Content-Fingerprint: sha256:6fafcefd9c31709ab30950fed981065747c65386168062397cbf3197c6fa9045
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 5bf2638
-- Last-Summary: P1 foundation CI run 31708721811 passed; official actions pinned to Node-24 v7 release SHAs.
+- Commit: c546c1f
+- Last-Summary: Vercel production is live; frontend-first Supabase-later plan defines typed fixture adapters and next implementation slices.
 
 ## Current Task
 
-Complete the synthetic P1 workspace and quality gates after landing buildable
-light-only Expo and Next.js application shells.
+Build the frontend-first synthetic product behind stable repository ports while
+finishing the remaining P1 supply-chain automation.
 
 ## Next Verified Action
 
-Add repository-wide secret scanning and licence/SBOM evidence, verify GitHub Actions,
-then start executable fail-closed contracts and policy in P2.
+Implement Plan 0002 tasks A1–A2 test-first, move the current web shell onto generated
+fixture repositories, and verify automatic Vercel deployment from `main`.
 
 ## Blockers
 

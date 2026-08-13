@@ -11,6 +11,8 @@ Belgian Defence is the first intended deployment. Municipalities and police are 
 > from shared tokens. Camera, ALPR, biometrics, Supabase, Vercel and real map services
 > are deliberately not connected yet.
 
+Web preview: https://whiterabbit-theta.vercel.app
+
 ## Why WhiteRabbit
 
 The system is designed around a hard distinction:
@@ -62,6 +64,7 @@ locked-screen or hidden capture.
 - [Compliance and institutional review gates](docs/compliance/0001-review-gates.md)
 - [Phased synthetic implementation plan](docs/plans/0001-synthetic-defence-implementation.md)
 - [Interactive mobile and desktop prototype](docs/design/0002-interactive-prototype.md)
+- [Frontend-first, Supabase-later delivery plan](docs/plans/0002-frontend-first-supabase-later.md)
 
 ## Review the Interactive Prototype
 

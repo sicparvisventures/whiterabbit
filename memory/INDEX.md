@@ -42,6 +42,7 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 
 - [Compliance 0001: Review and release gates](../docs/compliance/0001-review-gates.md)
 - [Plan 0001: Synthetic Defence vertical slice](../docs/plans/0001-synthetic-defence-implementation.md)
+- [Plan 0002: Frontend-first, Supabase-later delivery](../docs/plans/0002-frontend-first-supabase-later.md)
 
 ## Research
 

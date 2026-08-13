@@ -61,6 +61,11 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
+- The `apps/web` monorepo project is connected to the public GitHub repository in
+  Vercel with root directory `apps/web`, Node 24 and production branch `main`. The
+  first production deployment is available at https://whiterabbit-theta.vercel.app.
+- Plan 0002 defines stable repository ports and generated fixture adapters so the web
+  and mobile product can be completed before Supabase is connected.
 
 ## Verification Evidence
 
@@ -112,6 +117,11 @@ Conclusion: success. Frozen install, peers, format, lint, types, tests, Next bui
 Expo iOS export, critical audit, Python tests and strict memory validation all passed.
 Action dependencies were then updated to immutable Node-24-based v7 release SHAs to
 remove the runner's Node 20 deprecation warning.
+
+Vercel production deployment
+Project `reserve4you/whiterabbit`, root `apps/web`, production branch `main`; first
+deployment completed successfully and the public alias returned the expected
+WhiteRabbit Command Center HTML.
 ```
 
 ## Not Yet Implemented
@@ -124,6 +134,7 @@ remove the runner's Node 20 deprecation warning.
 
 ## Next Action
 
-Complete P1 with repository-wide secret scanning and licence/SBOM evidence, then make
-Spec 0004 contracts and fail-closed controller/capability policy executable test-first
-in P2. Cloud provisioning, model artifacts, camera access and real data remain paused.
+Prove the Supabase-later seam by implementing Plan 0002 tasks A1–A2 test-first, then
+move the web shell onto deterministic repository fixtures. Complete P1 secret/licence/
+SBOM automation alongside this work. Supabase, models, camera access and real data
+remain separately gated.

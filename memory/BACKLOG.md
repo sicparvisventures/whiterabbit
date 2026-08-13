@@ -52,6 +52,13 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 
 ## Phase 2: Single-Node Vertical Slice
 
+- [ ] Build the frontend-first synthetic product behind repository ports.
+  - Progress: Plan 0002 is defined and the first web shell is deployed to Vercel.
+  - Acceptance: complete executable schemas/policy, deterministic fixture adapters,
+    web operational routes and Expo field flows without requiring Supabase.
+  - Verify: shared contract tests, Playwright, iOS export, production web build and
+    automatic Vercel deployment from `main`.
+
 - [ ] Enroll one Expo iPhone camera into one authorized deployment.
   - Acceptance: revocable node identity, explicit camera permission, approved capture zone, offline status.
   - Verify: native integration test and signed enrollment test.
