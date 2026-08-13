@@ -33,6 +33,7 @@ body {
 
 button,
 input,
+textarea,
 a {
   font: inherit;
 }
@@ -1504,6 +1505,295 @@ p {
 
   .mobile-product-nav a.active > span {
     background: #eaf2fd;
+  }
+}
+
+/* First deployment form */
+.setup-page-heading > div {
+  max-width: 760px;
+}
+
+.setup-page-heading h1 {
+  font-size: clamp(34px, 5vw, 52px);
+}
+
+.setup-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.setup-form fieldset {
+  min-width: 0;
+  display: grid;
+  gap: 23px;
+  margin: 0;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 7px 24px rgba(31, 55, 82, 0.035);
+}
+
+.setup-form legend {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 0;
+}
+
+.setup-form legend > span {
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #b8cbe3;
+  border-radius: 9px;
+  color: var(--primary);
+  background: #f0f6fd;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 9px;
+}
+
+.setup-form legend strong,
+.setup-form legend p {
+  display: block;
+}
+
+.setup-form legend strong {
+  font-size: 14px;
+}
+
+.setup-form legend p {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.setup-field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.setup-form label:not(.setup-acknowledgement),
+.setup-form fieldset > label {
+  display: grid;
+  gap: 8px;
+}
+
+.setup-form label > span:first-child {
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.setup-form input[type="text"],
+.setup-form textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.setup-form input[type="text"] {
+  min-height: 47px;
+}
+
+.setup-form small {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.controller-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.controller-options label {
+  min-width: 0;
+  display: grid !important;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 11px !important;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  cursor: pointer;
+}
+
+.controller-options label:hover {
+  border-color: var(--primary);
+  background: #f8fbff;
+}
+
+.controller-options input,
+.capability-options input,
+.setup-acknowledgement input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--primary);
+}
+
+.controller-options label > span,
+.capability-options label > span {
+  min-width: 0;
+}
+
+.controller-options strong,
+.controller-options small,
+.capability-options strong,
+.capability-options small {
+  display: block;
+}
+
+.controller-options strong,
+.capability-options strong {
+  font-size: 11px;
+}
+
+.controller-options small,
+.capability-options small {
+  overflow: hidden;
+  margin-top: 3px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.controller-options code {
+  color: var(--text-muted);
+  font-size: 8px;
+}
+
+.capability-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 9px;
+}
+
+.capability-options label,
+.blocked-capability {
+  min-height: 72px;
+  display: flex !important;
+  align-items: center;
+  gap: 12px !important;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+}
+
+.blocked-capability {
+  align-items: start;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px !important;
+  color: var(--text-muted);
+  background: var(--canvas);
+}
+
+.blocked-capability span,
+.blocked-capability strong {
+  font-size: 10px;
+}
+
+.blocked-capability strong {
+  color: var(--attention);
+}
+
+.setup-acknowledgement {
+  display: grid !important;
+  grid-template-columns: 18px 1fr;
+  align-items: start;
+  gap: 12px !important;
+  padding: 16px;
+  border: 1px solid #edcc93;
+  border-radius: 11px;
+  color: var(--text-muted);
+  background: var(--attention-surface);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.setup-acknowledgement input {
+  margin-top: 1px;
+}
+
+.setup-submit-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: #fff;
+}
+
+.setup-submit-area strong {
+  font-size: 12px;
+}
+
+.setup-submit-area p {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+@media (max-width: 900px) {
+  .controller-options,
+  .capability-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .setup-page-heading .connection-pill {
+    display: inline-flex;
+    align-self: start;
+  }
+
+  .setup-form {
+    margin-top: 23px;
+  }
+
+  .setup-form fieldset {
+    gap: 20px;
+    padding: 19px 16px;
+  }
+
+  .setup-form legend {
+    align-items: start;
+  }
+
+  .setup-form legend p {
+    line-height: 1.45;
+  }
+
+  .setup-field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .controller-options label {
+    grid-template-columns: 18px 1fr;
+  }
+
+  .controller-options code {
+    display: none;
+  }
+
+  .setup-submit-area {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .setup-submit-area .button {
+    width: 100%;
   }
 }
 

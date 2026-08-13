@@ -92,6 +92,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   flow. It requests the environment-facing camera only after a user action, keeps the
   stream local, releases tracks on stop/hide/unmount and leaves detection disabled
   while node, policy and model gates are absent.
+- `/app/setup` now exposes the full storage-ready onboarding surface for organization,
+  deployment, exact purpose, five controller profiles, ALPR/object baselines and the
+  public-SaaS classification acknowledgement. Its submit action is disabled and copy
+  explicitly states that typed input is neither submitted nor stored before migrations.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -207,6 +211,11 @@ Seven camera lifecycle cases pass as part of twenty web tests. The production bu
 prerenders `/sentry`; Playwright verified the 390 px idle state, explicit permission
 request state and disabled detection control. The browser prompt was not granted by
 the headless test, and the temporary server was stopped.
+
+Onboarding UI slice
+The production build renders `/app/setup` as a dedicated route. Playwright verified
+all controller/capability/classification fields, disabled persistence and 390 px
+layout with no browser errors; the temporary development server was stopped.
 ```
 
 ## Not Yet Implemented

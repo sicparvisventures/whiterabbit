@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:27:18Z
-- Content-Fingerprint: sha256:316811ad01575fddfe74b44ea6fd510690422e6963a0eee9798d837217506e58
+- Last-Updated: 2026-08-13T16:30:08Z
+- Content-Fingerprint: sha256:f1a02d0f255f30de44bf410c32d876f06b6bef0e2301d539c6c76aed6324d687
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: a10baf5
-- Last-Summary: Real local camera preview and fail-closed Sentry readiness are implemented; next add the onboarding form and session-aware protection.
+- Commit: 7842262
+- Last-Summary: The controller-scoped onboarding UI is complete but truthfully non-persistent; next implement request-scoped Supabase sessions and route protection.
 
 ## Current Task
 

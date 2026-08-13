@@ -3,14 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const sections = {
-  setup: {
-    title: "Setup",
-    eyebrow: "First deployment",
-    emptyTitle: "Storage must be provisioned first",
-    body: "The organization and deployment form is ready to bind, but it will not pretend to save anything until Supabase migrations and RLS policies exist.",
-    action: "Review environment guide",
-    href: "https://github.com/sicparvisventures/whiterabbit/blob/main/apps/web/.env.example",
-  },
   operations: {
     title: "Operations",
     eyebrow: "Operational picture",
