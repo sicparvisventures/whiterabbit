@@ -40,6 +40,8 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Product Experience 0001 defines a native iOS 26 field instrument and an accessible, premium, information-dense desktop command center without copying third-party trade dress.
 - Spec 0004 defines versioned signed node events, canonical ES256 event/request proofs, monotonic anti-replay context, distinct ALPR/object/biometric payloads, stable REST resources, authorization, idempotency, concurrency, error, and contract-test rules.
 - The repository-grounded threat model identifies cross-tenant access, watchlist abuse, supply-chain substitution, node compromise, false biometric escalation, retention leakage, public projection, account compromise, denial of service, unsafe parsers, federation, and public-repo leakage. Runtime controls are explicitly unimplemented.
+- Compliance 0001 defines profile routing and gates for product scope, provenance, legal authority, DPIA/FRIA/AI classification, security/hosting, model/device validation, human procedure, real pilot, scale, publication, and federation.
+- Plan 0001 sequences the synthetic product into phases P1–P11 with dependency batches, test-first tasks, five-file implementation limits, acceptance evidence, atomic pushes, and explicit stop conditions.
 
 ## Verification Evidence
 
@@ -68,7 +70,6 @@ https://github.com/sicparvisventures/whiterabbit/releases/tag/v0.1.0-foundation
 
 ## Next Action
 
-Document the exact synthetic `BE-DEFENCE-ADMIN` pilot, native mobile/web architecture,
-signed event/API contract, repository-grounded threat model, institutional gates, and
-phased implementation plan. No product code or real data flow starts before that
-planning package is complete and reviewed.
+Request explicit authorization for synthetic implementation and dependency batch D1.
+If approved, start P1 with pinned workspace manifests and quality gates only. Do not
+provision cloud resources, add model artifacts, or process real data.

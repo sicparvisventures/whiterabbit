@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T12:06:37Z
-- Content-Fingerprint: sha256:cf4d459ec3c7510cf9a5ce0a2bd6c126b4b7326f3631ba70f4a0bac41e8098c8
+- Last-Updated: 2026-08-13T12:11:13Z
+- Content-Fingerprint: sha256:c5787101ea5fb2764b692ca458b833ed17b1b44bb356b105a0222fe676b2d10e
 - Status: synthetic-planning-approved
 - Branch: main
-- Commit: da4d044
-- Last-Summary: Specified signed event and API boundaries and completed the repo-grounded threat model; next define institutional gates and the phased implementation plan.
+- Commit: a1ee224
+- Last-Summary: Completed compliance gates and the P1-P11 synthetic implementation plan; next authorize implementation and dependency batch D1 or keep planning-only.
 
 ## Current Task
 

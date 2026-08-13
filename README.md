@@ -6,7 +6,9 @@ The product direction is simple: turn an old phone, laptop, webcam, or compatibl
 
 Belgian Defence is the first intended deployment. Municipalities and police are also target controllers, each with a strictly separate legal, data, oversight, hosting, and publication profile. ALPR and object detection remain the core; an optional biometric watchlist capability is now specified as a separate, fail-closed module.
 
-> **Project status:** foundation only. The durable-memory tooling is implemented and tested; the camera, ALPR, Supabase, Vercel, review, and map applications are not yet operational.
+> **Project status:** planning package complete; product runtime not started. The
+> durable-memory tooling is implemented and tested. The camera, ALPR, biometric,
+> Supabase, Vercel, review, and map applications are not yet operational.
 
 ## Why WhiteRabbit
 
@@ -38,14 +40,30 @@ separately hosted map and transparency UI
 - Web control plane: Next.js and TypeScript; Vercel where the profile permits it.
 - Backend: PostgreSQL-compatible provider boundary; Supabase is a candidate for approved non-sensitive deployments.
 - Restricted deployments: accredited or self-hosted adapters where public cloud is not approved.
-- Browser node: `getUserMedia` plus local ONNX/WASM inference.
+- Mobile node: Expo/React Native development build with a visible foreground
+  `Sentry Mode`, native camera integration, and a benchmarked inference adapter.
 - Desktop node: Python support for USB, RTSP, ONVIF, and MJPEG cameras.
 - Contracts: versioned signed events with explicit candidate, review, public, retracted, and expired states.
 
 The proposed biometric edge pipeline detects and tracks a face, applies a quality
 gate, creates a versioned embedding locally, compares it only with a scoped watchlist,
-and sends a candidate alert to human review. A pure iPhone web node is foreground-
-only; reliable locked-screen/background capture is not promised.
+and sends a candidate alert to human review. The native iPhone node is foreground-
+only; iOS releases the camera when the app backgrounds, and WhiteRabbit does not claim
+locked-screen or hidden capture.
+
+## Planning Package
+
+- [Synthetic Defence pilot](docs/specs/0003-synthetic-defence-pilot.md)
+- [Mobile edge and government control-plane architecture](docs/architecture/0001-system-architecture.md)
+- [Native mobile and premium desktop product experience](docs/design/0001-product-experience.md)
+- [Signed event and application API contract](docs/specs/0004-signed-event-and-api-contract.md)
+- [Repository-grounded threat model](docs/security/whiterabbit-threat-model.md)
+- [Compliance and institutional review gates](docs/compliance/0001-review-gates.md)
+- [Phased synthetic implementation plan](docs/plans/0001-synthetic-defence-implementation.md)
+
+The next decision is explicit implementation plus dependency batch D1 authorization.
+No cloud resource, production dependency, model weight, dataset, or real data has
+been approved or added by this planning package.
 
 ## Durable Project Memory
 
@@ -61,7 +79,7 @@ python3 scripts/memory/memory_tool.py validate --strict
 
 Codex lifecycle hooks load bounded context at session start and request one repair turn when material repository content no longer matches `HEARTBEAT.md`. Review and trust the project hooks with `/hooks` before relying on them.
 
-Start with [PROJECT_SPEC.md](PROJECT_SPEC.md), [the Belgian controller profiles](docs/specs/0001-belgian-controller-profiles.md), [the biometric watchlist draft](docs/specs/0002-biometric-watchlists.md), [BOOTSTRAP.md](BOOTSTRAP.md), and [memory/INDEX.md](memory/INDEX.md).
+Start with [PROJECT_SPEC.md](PROJECT_SPEC.md), [the Belgian controller profiles](docs/specs/0001-belgian-controller-profiles.md), [the biometric watchlist specification](docs/specs/0002-biometric-watchlists.md), [BOOTSTRAP.md](BOOTSTRAP.md), and [memory/INDEX.md](memory/INDEX.md).
 
 ## Upstream and Licence
 

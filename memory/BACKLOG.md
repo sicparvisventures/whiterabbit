@@ -34,6 +34,9 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 - [x] Define the versioned signed-event and application API contract.
   - Acceptance: deployment, controller profile, biometric mode, authority, purpose, policy/model version, classification, candidate, restricted, biometric-alert, review, authorized-public, retracted, and expired states are machine-readable and privacy-safe.
   - Verify: Spec 0004 defines canonical signatures, request proofs, replay/idempotency/concurrency handling, distinct payloads, state transitions, routes, errors, and the required schema/abuse test matrix; executable tests follow in implementation.
+- [x] Define institutional gates and the phased synthetic implementation plan.
+  - Acceptance: controller-profile routing, provenance, legal/DPIA/FRIA, hosting/security, model/device, human-pilot and expansion gates are explicit; implementation has dependency batches, ordered phases, tests, acceptance, stop conditions, memory and push rules.
+  - Verify: Compliance 0001 and Plan 0001 are linked from README and memory; tests and strict validation pass.
 
 ## Phase 2: Single-Node Vertical Slice
 
@@ -43,8 +46,8 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 - [ ] Detect vehicles locally without uploading video.
   - Acceptance: only minimal candidate metadata and permitted redacted evidence cross the boundary.
   - Verify: network inspection proves no raw stream or full frame is transmitted.
-- [ ] Review and publish one confirmed government-vehicle event.
-  - Acceptance: corroborated evidence, human confirmation, profile authorization, audit record, retraction path, and a public map marker only in a synthetic profile that permits publication. Defence-public output is off by default.
+- [ ] Review one confirmed synthetic government-vehicle candidate.
+  - Acceptance: corroborated evidence, human confirmation, profile authorization, audit record, retraction/expiry path, and no public projection in the Defence pilot.
   - Verify: end-to-end synthetic fixture.
 
 ## Phase 3: Operational Hardening

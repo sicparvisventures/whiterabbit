@@ -36,6 +36,11 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 
 - [WhiteRabbit threat model](../docs/security/whiterabbit-threat-model.md)
 
+## Compliance and Delivery
+
+- [Compliance 0001: Review and release gates](../docs/compliance/0001-review-gates.md)
+- [Plan 0001: Synthetic Defence vertical slice](../docs/plans/0001-synthetic-defence-implementation.md)
+
 ## Research
 
 - [Research 0001: Biometric watchlist options](../docs/research/0001-biometric-watchlist-options.md)
