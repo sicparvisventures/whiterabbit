@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T17:36:01Z
-- Content-Fingerprint: sha256:e6c1ffe31735cee300028baf59b89709abc2685f69a91725e67b67df1198cf06
+- Last-Updated: 2026-08-13T17:38:02Z
+- Content-Fingerprint: sha256:6dc989ff95d5aa78e8e0f66be922b19dc82084aa275d48d5b09ee0053b7c6538
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: d968028
-- Last-Summary: Repository secret, reviewed-licence and CycloneDX validators are test-green; wire them into CI and release next.
+- Commit: 32545ee
+- Last-Summary: Supply-chain gates are wired into CI and tag releases attach an SBOM/checksum; confirm the remote CI run next.
 
 ## Current Task
 

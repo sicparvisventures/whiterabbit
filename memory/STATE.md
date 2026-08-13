@@ -169,8 +169,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   text for high-risk credential assignments, private keys, known token shapes and
   service-role JWTs without echoing values. It also validates the reviewed production
   licence families and a lockfile-derived CycloneDX 1.6 dependency graph. Seven unit
-  tests cover passing and failing secret, licence and SBOM boundaries; CI/release
-  wiring is the next slice.
+  tests cover passing and failing secret, licence and SBOM boundaries. CI now runs the
+  gate and fails on high/critical production advisories; immutable-action tag releases
+  generate and attach a CycloneDX 1.6 SBOM plus SHA-256 checksum.
 - The `apps/web` monorepo project is connected to the public GitHub repository in
   Vercel with root directory `apps/web`, Node 24 and production branch `main`. The
   first production deployment is available at https://whiterabbit-theta.vercel.app.
@@ -359,6 +360,13 @@ argument assertion before the corrected service passed all 48 web tests; commit
 `ba0f39c` is on `main`. Frozen install, formatting, ESLint, TypeScript, 80 Vitest
 assertions, Next.js production build, production audit with no known vulnerabilities
 and ten Python memory tests all pass.
+
+Supply-chain gate slice
+Seven focused tests cover secret value suppression, private-key detection,
+placeholder acceptance, reviewed/unreviewed licences and valid/invalid CycloneDX
+graphs. The full Python suite now contains 17 passing tests. The repository gate,
+production audit at high severity, workflow YAML parsing and formatting pass locally;
+remote CI confirmation is pending.
 
 Green handoff release
 GitHub Actions run `31725036519` passed every quality step for commit `d0f139c`.

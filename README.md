@@ -90,6 +90,7 @@ service-role or secret key in a `NEXT_PUBLIC_*` variable.
 ## Verify
 
 ```bash
+corepack pnpm quality:supply-chain
 corepack pnpm format:check
 corepack pnpm lint
 corepack pnpm typecheck

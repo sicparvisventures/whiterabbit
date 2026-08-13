@@ -112,9 +112,11 @@ boundaries, unit tests pass, strict memory validation passes, commits are public
 
 ## P1 — Workspace and Quality Gates
 
-Status: **in progress**. Root manifests, pinned toolchain, shared light-only tokens,
-Next.js/Expo shells, peer checks and build/test CI are implemented. Repository-wide
-secret scanning plus durable licence/SBOM automation remain before P1 completes.
+Status: **implementation complete; remote CI confirmation pending**. Root manifests,
+pinned toolchain, shared light-only tokens, the single Next.js PWA, peer checks and
+build/test CI are implemented. Repository-wide secret scanning, reviewed production
+licence enforcement and CycloneDX SBOM validation now run without an extra dependency;
+tagged releases publish the SBOM and checksum.
 
 Goal: a minimal monorepo that builds no product behavior yet.
 
@@ -134,7 +136,7 @@ Acceptance:
 - clean install/build/tests from a fresh checkout;
 - no postinstall network surprises or unreviewed native code;
 - CI least-privilege permissions and no production secret requirement;
-- current nine memory tests still pass.
+- all memory and supply-chain tests pass.
 
 Verify: `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`, `pnpm test`,
 `pnpm build`, Python tests, SBOM/licence/secret checks and strict memory validation.
