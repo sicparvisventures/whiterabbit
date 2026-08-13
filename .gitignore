@@ -3,11 +3,12 @@
 
 # Local environments and generated state.
 /.venv/
-/node_modules/
-/coverage/
-/.next/
-/dist/
-/build/
+node_modules/
+coverage/
+.next/
+dist/
+build/
+.expo/
 __pycache__/
 *.py[cod]
 .DS_Store
