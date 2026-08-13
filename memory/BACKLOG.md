@@ -10,9 +10,9 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 - [x] Implement memory validation and lifecycle hooks test-first.
   - Acceptance: startup context is bounded; stale memory triggers one repair turn; secrets and broken links fail validation.
   - Verify: `python3 -m unittest discover -s tests -v`
-- [ ] Publish the WhiteRabbit foundation.
+- [x] Publish the WhiteRabbit foundation.
   - Acceptance: public GitHub repository, correct author, AGPL licence, CI, documentation, clean working tree, initial release.
-  - Verify: local tests, strict memory validation, GitHub Actions, release URL.
+  - Verify: local tests, strict memory validation, successful GitHub Actions run `31695302196`, and release `v0.1.0-foundation`.
 
 ## Phase 1: Legal and Threat Boundaries
 

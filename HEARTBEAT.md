@@ -1,20 +1,20 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T11:23:29Z
+- Last-Updated: 2026-08-13T11:24:33Z
 - Content-Fingerprint: sha256:460da9de5efc4fd4b19e270f7b6c66bb05a95a280297ce4d1d94a702d3dc339b
-- Status: foundation-release-pending
+- Status: foundation-published
 - Branch: main
-- Commit: 7fd11ae
-- Last-Summary: Public repository and CI verified; next publish v0.1.0-foundation.
+- Commit: 80b6065
+- Last-Summary: v0.1.0-foundation is public and verified; next write the Belgian deployment and data-governance spec.
 
 ## Current Task
 
-Publish the verified repository-native persistent-memory foundation as the initial tagged release.
+Begin the Belgian deployment and data-governance specification using the published memory foundation.
 
 ## Next Verified Action
 
-Create and verify release `v0.1.0-foundation`, then record the release URL and next specification task.
+Define controller roles, legal basis, purposes, camera-law procedures, retention, public-record criteria, data-subject rights, and the DPIA gate before cloud or ALPR implementation.
 
 ## Blockers
 

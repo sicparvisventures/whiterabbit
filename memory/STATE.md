@@ -28,6 +28,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Nine unit/integration tests covering the memory tool and hooks.
 - Public GitHub repository and protected source history.
 - GitHub Actions CI for tests and strict memory validation.
+- Tagged foundation release `v0.1.0-foundation`.
 
 ## Verification Evidence
 
@@ -38,15 +39,20 @@ OK
 
 GitHub Actions run 31695235263
 Conclusion: success
+
+GitHub Actions CI run 31695302196
+Conclusion: success
+
+GitHub release
+https://github.com/sicparvisventures/whiterabbit/releases/tag/v0.1.0-foundation
 ```
 
 ## Not Yet Implemented
 
-- Initial tagged GitHub release.
 - Web application, Supabase project, schema, RLS, or Vercel project.
 - Camera enrollment, browser inference, desktop node, ALPR pipeline, review queue, or public map.
 - Production legal assessment, DPIA, controller agreement, retention schedule, or deployment authorization.
 
 ## Next Action
 
-Tag the verified public foundation as `v0.1.0-foundation`, confirm the automated release, then begin the Belgian deployment and data-governance specification.
+Write and validate the Belgian deployment and data-governance specification before provisioning Supabase, Vercel, or implementing real surveillance data flows.
