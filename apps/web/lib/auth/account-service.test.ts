@@ -129,6 +129,10 @@ describe("requestPasswordReset", () => {
         "https://app.example.be/account/update-password",
       ),
     ).toEqual({ status: "PASSWORD_RESET_REQUESTED" });
+    expect(provider.resetPasswordForEmail).toHaveBeenCalledWith(
+      "operator@example.be",
+      { redirectTo: "https://app.example.be" },
+    );
   });
 });
 

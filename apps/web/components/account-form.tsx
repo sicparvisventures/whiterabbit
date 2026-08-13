@@ -102,7 +102,7 @@ export function AccountForm({
       nextResult = await requestPasswordReset(
         provider,
         { email: values.get("email") },
-        `${window.location.origin}/account/update-password`,
+        window.location.origin,
       );
     } else {
       nextResult = await updatePassword(provider, {

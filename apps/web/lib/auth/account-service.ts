@@ -58,6 +58,19 @@ function serviceUnavailable(): AccountMutationResult {
   };
 }
 
+function safeRedirectOrigin(value: string): string | null {
+  try {
+    const redirectUrl = new URL(value);
+    const secure = redirectUrl.protocol === "https:";
+    const localDevelopment =
+      redirectUrl.protocol === "http:" &&
+      ["localhost", "127.0.0.1"].includes(redirectUrl.hostname);
+    return secure || localDevelopment ? redirectUrl.origin : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function createAccount(
   provider: AccountAuthProvider | null,
   input: unknown,
@@ -75,14 +88,9 @@ export async function createAccount(
     };
 
     if (emailRedirectBaseUrl) {
-      const redirectUrl = new URL(emailRedirectBaseUrl);
-      const secure = redirectUrl.protocol === "https:";
-      const localDevelopment =
-        redirectUrl.protocol === "http:" &&
-        ["localhost", "127.0.0.1"].includes(redirectUrl.hostname);
-      if (secure || localDevelopment) {
-        credentials.options = { emailRedirectTo: redirectUrl.origin };
-      }
+      const redirectOrigin = safeRedirectOrigin(emailRedirectBaseUrl);
+      if (!redirectOrigin) return serviceUnavailable();
+      credentials.options = { emailRedirectTo: redirectOrigin };
     }
 
     response = await provider.signUp(credentials);
@@ -147,13 +155,15 @@ export async function requestPasswordReset(
   const parsed = passwordResetInputSchema.safeParse(input);
   if (!parsed.success) return invalidInputResult;
   if (!provider) return { status: "BACKEND_NOT_CONFIGURED" };
+  const redirectOrigin = safeRedirectOrigin(redirectTo);
+  if (!redirectOrigin) return serviceUnavailable();
 
   let response: Awaited<
     ReturnType<AccountAuthProvider["resetPasswordForEmail"]>
   >;
   try {
     response = await provider.resetPasswordForEmail(parsed.data.email, {
-      redirectTo,
+      redirectTo: redirectOrigin,
     });
   } catch {
     return serviceUnavailable();
