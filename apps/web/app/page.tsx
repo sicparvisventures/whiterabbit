@@ -1,307 +1,181 @@
-"use client";
+import Link from "next/link";
 
-import { useState } from "react";
+import { SiteHeader } from "../components/site-header";
+import { readRuntimeSupabasePublicConfig } from "../lib/supabase/config";
 
-const destinations = [
-  "Overview",
-  "Operations",
-  "Candidates",
-  "Watchlists",
-  "Nodes",
-  "Policies",
-  "Audit",
-] as const;
-type Destination = (typeof destinations)[number];
-
-const events = [
+const capabilityCards = [
   {
-    id: "EVT-1042",
-    kind: "ALPR candidate",
-    node: "SYN-NODE-03",
-    age: "18 sec",
-    state: "Review",
+    number: "01",
+    title: "Vehicle intelligence",
+    body: "Local plate recognition and object context, designed around signed candidates and human review.",
+    label: "Model approval required",
   },
   {
-    id: "EVT-1041",
-    kind: "Object candidate",
-    node: "SYN-NODE-07",
-    age: "1 min",
-    state: "Queued",
+    number: "02",
+    title: "Edge object detection",
+    body: "Detect vehicles, hazards and operational objects without sending a continuous camera stream to the cloud.",
+    label: "Runtime not installed",
   },
   {
-    id: "EVT-1040",
-    kind: "Biometric candidate",
-    node: "SYN-NODE-02",
-    age: "4 min",
-    state: "Restricted",
+    number: "03",
+    title: "Governed watchlists",
+    body: "An isolated biometric capability boundary for specifically authorized, tenant-scoped deployments.",
+    label: "Legally and technically gated",
   },
 ] as const;
 
-export default function CommandCenter() {
-  const [destination, setDestination] = useState<Destination>("Overview");
-  const [selectedEvent, setSelectedEvent] = useState<(typeof events)[number]>(
-    events[0],
-  );
-  const [receipt, setReceipt] = useState<string | null>(null);
-
-  function review(outcome: "Confirmed" | "Rejected" | "Inconclusive") {
-    setReceipt(
-      `${selectedEvent.id}: ${outcome} recorded locally in this synthetic UI session.`,
-    );
-  }
+export default function LandingPage() {
+  const backend = readRuntimeSupabasePublicConfig();
+  const backendReady = backend.status === "CONFIGURED";
 
   return (
-    <main className="shell">
-      <aside className="sidebar" aria-label="Primary navigation">
-        <a className="brand" href="#workspace" aria-label="WhiteRabbit home">
-          <span className="brand-mark" aria-hidden="true">
-            W
-          </span>
-          <span>
-            <strong>WhiteRabbit</strong>
-            <small>Command center</small>
-          </span>
-        </a>
+    <main className="marketing-shell">
+      <SiteHeader />
 
-        <nav>
-          {destinations.map((item) => (
-            <button
-              className={destination === item ? "nav-item active" : "nav-item"}
-              key={item}
-              onClick={() => setDestination(item)}
-              type="button"
-            >
-              <span className="nav-glyph" aria-hidden="true">
-                {item.slice(0, 2).toUpperCase()}
-              </span>
-              {item}
-            </button>
-          ))}
-        </nav>
-
-        <div className="sidebar-note">
-          <span className="eyebrow">Environment</span>
-          <strong>SYNTH-01</strong>
-          <span>Generated data only</span>
-        </div>
-      </aside>
-
-      <section className="workspace" id="workspace">
-        <header className="topbar">
-          <div>
-            <span className="eyebrow">
-              BE-DEFENCE-ADMIN · RESTRICTED · SYNTHETIC
-            </span>
-            <h1>{destination}</h1>
+      <section className="hero page-width">
+        <div className="hero-copy">
+          <span className="kicker">Edge-first situational awareness</span>
+          <h1>
+            Turn the cameras you already own into accountable sensing nodes.
+          </h1>
+          <p>
+            WhiteRabbit is an open platform for public-sector teams to connect
+            phones, laptops and fixed cameras—without treating surveillance as
+            an unlimited data collection exercise.
+          </p>
+          <div className="button-row">
+            <Link className="button button-primary" href="/account/create">
+              Create account
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link className="button button-secondary" href="/sentry">
+              Test this camera
+            </Link>
           </div>
-          <div className="topbar-actions">
-            <span className="status healthy">
-              <i /> Foundation healthy
-            </span>
-            <button
-              className="avatar"
-              type="button"
-              aria-label="Open account menu"
-            >
-              SV
-            </button>
-          </div>
-        </header>
-
-        <div className="notice" role="status">
-          <strong>Implementation foundation</strong>
-          <span>
-            Cloud, camera, authentication and inference are not connected yet.
-          </span>
+          <ul className="trust-list" aria-label="Platform principles">
+            <li>Foreground camera</li>
+            <li>Raw stream stays local</li>
+            <li>Human-reviewed outcomes</li>
+          </ul>
         </div>
 
-        <section className="metrics" aria-label="Synthetic deployment summary">
-          <article>
-            <span>Node readiness</span>
-            <strong>7 / 8</strong>
-            <small className="good">Within synthetic target</small>
-          </article>
-          <article>
-            <span>Review queue</span>
-            <strong>03</strong>
-            <small>Oldest candidate · 4 min</small>
-          </article>
-          <article>
-            <span>Policy package</span>
-            <strong>v0.3</strong>
-            <small>Generated fixture · current</small>
-          </article>
-          <article>
-            <span>Evidence expiry</span>
-            <strong>24 h</strong>
-            <small>No persistent source media</small>
-          </article>
-        </section>
-
-        <section className="operations-grid">
-          <article className="panel events-panel">
-            <header className="panel-header">
-              <div>
-                <span className="eyebrow">Synthetic queue</span>
-                <h2>Recent candidates</h2>
-              </div>
-              <button
-                className="quiet-button"
-                type="button"
-                onClick={() =>
-                  setReceipt(
-                    "Queue refreshed locally. No network request was made.",
-                  )
-                }
-              >
-                Refresh
-              </button>
-            </header>
-            <div className="event-list">
-              {events.map((event) => (
-                <button
-                  className={
-                    selectedEvent.id === event.id
-                      ? "event-row selected"
-                      : "event-row"
-                  }
-                  key={event.id}
-                  onClick={() => {
-                    setSelectedEvent(event);
-                    setReceipt(null);
-                  }}
-                  type="button"
-                >
-                  <span className="event-icon" aria-hidden="true">
-                    {event.kind.slice(0, 1)}
-                  </span>
-                  <span>
-                    <strong>{event.kind}</strong>
-                    <small>
-                      {event.id} · {event.node}
-                    </small>
-                  </span>
-                  <span className="event-meta">
-                    <strong>{event.age}</strong>
-                    <small>{event.state}</small>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </article>
-
-          <article
-            className="panel map-panel"
-            aria-label="Fictional site overview"
-          >
-            <header className="panel-header">
-              <div>
-                <span className="eyebrow">Fictional site</span>
-                <h2>North perimeter</h2>
-              </div>
-              <span className="status attention">
-                <i /> 1 node degraded
-              </span>
-            </header>
-            <div className="site-map">
-              <span className="road horizontal" />
-              <span className="road vertical" />
-              <button
-                className="node node-a"
-                type="button"
-                aria-label="Synthetic node 03, healthy"
-              >
-                03
-              </button>
-              <button
-                className="node node-b attention-node"
-                type="button"
-                aria-label="Synthetic node 07, degraded"
-              >
-                07
-              </button>
-              <button
-                className="node node-c"
-                type="button"
-                aria-label="Synthetic node 02, healthy"
-              >
-                02
-              </button>
-              <span className="map-label">NO REAL COORDINATES</span>
-            </div>
-          </article>
-
-          <aside
-            className="panel inspector"
-            aria-label="Selected candidate details"
-          >
-            <header className="panel-header">
-              <div>
-                <span className="eyebrow">Selected candidate</span>
-                <h2>{selectedEvent.id}</h2>
-              </div>
-            </header>
-            <dl>
-              <div>
-                <dt>Capability</dt>
-                <dd>{selectedEvent.kind}</dd>
-              </div>
-              <div>
-                <dt>Source node</dt>
-                <dd>{selectedEvent.node}</dd>
-              </div>
-              <div>
-                <dt>Policy</dt>
-                <dd>SYN-POLICY-0.3</dd>
-              </div>
-              <div>
-                <dt>Authority</dt>
-                <dd>Generated fixture</dd>
-              </div>
-              <div>
-                <dt>Provenance</dt>
-                <dd>Not cryptographically signed</dd>
-              </div>
-            </dl>
-            <p className="candidate-warning">
-              A candidate is not an identification and does not authorize
-              adverse action.
-            </p>
-            <div
-              className="review-actions"
-              aria-label="Synthetic review outcome"
-            >
-              <button
-                className="primary-button"
-                type="button"
-                onClick={() => review("Confirmed")}
-              >
-                Confirm candidate
-              </button>
-              <button
-                className="quiet-button"
-                type="button"
-                onClick={() => review("Rejected")}
-              >
-                Reject
-              </button>
-              <button
-                className="quiet-button"
-                type="button"
-                onClick={() => review("Inconclusive")}
-              >
-                Inconclusive
-              </button>
-            </div>
-          </aside>
-        </section>
-
-        {receipt ? (
-          <div className="receipt" role="status">
-            {receipt}
+        <div className="readiness-card" aria-label="Current platform readiness">
+          <div className="readiness-topline">
+            <span className="mono-label">SYSTEM / READINESS</span>
+            <span className="signal" aria-label="Web application available">
+              <i /> Web ready
+            </span>
           </div>
-        ) : null}
+          <div className="readiness-orbit" aria-hidden="true">
+            <span className="orbit orbit-one" />
+            <span className="orbit orbit-two" />
+            <span className="orbit-core">WR</span>
+          </div>
+          <dl className="readiness-list">
+            <div>
+              <dt>Authentication</dt>
+              <dd className={backendReady ? "status-positive" : "status-muted"}>
+                {backendReady ? "Connected" : "Not connected"}
+              </dd>
+            </div>
+            <div>
+              <dt>Camera</dt>
+              <dd className="status-muted">Permission not requested</dd>
+            </div>
+            <div>
+              <dt>Detection</dt>
+              <dd className="status-muted">No approved runtime</dd>
+            </div>
+            <div>
+              <dt>Operational data</dt>
+              <dd className="status-muted">No data store</dd>
+            </div>
+          </dl>
+          <p className="readiness-footnote">
+            Status is derived from this deployment. No sample records are shown.
+          </p>
+        </div>
       </section>
+
+      <section className="principle-band" aria-label="Architecture summary">
+        <div className="page-width principle-grid">
+          <span className="mono-label">ONE CONTROL PLANE</span>
+          <p>One installable web app. Mobile in the field, dense on desktop.</p>
+          <p>Each authority remains a separate controller and data boundary.</p>
+        </div>
+      </section>
+
+      <section className="section page-width" id="platform">
+        <div className="section-heading">
+          <span className="kicker">Platform capabilities</span>
+          <h2>Useful now. Powerful only when authorized.</h2>
+          <p>
+            The interface exposes readiness honestly. A feature flag can never
+            substitute for policy, model provenance or controller approval.
+          </p>
+        </div>
+        <div className="capability-grid">
+          {capabilityCards.map((capability) => (
+            <article className="capability-card" key={capability.number}>
+              <span className="capability-number">{capability.number}</span>
+              <h3>{capability.title}</h3>
+              <p>{capability.body}</p>
+              <span className="capability-status">{capability.label}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="section page-width architecture-section"
+        id="architecture"
+      >
+        <div className="section-heading">
+          <span className="kicker">Designed for separation</span>
+          <h2>From a local frame to a governed decision.</h2>
+        </div>
+        <ol className="architecture-flow">
+          <li>
+            <span>01</span>
+            <strong>Observe locally</strong>
+            <p>A visible foreground camera session remains on the device.</p>
+          </li>
+          <li>
+            <span>02</span>
+            <strong>Minimize at the edge</strong>
+            <p>Approved inference may produce a minimal, signed candidate.</p>
+          </li>
+          <li>
+            <span>03</span>
+            <strong>Review with context</strong>
+            <p>An authorized person reviews evidence and effective policy.</p>
+          </li>
+          <li>
+            <span>04</span>
+            <strong>Act within scope</strong>
+            <p>Every outcome remains tenant-, purpose- and retention-bound.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section className="cta-section">
+        <div className="page-width cta-inner">
+          <div>
+            <span className="kicker kicker-light">Start with one device</span>
+            <h2>Build the smallest accountable mesh.</h2>
+          </div>
+          <Link className="button button-light" href="/account/create">
+            Create your workspace
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
+
+      <footer className="site-footer page-width">
+        <span>WhiteRabbit</span>
+        <p>Open-source, accountable sensing infrastructure.</p>
+        <a href="https://github.com/sicparvisventures/whiterabbit">GitHub</a>
+      </footer>
     </main>
   );
 }

@@ -49,7 +49,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" style={{ colorScheme: "light" }}>
+    <html
+      data-scroll-behavior="smooth"
+      lang="en"
+      style={{ colorScheme: "light" }}
+    >
       <body style={themeVariables}>
         {children}
         <ServiceWorkerRegistration />

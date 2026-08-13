@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:10:17Z
-- Content-Fingerprint: sha256:dbcaf59f985cd1f3c98d01a9fdfbdda6078cf396363d9250a6e91e8c33c7b882
+- Last-Updated: 2026-08-13T16:17:08Z
+- Content-Fingerprint: sha256:1a4ea1da9c06271790a2edac07a28b7279ab0c962f7a589a9e424c3af16daa5c
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 8c8cdc8
-- Last-Summary: Real-provider account services now validate and fail safely; next replace the mock dashboard with account and empty product routes.
+- Commit: c00703e
+- Last-Summary: Public and account routes now replace the mock dashboard and bind to real Auth services; next build the empty product shell and setup flow.
 
 ## Current Task
 
