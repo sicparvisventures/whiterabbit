@@ -29,6 +29,8 @@ initial pins:
 | TypeScript | `5.9.3` | microsoft/TypeScript | Apache-2.0 | static contracts |
 | Vitest | `4.1.10` | vitest-dev/vitest | MIT | TypeScript unit tests |
 | ESLint | `9.39.5` | eslint/eslint | MIT | supported lint baseline |
+| ESLint JavaScript config | `9.39.5` | eslint/js | MIT | baseline JavaScript rules |
+| TypeScript ESLint | `8.67.0` | typescript-eslint/typescript-eslint | MIT | TypeScript lint parser and rules |
 | Prettier | `3.9.6` | prettier/prettier | MIT | deterministic formatting |
 | Zod | `4.4.3` | colinhacks/zod | MIT | runtime schema validation |
 | Next.js | `16.2.11` | vercel/next.js | MIT | Active-LTS web shell |
