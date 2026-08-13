@@ -1,0 +1,23 @@
+# Upstream research checkout; kept locally and never vendored into this repository.
+/sparrowmap/
+
+# Local environments and generated state.
+/.venv/
+/node_modules/
+/coverage/
+/.next/
+/dist/
+/build/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Codex runtime output. Durable project memory lives in /memory instead.
+/.codex-log/
+/.codex/runtime/
+
+# Secrets and local service state.
+.env
+.env.*
+!.env.example
+/.supabase/
