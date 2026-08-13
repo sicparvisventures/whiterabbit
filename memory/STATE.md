@@ -12,10 +12,11 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 
 - Public, English-language, AGPL-3.0-compatible project named WhiteRabbit.
 - Belgian public-sector ALPR is the initial product direction.
-- Government-vehicle detections may become public only after corroboration and human review.
+- Belgian Defence is the first intended deployment; municipalities and police must be supported as separate controller profiles.
+- Government-vehicle detections may become public only when the controller profile permits it, after corroboration and human review. Military, police, investigative, and other sensitive movements are restricted by default.
 - SparrowMap code may be reused lawfully with attribution.
 - Person and object data are potential OSINT inputs, but identifying or persistent person tracking is not approved for implementation.
-- Supabase is the intended backend and Vercel the intended web host; neither has been provisioned.
+- Supabase and Vercel are candidates for approved non-sensitive profiles. Restricted, operational, intelligence, or classified profiles require an accredited or self-hosted topology; nothing has been provisioned.
 - Frequent atomic pushes are approved after validation.
 
 ## Implemented
@@ -29,6 +30,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Public GitHub repository and protected source history.
 - GitHub Actions CI for tests and strict memory validation.
 - Tagged foundation release `v0.1.0-foundation`.
+- Draft Belgian controller-profile specification and proposed ADR-0004 covering Defence administration, armed-forces operations, intelligence, police, and municipalities.
 
 ## Verification Evidence
 
@@ -55,4 +57,4 @@ https://github.com/sicparvisventures/whiterabbit/releases/tag/v0.1.0-foundation
 
 ## Next Action
 
-Write and validate the Belgian deployment and data-governance specification before provisioning Supabase, Vercel, or implementing real surveillance data flows.
+Obtain owner feedback on Spec 0001, select the exact `BE-DEFENCE-ADMIN` pilot purpose, and then submit the profile, DPIA, hosting, retention, and publication boundaries to the accountable Defence, DPO, legal, security, and operational reviewers before implementing real surveillance data flows.

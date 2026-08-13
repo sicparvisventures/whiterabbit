@@ -21,7 +21,7 @@ This register is engineering context, not legal advice. Production deployment re
 
 - Severity: High
 - Risk: Even government-vehicle history may expose sensitive operations, protected people, investigations, or predictable routines.
-- Mitigation: purpose-specific publication policy, delayed/coarsened locations where required, sensitive-category suppression, incident review, emergency takedown, legal exemptions, public audit of policy changes.
+- Mitigation: public output off by default; profile-specific publication policy; military, police, investigative, and protected categories suppressed unless expressly authorized; delay/coarsen where required; incident review; emergency takedown; public audit of policy changes.
 
 ## R-004: Civilian or Person Tracking Creep
 
@@ -39,7 +39,7 @@ This register is engineering context, not legal advice. Production deployment re
 
 - Severity: High
 - Risk: Supabase, Vercel, an operator account, or a service key exposes events or evidence.
-- Mitigation: least-privilege RLS, separate public projection, no service-role key in clients, encrypted storage, short retention, audit trails, secret scanning, incident and key-rotation procedures.
+- Mitigation: Supabase/Vercel only for formally approved classifications and profiles; provider boundary for accredited or self-hosted infrastructure; least-privilege RLS, separate public projection, no service-role key in clients, encrypted storage, short retention, audit trails, secret scanning, incident and key-rotation procedures.
 
 ## R-007: Edge Device Reliability and Capture Abuse
 
@@ -58,3 +58,17 @@ This register is engineering context, not legal advice. Production deployment re
 - Severity: High
 - Risk: raw chats, credentials, footage references, or private operational details are committed automatically.
 - Mitigation: never store raw transcripts; managed-memory secret scan; explicit staging; no blind hook-based git push; strict validation before atomic publication.
+
+## R-010: Controller and Regime Conflation
+
+- Severity: Critical
+- Risk: Defence, armed-forces operations, intelligence, police, and municipal records are pooled or processed under an inapplicable legal basis, oversight path, or rights procedure.
+- Mitigation: immutable fail-closed controller profiles; one controller per deployment; no relabeling of history; explicit two-sided bridges; separate oversight and data-subject procedures; cross-profile isolation tests.
+- Release gate: no real-data deployment until the accountable controller and applicable profile are formally approved.
+
+## R-011: Classified or Operational Data Reaches Public Cloud or Source
+
+- Severity: Critical
+- Risk: military-operational, intelligence, police-investigation, or classified details enter Vercel, managed Supabase, logs, telemetry, support systems, Git history, or a public projection.
+- Mitigation: synthetic/non-classified first pilot; data-classification field and fail-closed policy; profile-specific hosting accreditation; public-cloud deny rule for restricted profiles; no operational configuration or data in the public repository.
+- Release gate: approved data-flow diagram, classification decision, hosting authority, logging inventory, incident plan, and negative exfiltration tests.

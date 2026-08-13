@@ -16,6 +16,11 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [ADR-0001: Reuse SparrowMap under AGPL-3.0](decisions/ADR-0001-agpl-upstream.md)
 - [ADR-0002: Repository-native bounded memory](decisions/ADR-0002-repository-memory.md)
 - [ADR-0003: Corroborated government-vehicle public tier](decisions/ADR-0003-public-data-boundary.md)
+- [ADR-0004: Controller-scoped Belgian policy profiles](decisions/ADR-0004-controller-policy-profiles.md)
+
+## Active Specifications
+
+- [Spec 0001: Belgian controller profiles](../docs/specs/0001-belgian-controller-profiles.md)
 
 ## Session Outcomes
 

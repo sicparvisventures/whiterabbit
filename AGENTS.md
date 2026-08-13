@@ -24,13 +24,15 @@ These instructions apply to the entire repository.
 ## Product Guardrails
 
 - WhiteRabbit is an open-source ALPR and visual-event platform for legally authorized Belgian public-sector deployments, with internationalization later.
-- The public map may show location history only for government vehicles confirmed by corroborated evidence and human review.
+- A public map may show a government-vehicle event only when the active controller profile explicitly permits publication and corroborated evidence plus human review confirm it. Military, police, investigative, and protected movements are restricted by default.
 - OCR, a single classifier, or one unverified camera must never independently publish a plate or identity.
 - Civilian plate text must not be persisted centrally. Any necessary local comparison must use short-lived, rotating, deployment-scoped pseudonyms and approved retention.
 - Raw video remains on the node. Upload only minimal signed events and explicitly permitted, redacted evidence.
 - Person and object detection defaults to non-identifying categories and counts. Facial recognition, persistent person re-identification, covert surveillance, or public person search require a new approved spec, legal basis, DPIA, threat model, and explicit owner authorization.
 - Treat exact camera coordinates, node tokens, signing keys, and unredacted evidence as sensitive.
 - “For the Belgian state” means deployment by or for an authorized controller; it does not confer authority on this repository or its contributors.
+- Defence, armed-forces operations, intelligence, police, and municipalities use separate fail-closed controller profiles. Never pool or relabel their histories; sharing requires an explicit, scoped, audited bridge.
+- Supabase and Vercel are candidates only for approved classifications and profiles. Never route classified, operational, intelligence, or police-investigation data through the public SaaS topology.
 
 ## Engineering Workflow
 

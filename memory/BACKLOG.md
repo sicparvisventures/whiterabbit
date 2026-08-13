@@ -17,13 +17,14 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 ## Phase 1: Legal and Threat Boundaries
 
 - [ ] Write the Belgian deployment and data-governance specification.
-  - Acceptance: controller/processor roles, legal basis, purposes, camera-law obligations, retention, data-subject rights, public-record criteria, and DPIA gate are explicit.
+  - Progress: Spec 0001 is drafted with five controller profiles; owner and institutional review remain open.
+  - Acceptance: the first Defence pilot purpose and accountable service are selected; controller/processor roles, legal basis, camera procedure, classification, hosting, retention, data-subject rights, public-record criteria, and DPIA gate are approved. Municipality and police remain separate reference profiles.
   - Verify: review by the project owner and qualified Belgian public-sector privacy/legal stakeholders.
 - [ ] Write a repository-grounded threat model.
   - Acceptance: assets, trust boundaries, attacker capabilities, abuse paths, and mitigations cover nodes, Supabase, Vercel, reviewers, public map, and federation.
   - Verify: security review with no unresolved critical risk.
 - [ ] Define the versioned signed-event contract.
-  - Acceptance: candidate, private, review, confirmed-public, retracted, and expired states are machine-readable and privacy-safe.
+  - Acceptance: deployment, controller profile, purpose, policy version, classification, candidate, restricted, review, authorized-public, retracted, and expired states are machine-readable and privacy-safe.
   - Verify: schema tests and abuse-case fixtures.
 
 ## Phase 2: Single-Node Vertical Slice
@@ -35,7 +36,7 @@ Tasks are ordered by dependency. A task is not complete until its verification s
   - Acceptance: only minimal candidate metadata and permitted redacted evidence cross the boundary.
   - Verify: network inspection proves no raw stream or full frame is transmitted.
 - [ ] Review and publish one confirmed government-vehicle event.
-  - Acceptance: corroborated evidence, human confirmation, audit record, retraction path, public map marker.
+  - Acceptance: corroborated evidence, human confirmation, profile authorization, audit record, retraction path, and a public map marker only in a synthetic profile that permits publication. Defence-public output is off by default.
   - Verify: end-to-end synthetic fixture.
 
 ## Phase 3: Operational Hardening
@@ -49,6 +50,7 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 
 - [ ] Add invite-only circles with least-privilege roles.
 - [ ] Add prospective, scoped, expiring bridges without historical auto-merge.
+- [ ] Prove isolation across Defence, police, municipal, and public-projection fixtures.
 - [ ] Add federation only after contract, revocation, provenance, and abuse controls are proven.
 
 ## Research Backlog

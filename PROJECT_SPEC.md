@@ -1,6 +1,6 @@
 # Spec: WhiteRabbit Belgian Government-Vehicle ALPR
 
-Status: direction approved on 2026-08-13; foundation implementation in progress.
+Status: foundation published; controller-profile direction is under review in Spec 0001.
 
 ## Assumptions
 
@@ -8,22 +8,24 @@ Status: direction approved on 2026-08-13; foundation implementation in progress.
 2. The primary users are authorized Belgian public-sector controllers and their approved operators or processors. Deployment authority and legal basis must be established outside the software.
 3. Cameras perform detection locally. Raw video does not leave the device; the cloud receives only minimal events and explicitly permitted, redacted evidence.
 4. The project will be public and AGPL-3.0-compatible, with a new name, visual identity, and explicit SparrowMap attribution where code or assets are reused.
-5. Supabase provides authentication, PostgreSQL, row-level security, storage, and realtime events. Vercel hosts the web control plane. Long-running inference stays on camera devices.
+5. Supabase and Vercel are candidates for approved non-sensitive deployments. Provider boundaries must support accredited or self-hosted infrastructure for restricted profiles. Long-running inference stays on camera devices.
 6. GitHub commits use the repository-local author `sicparvisventures <238694570+sicparvisventures@users.noreply.github.com>`.
 
 ## Objective
 
-Build a privacy-first ALPR and visual-event mesh that lets an authorized operator turn an old phone, laptop, webcam, or compatible IP camera into a local detector. Confirmed government-vehicle events can be published as an auditable, easy-to-read location history.
+Build a privacy-first ALPR and visual-event mesh that lets an authorized operator turn an old phone, laptop, webcam, or compatible IP camera into a local detector. Reviewed events remain restricted unless the active controller profile separately authorizes an auditable public projection.
+
+Belgian Defence is the first intended deployment. The same core must support municipalities and police without treating them as one controller or pooling their records. See `docs/specs/0001-belgian-controller-profiles.md`.
 
 The first product is useful for one authorized operator with one camera. Collaboration and federation expand that utility but are never required.
 
 ### Core product model
 
-- A **Deployment** is one legally accountable controller and policy boundary.
+- A **Deployment** is one legally accountable controller, immutable controller profile, and policy boundary.
 - A **Space** is an approved operational area inside a deployment.
 - A **Node** is a phone, laptop, webcam, or camera gateway that performs local inference.
 - An **Event** is a minimal detection such as person, vehicle, animal, motion, tamper, or offline status.
-- A **Review** confirms or rejects a candidate government-vehicle record.
+- A **Review** confirms or rejects a candidate record; review alone does not authorize publication.
 - A **Circle** is an invite-only sharing relationship between spaces, operators, or deployments.
 - A **Bridge** shares narrowly selected event categories for a limited scope and duration. It does not merge historical data or ownership.
 
@@ -35,12 +37,14 @@ The first product is useful for one authorized operator with one camera. Collabo
 - No covert surveillance features.
 - No central raw-video archive.
 - No silent group merge or inherited access to historical events.
+- No default publication of military, police, investigative, or protected movements.
 - No persistent person identification without a separately approved legal and technical specification.
 
 ## Proposed Stack
 
-- Web: Next.js + TypeScript, deployed to Vercel.
-- Backend: Supabase Auth, PostgreSQL, Row Level Security, Storage, Realtime, and Edge Functions where appropriate.
+- Web: Next.js + TypeScript, deployable to Vercel where the profile permits it.
+- Backend: PostgreSQL-compatible provider boundary. Supabase Auth, PostgreSQL, RLS, Storage, Realtime, and narrowly scoped functions are candidates for development and approved non-sensitive deployments.
+- Restricted hosting: accredited or self-hosted adapters for operational, intelligence, classified, or otherwise excluded profiles.
 - Browser node: local WebAssembly/ONNX inference with `getUserMedia`, wake lock, and a foreground-only operating model.
 - Desktop node: small Python agent for USB, RTSP, ONVIF, or MJPEG sources and hardware-accelerated inference when available.
 - Shared contracts: versioned event schema and signed node envelopes.
@@ -111,7 +115,7 @@ export type DetectionEvent = Readonly<{
 ## Testing Strategy
 
 - Unit tests for contracts, authorization rules, retention, redaction, and memory tooling.
-- Supabase integration tests for every RLS policy and cross-circle isolation boundary.
+- Storage integration tests for every RLS/equivalent policy, cross-circle boundary, controller profile, and public projection.
 - Browser tests for enrollment, camera permission failure, offline recovery, event review, invite revocation, and bridge expiry.
 - Synthetic camera fixtures; no real people's footage in the public test suite.
 - Threat-model review before any cross-user sharing feature ships.
@@ -149,7 +153,8 @@ export type DetectionEvent = Readonly<{
 
 ## Approved Direction and Remaining Gates
 
-1. Approved: WhiteRabbit name, public AGPL project, lawful SparrowMap reuse, frequent validated pushes, Belgian government-vehicle ALPR core.
-2. Gate: real deployment requires an identified authorized controller, legal basis, camera-law procedure, DPIA, retention policy, and security review.
-3. Gate: publication requires corroborated evidence and human review; one OCR or classifier result never suffices.
-4. Gate: identifying or persistent person tracking requires a new approved specification, legal basis, DPIA, threat model, and explicit authorization.
+1. Approved: WhiteRabbit name, public AGPL project, lawful SparrowMap reuse, frequent validated pushes, Belgian public-sector ALPR core, Defence first, with municipality and police support through separate profiles.
+2. Gate: Spec 0001 and proposed ADR-0004 require owner and institutional review before implementation.
+3. Gate: real deployment requires an identified authorized controller, exact purpose, legal basis, camera procedure, classification, DPIA decision, retention policy, hosting approval, and security review.
+4. Gate: publication requires profile authorization, corroborated evidence, and human review; one OCR or classifier result never suffices.
+5. Gate: identifying or persistent person tracking requires a new approved specification, legal basis, DPIA, threat model, and explicit authorization.

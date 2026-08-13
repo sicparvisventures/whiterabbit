@@ -2,7 +2,9 @@
 
 WhiteRabbit is an open-source, edge-first ALPR and visual-event platform for legally authorized Belgian public-sector deployments.
 
-The product direction is simple: turn an old phone, laptop, webcam, or compatible IP camera into a local detector. Raw video stays on the node. Minimal signed candidate events go through policy checks and human review. Confirmed government-vehicle events can then appear as an auditable location history on a public map.
+The product direction is simple: turn an old phone, laptop, webcam, or compatible IP camera into a local detector. Raw video stays on the node. Minimal signed candidate events go through policy checks and human review. A separate public projection exists only where the accountable controller explicitly permits it.
+
+Belgian Defence is the first intended deployment. Municipalities and police are also target controllers, each with a strictly separate legal, data, oversight, hosting, and publication profile.
 
 > **Project status:** foundation only. The durable-memory tooling is implemented and tested; the camera, ALPR, Supabase, Vercel, review, and map applications are not yet operational.
 
@@ -10,11 +12,11 @@ The product direction is simple: turn an old phone, laptop, webcam, or compatibl
 
 The system is designed around a hard distinction:
 
-- **Public projection:** confirmed government-vehicle events with provenance, corroboration, human review, audit, and retraction.
+- **Public projection:** profile-authorized government-vehicle events with provenance, corroboration, human review, audit, and retraction. Military, police, investigative, and protected movements are restricted by default.
 - **Restricted processing:** minimized candidate evidence required for an authorized purpose and approved retention period.
 - **Never public:** civilian plate histories, raw video, exact private camera locations, node credentials, or persistent person identities.
 
-One OCR result or classifier score can never publish a plate. Open source code also does not grant anyone authority to deploy surveillance; every real deployment needs an accountable controller, legal basis, camera-law procedure, DPIA, and security review.
+One OCR result or classifier score can never publish a plate. Open source code also does not grant anyone authority to deploy surveillance; every real deployment needs an accountable controller, exact purpose, applicable camera procedure, DPIA decision, classification, hosting approval, retention, and security review.
 
 ## Intended Architecture
 
@@ -23,17 +25,18 @@ phone / laptop / camera gateway
         │ local detection + OCR
         │ signed minimal event, never a video stream
         ▼
-Supabase restricted ingest and review state
+approved restricted ingest and review provider
         │ corroboration + human confirmation
         ▼
 separate public projection
         │
         ▼
-Vercel-hosted map and transparency UI
+separately hosted map and transparency UI
 ```
 
-- Web control plane: Next.js and TypeScript on Vercel.
-- Backend: Supabase Auth, PostgreSQL, RLS, Storage, Realtime, and narrowly scoped functions.
+- Web control plane: Next.js and TypeScript; Vercel where the profile permits it.
+- Backend: PostgreSQL-compatible provider boundary; Supabase is a candidate for approved non-sensitive deployments.
+- Restricted deployments: accredited or self-hosted adapters where public cloud is not approved.
 - Browser node: `getUserMedia` plus local ONNX/WASM inference.
 - Desktop node: Python support for USB, RTSP, ONVIF, and MJPEG cameras.
 - Contracts: versioned signed events with explicit candidate, review, public, retracted, and expired states.
