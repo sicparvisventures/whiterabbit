@@ -15,6 +15,8 @@ __pycache__/
 # Codex runtime output. Durable project memory lives in /memory instead.
 /.codex-log/
 /.codex/runtime/
+/.playwright-cli/
+/output/
 
 # Secrets and local service state.
 .env

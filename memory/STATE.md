@@ -72,6 +72,9 @@ Node syntax checks passed; existing 9 Python tests passed; Playwright click-thro
 
 Interactive desktop prototype
 Playwright walkthroughs passed at 1024 px, 1280 px, and 1440 px with no page-level horizontal overflow or console errors. Candidate outcomes remain in the desktop context; command-palette, watchlist, node, policy, and audit actions are interactive and synthetic.
+
+Fingerprint regression
+The first three prototype CI runs exposed that generated Playwright artifacts were included in local heartbeat fingerprints but absent in clean CI. The artifacts are now excluded from both Git and fingerprinting, with a regression test; the suite contains 10 tests.
 ```
 
 ## Not Yet Implemented

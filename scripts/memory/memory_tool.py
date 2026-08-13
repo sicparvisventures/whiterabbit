@@ -30,6 +30,8 @@ FINGERPRINT_EXCLUDES = (
     "HEARTBEAT.md",
     "memory/",
     ".codex/runtime/",
+    ".playwright-cli/",
+    "output/",
 )
 
 SECRET_PATTERNS = (

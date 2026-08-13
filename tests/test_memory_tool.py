@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -104,6 +105,27 @@ class MemoryValidationTests(unittest.TestCase):
             issues = memory_tool.validate_repository(root, strict=True)
 
         self.assertIn("HEARTBEAT.md is stale for the current project content", issues)
+
+    def test_browser_test_artifacts_do_not_change_fingerprint(self) -> None:
+        memory_tool = load_memory_tool()
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            subprocess.run(["git", "init", "-b", "main"], cwd=root, check=True, capture_output=True)
+            write_minimal_memory(root)
+            (root / "src.txt").write_text("stable project content\n", encoding="utf-8")
+            (root / ".playwright-cli").mkdir()
+            (root / ".playwright-cli" / "page.yml").write_text("generated\n", encoding="utf-8")
+            (root / "output").mkdir()
+            (root / "output" / "screenshot.png").write_bytes(b"generated")
+
+            memory_tool.checkpoint(root, "Browser verification complete")
+            shutil.rmtree(root / ".playwright-cli")
+            shutil.rmtree(root / "output")
+
+            issues = memory_tool.validate_repository(root, strict=True)
+
+        self.assertEqual(issues, [])
 
     def test_bootstrap_is_bounded_and_excludes_session_logs(self) -> None:
         memory_tool = load_memory_tool()

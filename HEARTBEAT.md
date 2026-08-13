@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T13:31:36Z
-- Content-Fingerprint: sha256:99617dc32be070486a0683280adebccec86f129683e9ff13444c1a9e17c94ca2
+- Last-Updated: 2026-08-13T13:33:18Z
+- Content-Fingerprint: sha256:dac6ccc0551ebcceaecfc2bfbcb43c3491d3a72cdba54414a4797b86299e3639
 - Status: interactive-prototype-ready-for-owner-review
 - Branch: main
-- Commit: 61d1d26
-- Last-Summary: Interactive mobile and desktop prototype documented, fully browser-verified, and ready for owner review before implementation.
+- Commit: e1d2273
+- Last-Summary: Prototype ready for owner review; browser artifacts are excluded from durable fingerprints and covered by a regression test.
 
 ## Current Task
 
