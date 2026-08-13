@@ -11,8 +11,12 @@
 The executable `@whiterabbit/contracts/signed-event` boundary now validates the
 baseline node, ALPR and object event header plus the fixed-width ES256 signature.
 It intentionally excludes `biometric.candidate.v1` until the separate biometric
-implementation gates are satisfied. Payload envelopes, canonicalization, signing,
-verification and ingest remain unimplemented.
+implementation gates are satisfied. Executable ALPR and object envelopes now bind
+their payload to the signed event type, accept only deployment-pseudonymous plate
+tokens and non-identifying object categories, and reject undeclared identity fields.
+The optional evidence descriptor remains disabled until its storage, redaction,
+expiry and retrieval-grant controls exist. Canonicalization, signing, verification
+and ingest remain unimplemented.
 
 ## Contract Goals
 

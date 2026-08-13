@@ -116,6 +116,11 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   sequence, UTC millisecond time, optional base64url SHA-256 chain digest and
   fixed-width ES256 JOSE signature. Biometric events, payloads, signing and ingest are
   not enabled by this contract slice.
+- Strict ALPR and object envelopes bind payloads to their exact signed event type.
+  ALPR permits only a bounded base64url pseudonymous plate token; object categories
+  are closed and `PERSON_PRESENCE` remains non-identifying. Raw plates, embeddings,
+  subject references, cross-camera identifiers and premature evidence descriptors are
+  rejected as unknown fields.
 - `/app/settings` is a dedicated responsive readiness surface for account/Auth,
   organization/deployment, capability/policy, data/retention and local device status.
   It derives public Auth configuration and labels every unpersisted control explicitly;
@@ -358,8 +363,8 @@ camera-only permissions policy, frame denial and content-type protection were pr
 - Supabase project, schema, RLS or persisted organization/deployment data. Auth code is
   complete but cannot perform live mutations before project configuration exists.
 - Persistent camera enrollment, browser inference, desktop node packaging, ALPR
-  pipeline, signed payload envelopes, signature verification/ingest, review queue or
-  public map.
+  inference pipeline, signature canonicalization/verification/ingest, evidence path,
+  review queue or public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, security
   risk acceptance/mitigation ownership, or deployment authorization.
