@@ -50,6 +50,10 @@
     reviewStatus: null,
     selectedCandidate: "BIO-0281",
     selectedEvent: "EV-8041",
+    selectedNode: "WR-IP-001",
+    selectedWatchlist: "SYN-WL-04",
+    commandOpen: false,
+    desktopReviewStatus: null,
     theme: "system",
     density: "comfortable",
     dialog: null,
@@ -77,6 +81,7 @@
     const nextHash = `#${mode}/${screen || (mode === "mobile" ? "sentry" : "overview")}`;
     if (window.location.hash !== nextHash) window.history.pushState(null, "", nextHash);
     render();
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
 
   function parseRoute() {
@@ -177,6 +182,10 @@
       reviewStatus: null,
       selectedCandidate: "BIO-0281",
       selectedEvent: "EV-8041",
+      selectedNode: "WR-IP-001",
+      selectedWatchlist: "SYN-WL-04",
+      commandOpen: false,
+      desktopReviewStatus: null,
       dialog: null,
       toast: null,
     });
@@ -210,6 +219,9 @@
     const action = target.dataset.action;
     if (!action) return;
 
+    if (action === "close-dialog" && event.target.closest("[data-dialog-panel]")) return;
+    if (action === "close-command" && event.target.closest("[data-command-panel]")) return;
+
     if (action === "reset-prototype") reset();
     if (action === "toggle-theme") {
       state.theme = state.theme === "system" ? "dark" : state.theme === "dark" ? "light" : "system";
@@ -220,7 +232,7 @@
       render();
       window.setTimeout(() => document.querySelector(".dialog-close")?.focus(), 0);
     }
-    if (action === "close-dialog" && !target.hasAttribute("data-dialog-panel")) {
+    if (action === "close-dialog") {
       state.dialog = null;
       render();
     }
@@ -234,9 +246,16 @@
       } else if (dialog === "evidence-grant") {
         showToast("Evidence unlocked for 5 minutes. Access logged.");
       } else {
-        state.reviewStatus = dialog === "review-reject" ? "REJECTED" : "CONFIRMED";
-        setRoute("mobile", "receipt");
-        showToast(`Candidate ${state.reviewStatus.toLowerCase()} and audited.`);
+        const outcome = dialog === "review-reject" ? "REJECTED" : "CONFIRMED";
+        if (state.mode === "desktop") {
+          state.desktopReviewStatus = outcome;
+          render();
+          showToast(`Candidate ${outcome.toLowerCase()} and added to the audit chain.`);
+        } else {
+          state.reviewStatus = outcome;
+          setRoute("mobile", "receipt");
+          showToast(`Candidate ${outcome.toLowerCase()} and audited.`);
+        }
       }
     }
     window.WhiteRabbitMobile?.handle?.(action, target, state, { render, setRoute, showToast, announce });
@@ -252,8 +271,9 @@
     render();
   });
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && state.dialog) {
-      state.dialog = null;
+    if (event.key === "Escape") {
+      if (state.dialog) state.dialog = null;
+      if (state.commandOpen) state.commandOpen = false;
       render();
     }
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k" && state.mode === "desktop") {

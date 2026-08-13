@@ -42,7 +42,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - The repository-grounded threat model identifies cross-tenant access, watchlist abuse, supply-chain substitution, node compromise, false biometric escalation, retention leakage, public projection, account compromise, denial of service, unsafe parsers, federation, and public-repo leakage. Runtime controls are explicitly unimplemented.
 - Compliance 0001 defines profile routing and gates for product scope, provenance, legal authority, DPIA/FRIA/AI classification, security/hosting, model/device validation, human procedure, real pilot, scale, publication, and federation.
 - Plan 0001 sequences the synthetic product into phases P1–P11 with dependency batches, test-first tasks, five-file implementation limits, acceptance evidence, atomic pushes, and explicit stop conditions.
-- A dependency-free interactive mobile prototype now covers secure sign-in, MFA, synthetic node enrollment, readiness, local sentry operation, multimodal candidate triage, guarded biometric review language, and an append-only audit receipt at 320 px and 390 px review widths. It is demonstrative only: no camera, inference, network, identity, or backend capability is present.
+- A dependency-free interactive prototype now covers the complete mobile field flow plus a desktop command center with overview, synchronized operations workspace, candidate review, governed watchlists, node health, effective policy, audit stream, density controls, and a keyboard command palette. It is demonstrative only: no camera, inference, network, identity, or backend capability is present.
 
 ## Verification Evidence
 
@@ -68,6 +68,9 @@ Conclusion: success
 
 Interactive mobile prototype
 Node syntax checks passed; existing 9 Python tests passed; Playwright click-through passed at 390 px and the sentry view passed at 320 px.
+
+Interactive desktop prototype
+Playwright walkthroughs passed at 1024 px, 1280 px, and 1440 px with no page-level horizontal overflow or console errors. Candidate outcomes remain in the desktop context; command-palette, watchlist, node, policy, and audit actions are interactive and synthetic.
 ```
 
 ## Not Yet Implemented
@@ -80,7 +83,7 @@ Node syntax checks passed; existing 9 Python tests passed; Playwright click-thro
 
 ## Next Action
 
-Complete and validate the synthetic desktop command-center prototype, document the
-interactive review path, and request owner approval of the combined mobile/desktop
-experience. Product implementation, dependency batch D1, cloud provisioning, model
-artifacts, camera access, and real data remain paused until that approval.
+Document the interactive review path and request owner approval of the combined
+mobile/desktop experience. Product implementation, dependency batch D1, cloud
+provisioning, model artifacts, camera access, and real data remain paused until that
+approval.
