@@ -5,12 +5,14 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "eslint app components next.config.ts",
+    "lint": "eslint app components lib next.config.ts",
     "start": "next start",
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@supabase/ssr": "0.12.4",
+    "@supabase/supabase-js": "2.112.3",
     "@whiterabbit/design-tokens": "workspace:*",
     "next": "16.3.0",
     "react": "19.2.8",

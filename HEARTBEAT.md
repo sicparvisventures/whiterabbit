@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:05:31Z
-- Content-Fingerprint: sha256:bf73125a7012cdcf7a86a765246726380ba32b38c6d9b51e7a1b0aecff022294
+- Last-Updated: 2026-08-13T16:07:05Z
+- Content-Fingerprint: sha256:56adf66fc5ec7bc52b04bafee567684d810efcdb301c7dbe21f1eef48396eaee
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 1c69c53
-- Last-Summary: Fail-closed capability and public-projection policies are tested; next implement optional real Supabase Auth.
+- Commit: a5318c1
+- Last-Summary: Pinned Supabase dependencies and validated optional browser configuration now fail closed; next bind real Auth actions.
 
 ## Current Task
 

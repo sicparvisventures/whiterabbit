@@ -67,6 +67,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   authentication, deployment, node, policy and model gates with stable reasons.
   Public output additionally requires public classification, non-sensitive movement,
   explicit policy, corroboration and human review.
+- The approved Supabase browser/SSR dependencies are pinned. Public configuration is
+  validated as absent, invalid or configured; partial, non-HTTPS and malformed values
+  fail closed before any client or request can be created.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -146,6 +149,11 @@ Policy contract slice
 Eleven Vitest cases, TypeScript, ESLint and repository formatting pass for
 `@whiterabbit/policy`; its red run failed on the intentionally absent capability
 module before the fail-closed implementation was added.
+
+Supabase configuration slice
+Four Vitest cases, TypeScript, ESLint, formatting and the production dependency audit
+pass. The red run failed on the absent configuration module; the implementation now
+accepts only a complete HTTPS URL and publishable browser key.
 ```
 
 ## Not Yet Implemented
