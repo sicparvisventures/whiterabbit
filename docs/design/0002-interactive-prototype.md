@@ -1,16 +1,18 @@
 # Product Experience 0002: Interactive Prototype
 
-- Status: ready for owner review
+- Status: owner-approved with required light-only revision
 - Date: 2026-08-13
 - Surface: dependency-free HTML, CSS, and JavaScript
 - Data: generated and synthetic only
 - Supersedes: none
 - Implements the review intent of: Product Experience 0001
 
-## Decision requested
+## Owner decision
 
-Approve, revise, or reject the combined mobile and desktop product direction before
-WhiteRabbit starts product implementation or adds dependency batch D1.
+On 2026-08-13 the owner approved the combined mobile and desktop information
+architecture, authorized product implementation and dependency batch D1, and required
+one light appearance only. The prototype's theme selector and dark desktop direction
+are rejected as product requirements and must not be carried into implementation.
 
 This prototype tests information architecture, language, hierarchy, density, and
 guarded decision flows. It is not a thin implementation of the eventual Expo or
@@ -51,7 +53,7 @@ turning the whole product into a generic dark dashboard.
 
 ## Desktop command center
 
-The desktop experience uses a restrained dark operational canvas, persistent left
+The desktop experience uses a restrained light operational canvas, persistent left
 navigation, fixed deployment context, a slim global bar, and optional inspectors.
 
 | Destination | Primary question |
@@ -103,13 +105,15 @@ detector, embedding model, watchlist database, signature, credential, API, local
 storage, telemetry, map provider, Supabase project, or Vercel deployment. No visual
 element should be interpreted as proof that those controls are implemented.
 
-## Owner review checklist
+## Owner review outcome
 
-- [ ] Mobile feels like a focused native field instrument.
-- [ ] Desktop feels premium and operational without copying a third-party product.
-- [ ] ALPR and object detection remain first-class beside the gated biometric module.
-- [ ] Candidate, provenance, authority, classification, retention, and audit language
+- [x] Mobile feels like a focused native field instrument.
+- [x] Desktop feels premium and operational without copying a third-party product.
+- [x] ALPR and object detection remain first-class beside the gated biometric module.
+- [x] Candidate, provenance, authority, classification, retention, and audit language
       are sufficiently clear.
-- [ ] The mobile flow includes the right decisions in the right order.
-- [ ] The desktop destinations and density match analyst and administrator needs.
-- [ ] The owner authorizes implementation and dependency batch D1 separately.
+- [x] The mobile flow includes the right decisions in the right order.
+- [x] The desktop destinations and density match analyst and administrator needs.
+- [x] The owner authorizes synthetic implementation and dependency batch D1.
+- [x] Product implementation uses one light appearance; the dark/system variants are
+      not approved.

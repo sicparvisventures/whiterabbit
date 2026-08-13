@@ -68,7 +68,7 @@ rights, procurement, and data-sharing approval. It has no biometric mode by defa
 
 ## Gate G0 — Product and Synthetic Scope
 
-Status for Spec 0003: **passed for planning; implementation authorization pending**.
+Status for Spec 0003: **passed for synthetic implementation and dependency batch D1**.
 
 Required evidence:
 
@@ -81,6 +81,11 @@ Required evidence:
 
 Exit decision: the product owner may authorize synthetic code and approved development
 dependencies. G0 never authorizes cloud provisioning, model weights, or real data.
+
+Owner decision dated 2026-08-13: implementation of the synthetic, light-only P1
+foundation and the pinned D1 set in ADR-0007 is authorized. Camera access, inference,
+Supabase/Vercel provisioning, operational identities, model artifacts and real data
+remain outside this decision.
 
 ## Gate G1 — Source, Dependency and Model Provenance
 

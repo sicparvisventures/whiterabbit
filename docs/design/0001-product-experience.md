@@ -1,6 +1,6 @@
 # Product Experience 0001: Native Field App and Operational Command Center
 
-- Status: design direction approved; implementation pending
+- Status: approved for light-only synthetic implementation
 - Date: 2026-08-13
 - Product language: English
 - Accessibility target: WCAG 2.2 AA on web and equivalent native platform support
@@ -42,20 +42,23 @@ not force identical layouts.
 
 ### Semantic color tokens
 
-| Token | Light intent | Dark intent |
-| --- | --- | --- |
-| `surface.canvas` | cool near-white | near-black navy |
-| `surface.panel` | opaque white | elevated slate |
-| `text.primary` | near-black | near-white |
-| `text.secondary` | accessible slate | accessible cool gray |
-| `action.primary` | Belgian-neutral operational blue | lighter operational blue |
-| `status.healthy` | verified green | lighter verified green |
-| `status.attention` | amber | lighter amber |
-| `status.critical` | deep red | lighter red |
-| `focus.ring` | high-contrast blue/black | high-contrast blue/white |
+| Token | Light intent |
+| --- | --- |
+| `surface.canvas` | cool near-white |
+| `surface.panel` | opaque white |
+| `text.primary` | near-black navy |
+| `text.secondary` | accessible slate |
+| `action.primary` | Belgian-neutral operational blue |
+| `status.healthy` | verified green |
+| `status.attention` | amber |
+| `status.critical` | deep red |
+| `focus.ring` | high-contrast blue/black |
 
-Exact values are set as design tokens and contrast-tested in both themes before code
-lands. Components do not contain ad-hoc hex values.
+WhiteRabbit ships one light product theme. There is no dark/system theme selector.
+Exact values are shared design tokens and contrast-tested before code lands;
+components do not contain ad-hoc hex values. Dark camera, image, or map content may
+remain inside a clearly bounded viewport while the surrounding product chrome stays
+light.
 
 ### Materials and depth
 
@@ -210,8 +213,8 @@ Primary destinations:
 - [ ] Sentry start and stop cannot be confused, hidden, or remotely triggered.
 - [ ] `Candidate` terminology appears consistently; no score is presented as identity.
 - [ ] Every privileged action shows deployment, purpose, consequence, and audit result.
-- [ ] Light, dark, reduced transparency, increased contrast, reduced motion, and
-      largest Dynamic Type modes are tested.
+- [ ] Light appearance, reduced transparency, increased contrast, reduced motion,
+      and largest Dynamic Type modes are tested.
 - [ ] Mobile targets are at least 44 points and safe-area correct on the oldest
       supported iPhone plus a current small and large device.
 - [ ] Desktop works at 1024, 1280, 1440, and wide-screen widths without horizontal

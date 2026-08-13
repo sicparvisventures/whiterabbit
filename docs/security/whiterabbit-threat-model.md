@@ -262,6 +262,31 @@ flowchart LR
 | TM-012 | Insider, developer or future federation partner | Circles/bridges are implemented with broad scope or historic merge semantics | Expand sharing across controllers, retain copies after revoke or introduce cross-tenant search | Regime conflation and irreversible dissemination | Tenant isolation, events, watchlists, audit | Explicit prospective scoped bridges/no merge are specified (`AGENTS.md`; ADR-0004); federation is excluded from pilot | No bridge protocol, recipient enforcement, deletion proof or downstream revocation exists | Keep out of initial runtime; new ADR/threat model/DPIA; schema allowlists; bilateral signed purpose/expiry; no biometric bridge; recipient-side enforcement and revocation receipts | Bridge creation/scope/volume/expiry alerts, downstream access attestations, failed revocation reconciliation | low in pilot | high | medium |
 | TM-013 | Contributor, automation or compromised workstation | Sensitive context enters managed memory, Git history, CI logs or a public issue | Commit credentials, operational details, private locations or personal data | Permanent public disclosure and incident response | Source history, secrets, operational metadata | Memory secret scanning, no-transcript rule, explicit staging and tests exist (`scripts/memory/memory_tool.py`; `tests/test_memory_tool.py`; `AGENTS.md`) | Pattern scan is incomplete; no repository-wide secret scanner or DLP; public Git history is durable | Repository-wide secret scanning/pre-receive/CI; sample-data policy; synthetic fixture generator; path ownership; contributor training; rapid credential rotation and history-remediation playbook | GitHub secret scanning, CI DLP patterns, review alerts for binary/media/config files and operational vocabulary | medium | high | high |
 
+## Implementation ownership
+
+The public repository can assign implementation responsibility, not institutional
+risk acceptance. Until named controller roles are appointed, the WhiteRabbit project
+owner is the accountable engineering owner for keeping the following threats blocked
+or fail-closed. The institutional owner listed below must accept residual risk before
+the corresponding compliance gate can pass.
+
+| Threats | Engineering owner | Required institutional counterpart |
+| --- | --- | --- |
+| TM-001, TM-008 | Control-plane security owner | Controller service owner and security/accreditation authority |
+| TM-002 | Authorization and governance owner | Controller service owner, DPO and independent maker/checker |
+| TM-003, TM-013 | Build and supply-chain owner | Security/accreditation and release authorities |
+| TM-004, TM-005 | Node identity and integrity owner | Operational owner and security/accreditation authority |
+| TM-006 | Model-risk and review-UX owner | Model-risk, fundamental-rights and operational authorities |
+| TM-007 | Data-lifecycle owner | Controller DPO and security/accreditation authority |
+| TM-009 | Human identity owner | Security/accreditation and controller service owners |
+| TM-010 | Reliability owner | Operational owner |
+| TM-011 | Native and parser-safety owner | Security/accreditation and model-risk authorities |
+| TM-012 | Federation architecture owner | Each participating controller, DPO and security authority |
+
+For P1 the WhiteRabbit project owner temporarily holds every engineering-owner role.
+That consolidation permits only the synthetic foundation: it does not satisfy
+maker-checker separation or authorize any real deployment.
+
 ## Criticality calibration
 
 - **Critical:** plausible compromise that crosses an authority/tenant boundary, enables

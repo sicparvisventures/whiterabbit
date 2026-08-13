@@ -19,6 +19,7 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [ADR-0004: Controller-scoped Belgian policy profiles](decisions/ADR-0004-controller-policy-profiles.md)
 - [ADR-0005: Isolated tenant-scoped biometric capability](decisions/ADR-0005-isolated-biometric-capability.md)
 - [ADR-0006: Native mobile edge and Supabase authentication](decisions/ADR-0006-native-mobile-and-supabase-auth.md)
+- [ADR-0007: Light-only product and foundation dependencies](decisions/ADR-0007-light-only-foundation-dependencies.md)
 
 ## Active Specifications
 
