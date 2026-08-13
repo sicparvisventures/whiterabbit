@@ -1,27 +1,26 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:49:20Z
+- Last-Updated: 2026-08-13T16:53:28Z
 - Content-Fingerprint: sha256:14ddf24312afd1ae41df7b4a53d461f0e4bd61fe20820a1ded4eaca8328e7726
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: b1328ae
-- Last-Summary: PWA/Auth/onboarding/camera foundation is live and CI-green; next create/link Supabase, apply RLS migrations, then enable persisted setup.
+- Commit: a087302
+- Last-Summary: PWA/Auth/onboarding/camera foundation is live and CI-green; next complete camera-node readiness and install guidance before Supabase handoff.
 
 ## Current Task
 
-Build the frontend-first synthetic product behind stable repository ports while
-finishing the remaining P1 supply-chain automation.
+Complete the remaining pre-Supabase PWA work in Plan 0003 without runtime mock data:
+camera-node readiness, install guidance, honest adapter boundaries and browser checks.
 
 ## Next Verified Action
 
-Implement Plan 0002 tasks A1–A2 test-first, move the current web shell onto generated
-fixture repositories, and verify automatic Vercel deployment from `main`.
+Implement Plan 0003 Phase 4 step 3 test-first: capture-zone acknowledgement, real
+camera enumeration/selection after permission and readiness diagnostics. Then verify
+the production PWA and document the Supabase handoff boundary.
 
 ## Blockers
 
-Cloud provisioning, camera access, models and real data remain blocked. The Expo
-toolchain's unpatched `image-size` advisory also blocks native/media input until an
-Expo-compatible patch or reviewed mitigation exists. Real surveillance and biometric
-data additionally require controller, legal basis, DPIA/FRIA, model, hosting,
-security, oversight and operational approvals.
+Supabase provisioning, migrations/RLS, models and real operational data remain gated.
+Real surveillance and biometric processing additionally require controller, legal
+basis, DPIA/FRIA, model, hosting, security, oversight and operational approvals.

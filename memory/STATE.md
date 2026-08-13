@@ -291,7 +291,9 @@ serves the current public/account PWA through https://whiterabbit-theta.vercel.a
 
 ## Next Action
 
-Verify the latest GitHub Actions and Vercel deployment, then hand the owner the exact
-Supabase project inputs. After the project exists, add migrations, RLS, generated
-types and cross-tenant tests before enabling setup persistence. Models and operational
-data remain separately gated.
+Complete Plan 0003 Phase 4 step 3 before the Supabase handoff: add capture-zone
+acknowledgement, camera enumeration/selection after permission and explicit readiness
+diagnostics without persisting or uploading media. Then add install-state guidance
+and repeat the browser/production verification. After the owner creates Supabase, add
+migrations, RLS, generated types and cross-tenant tests before enabling setup
+persistence. Models and operational data remain separately gated.
