@@ -63,6 +63,8 @@ importers:
 
   packages/design-tokens: {}
 
+  packages/policy: {}
+
 packages:
 
   '@babel/code-frame@7.29.7':

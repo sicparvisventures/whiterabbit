@@ -44,8 +44,10 @@ describe("createAccountInputSchema", () => {
 describe("signInInputSchema", () => {
   it("rejects an empty password", () => {
     expect(
-      signInInputSchema.safeParse({ email: "operator@example.be", password: "" })
-        .success,
+      signInInputSchema.safeParse({
+        email: "operator@example.be",
+        password: "",
+      }).success,
     ).toBe(false);
   });
 });

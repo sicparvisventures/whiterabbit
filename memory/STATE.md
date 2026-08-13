@@ -63,6 +63,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Executable Zod account contracts validate normalized signup, signin and recovery
   inputs plus stable mutation results, including an explicit
   `BACKEND_NOT_CONFIGURED` result that contains no invented user.
+- Pure capability-readiness and public-projection policies deny missing backend,
+  authentication, deployment, node, policy and model gates with stable reasons.
+  Public output additionally requires public classification, non-sensitive movement,
+  explicit policy, corroboration and human review.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -137,6 +141,11 @@ Account contract slice
 Five Vitest cases, TypeScript and ESLint pass for `@whiterabbit/contracts`; the first
 red run failed because the account module did not yet exist, then the minimal schema
 implementation made the suite green.
+
+Policy contract slice
+Eleven Vitest cases, TypeScript, ESLint and repository formatting pass for
+`@whiterabbit/policy`; its red run failed on the intentionally absent capability
+module before the fail-closed implementation was added.
 ```
 
 ## Not Yet Implemented
@@ -149,7 +158,7 @@ implementation made the suite green.
 
 ## Next Action
 
-Finish Plan 0003 phase 2 by adding the pure policy contract and optional Supabase Auth
-adapter test-first. Then replace the deployed sample dashboard with real public,
+Finish Plan 0003 phase 2 by adding the optional Supabase Auth adapter test-first.
+Then replace the deployed sample dashboard with real public,
 account, setup-required and empty product states before implementing the foreground
 camera lifecycle. Supabase, models and operational data remain separately gated.

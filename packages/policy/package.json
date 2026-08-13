@@ -1,0 +1,15 @@
+{
+  "name": "@whiterabbit/policy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./capabilities": "./src/capabilities.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  }
+}
