@@ -1098,6 +1098,67 @@ p {
   text-decoration: none;
 }
 
+.account-menu {
+  position: relative;
+}
+
+.account-menu > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.account-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.account-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 12;
+  width: min(280px, calc(100vw - 32px));
+  display: grid;
+  gap: 6px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(31, 55, 82, 0.17);
+}
+
+.account-popover strong {
+  overflow: hidden;
+  margin-top: 3px;
+  font-size: 12px;
+  text-overflow: ellipsis;
+}
+
+.account-popover p {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.account-popover form {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.account-popover button {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.account-popover button:hover {
+  background: var(--canvas);
+}
+
 .product-content {
   width: min(1420px, 100%);
   margin-inline: auto;

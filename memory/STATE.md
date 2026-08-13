@@ -103,6 +103,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Verified claim parsing now derives only the minimal workspace display identity:
   subject, normalized email and local-part initials. Missing or malformed claims remain
   unauthenticated and no unverified cookie session object is treated as identity.
+- The workspace layout now resolves claims request-by-request when configured, renders
+  the verified account email/initials in an accessible account menu and exposes a real
+  server-side local-session sign-out. Unconfigured preview still links to sign-in.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -233,6 +236,10 @@ temporary production server was stopped.
 Session identity slice
 Three verified-claim parsing tests pass as part of twenty-seven web tests, including
 malformed claims and initials that never include the email domain.
+
+Session-aware account menu slice
+The full twenty-seven web tests, ESLint (including `proxy.ts`), TypeScript and the
+production build pass with conditional identity rendering and server-side sign-out.
 ```
 
 ## Not Yet Implemented
