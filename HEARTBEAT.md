@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:33:20Z
-- Content-Fingerprint: sha256:333b4246e92176c69727b5272dbf5e7ffc753c2fab7aeb4725ce664922681d60
+- Last-Updated: 2026-08-13T16:34:55Z
+- Content-Fingerprint: sha256:76af6474842fbd88672e2cd551fd85ebc1981c23debe40ebd68da1ffcb28fd7f
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: e5c4ad3
-- Last-Summary: Conditional Supabase SSR session refresh and verified-claims route protection are ready; next bind authenticated identity in the layout and add sign-out/callback flows.
+- Commit: 80e4584
+- Last-Summary: Verified claims now derive a minimal display identity; next render it in the workspace and add server-side sign-out.
 
 ## Current Task
 

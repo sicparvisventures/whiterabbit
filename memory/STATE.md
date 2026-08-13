@@ -100,6 +100,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   claims. `/app` remains available as an explicit unconfigured preview before a
   project exists; once valid Supabase configuration is present, missing/invalid claims
   redirect to sign-in and no server authorization path trusts `getSession()`.
+- Verified claim parsing now derives only the minimal workspace display identity:
+  subject, normalized email and local-part initials. Missing or malformed claims remain
+  unauthenticated and no unverified cookie session object is treated as identity.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -226,6 +229,10 @@ Four access-decision tests pass as part of twenty-four web tests. Next.js detect
 root Proxy, production build passes, and a local production smoke test confirmed that
 unconfigured `/app` preview, account routes and the manifest return HTTP 200. The
 temporary production server was stopped.
+
+Session identity slice
+Three verified-claim parsing tests pass as part of twenty-seven web tests, including
+malformed claims and initials that never include the email domain.
 ```
 
 ## Not Yet Implemented
