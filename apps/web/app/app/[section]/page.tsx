@@ -51,14 +51,6 @@ const sections = {
     action: "Review architecture",
     href: "/#architecture",
   },
-  settings: {
-    title: "Settings",
-    eyebrow: "Workspace controls",
-    emptyTitle: "Settings are not provisioned",
-    body: "Account, organization, deployment, retention and security settings become available after Supabase migrations and RLS are active.",
-    action: "Review setup",
-    href: "/app/setup",
-  },
 } as const;
 
 type Section = keyof typeof sections;
