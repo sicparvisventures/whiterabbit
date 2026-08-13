@@ -3,11 +3,27 @@ import type { Metadata } from "next";
 
 import { theme } from "@whiterabbit/design-tokens";
 
+import { ServiceWorkerRegistration } from "../components/service-worker-registration";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "WhiteRabbit Command Center",
-  description: "Synthetic public-sector sensing workspace",
+  applicationName: "WhiteRabbit",
+  title: {
+    default: "WhiteRabbit",
+    template: "%s · WhiteRabbit",
+  },
+  description: "Accountable, edge-first public-sector sensing",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "WhiteRabbit",
+  },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 const themeVariables = {
@@ -34,7 +50,10 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" style={{ colorScheme: "light" }}>
-      <body style={themeVariables}>{children}</body>
+      <body style={themeVariables}>
+        {children}
+        <ServiceWorkerRegistration />
+      </body>
     </html>
   );
 }
