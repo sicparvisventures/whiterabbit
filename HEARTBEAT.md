@@ -1,21 +1,25 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T11:45:27Z
-- Content-Fingerprint: sha256:0204b088c580c8d4b2a0608d9b6fa97a1c6f0f95804fefc5258e0fa43c0fc1fa
-- Status: specifications-awaiting-review
+- Last-Updated: 2026-08-13T11:57:55Z
+- Content-Fingerprint: sha256:289277ad052a11fe6c79aa98d03f241ddfb46a15eca94e5a39ca7e782fc30df2
+- Status: synthetic-planning-approved
 - Branch: main
-- Commit: b5c89c3
-- Last-Summary: Recorded ALPR/object detection as core plus an isolated biometric-watchlist direction; next approve Specs 0001/0002, select the synthetic Defence modes, and complete the threat model and institutional
+- Commit: 1a7ebbf
+- Last-Summary: Selected Expo mobile, Next.js desktop, Supabase Auth without SSO, privileged MFA, and separate node identities; next complete the planning package.
 
 ## Current Task
 
-Review the Belgian controller-profile and isolated biometric-watchlist specifications. ALPR and object detection remain core; biometrics are an additional gated capability.
+Complete the approved synthetic Defence pilot planning package. ALPR and object
+detection remain core; biometrics are an additional gated capability.
 
 ## Next Verified Action
 
-Select the exact synthetic `BE-DEFENCE-ADMIN` ALPR/object and biometric pilot modes, then complete the repository-grounded threat model and institutional review gates before implementation.
+Document the exact pilot scope, native mobile/web architecture, signed event/API
+contract, threat model, institutional gates, and phased implementation plan.
 
 ## Blockers
 
-Implementation is gated on project-owner approval of Specs 0001 and 0002. Real surveillance and biometric data additionally require controller, legal basis, DPIA/FRIA, model, hosting, security, oversight, and operational approvals.
+Product code and cloud provisioning wait for the planning package. Real surveillance
+and biometric data additionally require controller, legal basis, DPIA/FRIA, model,
+hosting, security, oversight, and operational approvals.

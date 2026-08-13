@@ -1,6 +1,7 @@
 # Spec: WhiteRabbit Belgian Public-Sector Visual Event Platform
 
-Status: foundation published; controller-profile direction is under review in Spec 0001.
+Status: foundation published; synthetic implementation planning is approved, while
+institutional review remains open under Specs 0001 and 0002.
 
 ## Assumptions
 
@@ -46,10 +47,13 @@ The first product is useful for one authorized operator with one camera. Collabo
 - Web: Next.js + TypeScript, deployable to Vercel where the profile permits it.
 - Backend: PostgreSQL-compatible provider boundary. Supabase Auth, PostgreSQL, RLS, Storage, Realtime, and narrowly scoped functions are candidates for development and approved non-sensitive deployments.
 - Restricted hosting: accredited or self-hosted adapters for operational, intelligence, classified, or otherwise excluded profiles.
-- Browser node: local WebAssembly/ONNX inference with `getUserMedia`, wake lock, and a foreground-only operating model.
+- Mobile node: Expo/React Native development build with a foreground-only `Sentry
+  Mode`, native camera integration, and a benchmarked native inference adapter.
 - Desktop node: small Python agent for USB, RTSP, ONVIF, or MJPEG sources and hardware-accelerated inference when available.
 - Shared contracts: versioned event schema and signed node envelopes.
-- Biometric benchmark candidate: ONNX Runtime Web with permissively licensed YuNet and SFace artifacts, synthetic data only until model and controller approval.
+- Biometric benchmark candidate: ONNX Runtime React Native with separately approved,
+  permissively licensed model artifacts and synthetic identities only until model
+  and controller approval.
 - Licence: AGPL-3.0 unless later legal review requires stricter separation from SparrowMap-derived code.
 
 ## Commands
@@ -85,6 +89,7 @@ docs/architecture/        system, data, trust-boundary, and deployment documenta
 .codex/hooks.json         lifecycle hooks for load, compaction, handoff, and validation
 scripts/memory/           dependency-free bootstrap, update, heartbeat, and validation tools
 apps/web/                 Next.js web control plane
+apps/mobile/              Expo iPhone edge node and field workflows
 apps/node/                desktop camera node
 packages/contracts/       shared event and authorization contracts
 supabase/                 migrations, RLS policies, functions, and local configuration
@@ -157,7 +162,11 @@ export type DetectionEvent = Readonly<{
 ## Approved Direction and Remaining Gates
 
 1. Approved: WhiteRabbit name, public AGPL project, lawful SparrowMap reuse, frequent validated pushes, Belgian public-sector ALPR core, Defence first, with municipality and police support through separate profiles.
-2. Gate: Spec 0001 and proposed ADR-0004 require owner and institutional review before implementation.
+2. Approved for synthetic planning: Spec 0001 and ADR-0004; institutional review is
+   still required before any real implementation or deployment.
 3. Gate: real deployment requires an identified authorized controller, exact purpose, legal basis, camera procedure, classification, DPIA decision, retention policy, hosting approval, and security review.
 4. Gate: publication requires profile authorization, corroborated evidence, and human review; one OCR or classifier result never suffices.
-5. Gate: Spec 0002 now defines isolated biometric watchlists, but implementation requires owner approval; real biometric processing additionally requires the exact legal basis, DPIA/FRIA, model approval, threat model, controller authorization, and applicable independent oversight.
+5. Approved for synthetic planning: Spec 0002 and ADR-0005; adding dependencies or
+   model artifacts and any real biometric processing still require exact legal basis,
+   DPIA/FRIA, model approval, threat model, controller authorization, and applicable
+   independent oversight.

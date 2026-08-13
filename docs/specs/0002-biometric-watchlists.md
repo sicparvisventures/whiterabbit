@@ -1,7 +1,8 @@
 # Specification 0002: Tenant-Scoped Biometric Watchlists
 
-- Status: draft for owner, controller, DPO, legal, COC where applicable, security,
-  fundamental-rights, model-risk, and operational review
+- Status: owner-approved for synthetic implementation planning; controller, DPO,
+  legal, COC where applicable, security, fundamental-rights, model-risk, and
+  operational review remain required before real use
 - Date: 2026-08-13
 - Depends on: Specification 0001 and ADR-0004
 
@@ -128,20 +129,26 @@ vectors from incompatible models is forbidden.
 
 ## iPhone Operating Model
 
-The first edge implementation is a client-only Next.js route using `getUserMedia`,
-a Worker, and an ONNX runtime. The screen stays on and the application remains in the
-foreground. It reports camera permission, model readiness, thermal/degraded status,
-watchlist version, offline state, and last signed heartbeat.
+The first edge implementation is an Expo/React Native development build using
+`expo-camera`, native navigation, and a benchmarked native inference adapter. It is
+not an Expo Go application and is not a PWA. TypeScript remains the application,
+policy, and contract language; native modules are permitted only behind reviewed
+ports and require a new signed application build.
 
-The provisional browser benchmark uses permissively licensed YuNet detection and
-SFace embeddings with synthetic identities. ONNX Runtime Web WASM is the portable
-iPhone baseline; any WebGL path is an optional measured optimization. InsightFace
-pretrained weights are excluded unless separately licensed.
+The operator explicitly starts a visible `Sentry Mode`. The application stays in the
+foreground with the screen awake and reports camera permission, model readiness,
+thermal/degraded status, watchlist version, offline state, power state, and last
+signed heartbeat. iOS releases camera resources when the app backgrounds, so a
+locked-screen or hidden background-camera promise is out of scope. Fixed unattended
+operation also requires external power, safe mounting, device-health monitoring,
+and an approved operating procedure.
 
-A pure PWA is not represented as a reliable locked-screen or background sentry. If
-an approved device tier cannot sustain the required operating point, a signed native
-container or inference adapter may expose the same contracts while the React/TypeScript
-UI and policy code remain shared. That change requires a reviewed implementation plan.
+The provisional native benchmark compares permissively licensed detector and
+embedding candidates with synthetic identities. ONNX Runtime React Native is the
+first runtime candidate, not an approved dependency. InsightFace pretrained weights
+remain excluded unless separately licensed. Model accuracy, licensing, binary size,
+throughput, thermal behavior, and supported iOS versions are measured before a model
+or runtime is selected.
 
 ## Commands
 
@@ -164,8 +171,8 @@ python3 scripts/memory/memory_tool.py validate --strict
 ## Project Structure
 
 ```text
-apps/web/                     tenant, watchlist, alert, and review UI
-apps/edge-web/                foreground browser camera node
+apps/web/                     desktop-first tenant, alert, and review command center
+apps/mobile/                  Expo iPhone node and mobile review workflows
 packages/contracts/           versioned node, event, and alert envelopes
 packages/policy/              controller and biometric capability decisions
 packages/edge-inference/      detector, tracker, quality gate, and embedder ports

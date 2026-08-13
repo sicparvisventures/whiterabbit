@@ -14,7 +14,7 @@ Build an open-source ALPR, object-event, and optional biometric-watchlist networ
 
 Belgian Defence is the first intended deployment. Municipalities and police are equal product targets with separate controller, purpose, oversight, retention, hosting, and publication boundaries.
 
-The product must work for one operator and one node before federation or community scale is required.
+The product must work for one operator and one node before federation or community scale is required. The iPhone client is a native Expo/React Native app with an explicit foreground `Sentry Mode`; the desktop command center is a Next.js application.
 
 ## Core Domain
 
@@ -43,7 +43,12 @@ The product must work for one operator and one node before federation or communi
 
 ## First Product Slice
 
-An authorized operator can enroll an old phone or laptop, aim it at an approved area, detect vehicles locally, submit signed candidate events, and review them inside one controller deployment without exposing civilian plate histories or raw video. A separately authorized public projection is optional and profile-specific.
+An authorized operator can enroll an old iPhone, keep the native app visible in
+`Sentry Mode`, aim it at an approved area, detect vehicles locally, submit signed
+candidate events, and review them inside one controller deployment without exposing
+civilian plate histories or raw video. A separately authorized public projection is
+optional and profile-specific. Laptop and fixed-camera nodes follow after the native
+mobile slice.
 
 ## Research Scope
 

@@ -104,6 +104,6 @@ This register is engineering context, not legal advice. Production deployment re
 ## R-016: Mobile Capture Failure and Spoofing
 
 - Severity: High
-- Risk: iOS suspends or breaks the PWA camera, an old device overheats, a printed/photo-screen face spoofs a match, or a compromised node forges alerts.
-- Mitigation: foreground-only claim; visible health/thermal state; signed monotonic events; device attestation where approved; capture recovery tests; presentation-attack testing; multi-observation corroboration; native adapter fallback.
+- Risk: iOS releases the camera when the Expo app backgrounds, an old device overheats, a printed/photo-screen face spoofs a match, or a compromised node forges alerts.
+- Mitigation: explicit foreground `Sentry Mode`; visible health, power, and thermal state; signed monotonic events; device attestation where approved; capture recovery tests; presentation-attack testing; multi-observation corroboration; supported-device policy.
 - Release gate: sustained tests on every supported iPhone tier and no claim of background operation without native proof.

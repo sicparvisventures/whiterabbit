@@ -1,6 +1,6 @@
 # ADR-0004: Controller-Scoped Belgian Policy Profiles
 
-- Status: proposed
+- Status: accepted for synthetic implementation planning; institutional review open
 - Date: 2026-08-13
 - Supersedes: ADR-0003 where it implied a uniform government-vehicle public tier
 
@@ -46,6 +46,6 @@ deployments and are not authorized by this decision.
 
 ## Review Gate
 
-This ADR remains proposed until accepted by the project owner and reviewed for the
-first deployment by the accountable Belgian public authority, its DPO, security
-authority, and qualified counsel.
+The project owner accepted this direction on 2026-08-13. Real deployment remains
+gated on review by the accountable Belgian public authority, its DPO, security
+authority, qualified counsel, and the other profile-specific reviewers in Spec 0001.

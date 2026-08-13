@@ -17,6 +17,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - SparrowMap code may be reused lawfully with attribution.
 - Person and object data are potential OSINT inputs, but identifying or persistent person tracking is not approved for implementation.
 - ALPR and object detection remain core. A tenant-scoped biometric watchlist is an additional approved product direction, with implementation and all real biometric processing still gated by Spec 0002, legal authority, DPIA/FRIA, threat model, model review, and controller approval.
+- The mobile client is an Expo/React Native development build for iPhone-first edge and field workflows. The desktop command center is Next.js. Supabase Auth email/password is the phase-1 human login; privileged roles require MFA `aal2`, while nodes use separate revocable device identities. SSO is deferred.
 - Supabase and Vercel are candidates for approved non-sensitive profiles. Restricted, operational, intelligence, or classified profiles require an accredited or self-hosted topology; nothing has been provisioned.
 - Frequent atomic pushes are approved after validation.
 
@@ -31,8 +32,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Public GitHub repository and protected source history.
 - GitHub Actions CI for tests and strict memory validation.
 - Tagged foundation release `v0.1.0-foundation`.
-- Draft Belgian controller-profile specification and proposed ADR-0004 covering Defence administration, armed-forces operations, intelligence, police, and municipalities.
-- Draft biometric-watchlist specification, open-source/model research, and proposed ADR-0005 defining isolated modes, scoped watchlists, local matching, human review, and government data-plane cells.
+- Owner-approved synthetic-planning Belgian controller-profile specification and ADR-0004 covering Defence administration, armed-forces operations, intelligence, police, and municipalities.
+- Owner-approved synthetic-planning biometric-watchlist specification and ADR-0005 defining isolated modes, scoped watchlists, local matching, human review, and government data-plane cells.
+- ADR-0006 selecting Expo/React Native mobile, Next.js desktop, Supabase Auth without SSO in phase 1, and separate node identities.
 
 ## Verification Evidence
 
@@ -54,10 +56,13 @@ https://github.com/sicparvisventures/whiterabbit/releases/tag/v0.1.0-foundation
 ## Not Yet Implemented
 
 - Web application, Supabase project, schema, RLS, or Vercel project.
-- Camera enrollment, browser inference, desktop node, ALPR pipeline, review queue, or public map.
+- Camera enrollment, native mobile inference, desktop node, ALPR pipeline, review queue, or public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, or deployment authorization.
 
 ## Next Action
 
-Obtain owner feedback on Specs 0001 and 0002 and select the exact `BE-DEFENCE-ADMIN` ALPR/object and first synthetic biometric modes. Then complete the repository-grounded threat model and submit purpose, profile, DPIA/FRIA, model, hosting, retention, watchlist, alert, and publication boundaries to accountable Defence, DPO, legal, security, fundamental-rights, model-risk, and operational reviewers before any real data flow.
+Document the exact synthetic `BE-DEFENCE-ADMIN` pilot, native mobile/web architecture,
+signed event/API contract, repository-grounded threat model, institutional gates, and
+phased implementation plan. No product code or real data flow starts before that
+planning package is complete and reviewed.

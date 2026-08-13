@@ -1,6 +1,6 @@
 # ADR-0005: Isolated Tenant-Scoped Biometric Capability
 
-- Status: proposed
+- Status: accepted for synthetic implementation planning; institutional review open
 - Date: 2026-08-13
 - Depends on: ADR-0004
 
@@ -23,9 +23,10 @@ There is no global watchlist. Watchlists and templates are tenant-, purpose-, mo
 site-, node-, and time-scoped. Small watchlists match locally; larger deployments use
 an authority-hosted matching cell. Biometric data has no path to the public projection.
 
-The first implementation target is a synthetic iPhone foreground benchmark using
-permissively licensed model artifacts. ALPR and object detection continue independently.
-No real biometric processing is authorized by this ADR.
+The first implementation target is a synthetic iPhone foreground benchmark in an
+Expo/React Native development build using separately approved, permissively licensed
+model artifacts. ALPR and object detection continue independently. No real biometric
+processing is authorized by this ADR.
 
 ## Consequences
 
@@ -39,12 +40,12 @@ No real biometric processing is authorized by this ADR.
   separately.
 - Government multi-tenancy may require physically separate data-plane cells rather
   than relying on RLS in one shared cloud project.
-- Reliable iPhone background capture is not promised by the web application; a native
-  adapter remains a gated fallback behind the same contracts.
+- The iPhone node is a visible, foreground-only native application. iOS background
+  camera capture is neither promised nor designed around.
 
 ## Review Gate
 
-This ADR remains proposed pending project-owner approval and review by the first
-controller, DPO, legal, security, fundamental-rights, model-risk, and operational
-authorities. Police use additionally requires the applicable COC and authorization
-path; real data remains prohibited until those reviews pass.
+The project owner accepted this synthetic planning direction on 2026-08-13. Review
+by the first controller, DPO, legal, security, fundamental-rights, model-risk, and
+operational authorities remains open. Police use additionally requires the applicable
+COC and authorization path; real data remains prohibited until those reviews pass.

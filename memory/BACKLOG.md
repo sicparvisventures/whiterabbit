@@ -17,11 +17,11 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 ## Phase 1: Legal and Threat Boundaries
 
 - [ ] Write the Belgian deployment and data-governance specification.
-  - Progress: Spec 0001 is drafted with five controller profiles; owner and institutional review remain open.
+  - Progress: Spec 0001 and ADR-0004 are owner-approved for synthetic implementation planning with five controller profiles; institutional review remains open.
   - Acceptance: the first Defence pilot purpose and accountable service are selected; controller/processor roles, legal basis, camera procedure, classification, hosting, retention, data-subject rights, public-record criteria, and DPIA gate are approved. Municipality and police remain separate reference profiles.
   - Verify: review by the project owner and qualified Belgian public-sector privacy/legal stakeholders.
 - [ ] Approve the tenant-scoped biometric-watchlist specification.
-  - Progress: Spec 0002 and ADR-0005 are drafted; no biometric dependency or real processing is authorized.
+  - Progress: Spec 0002 and ADR-0005 are owner-approved for synthetic implementation planning; no biometric dependency or real processing is authorized.
   - Acceptance: the owner selects the first synthetic mode; controller, DPO, legal, security, fundamental-rights, model-risk, and operational reviewers approve capability, purpose, watchlist authority, data flow, human response, retention, rights, and hosting gates.
   - Verify: signed review record linked without sensitive operational details.
 - [ ] Write a repository-grounded threat model.
@@ -33,9 +33,9 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 
 ## Phase 2: Single-Node Vertical Slice
 
-- [ ] Enroll one browser camera into one authorized deployment.
+- [ ] Enroll one Expo iPhone camera into one authorized deployment.
   - Acceptance: revocable node identity, explicit camera permission, approved capture zone, offline status.
-  - Verify: browser integration test and signed enrollment test.
+  - Verify: native integration test and signed enrollment test.
 - [ ] Detect vehicles locally without uploading video.
   - Acceptance: only minimal candidate metadata and permitted redacted evidence cross the boundary.
   - Verify: network inspection proves no raw stream or full frame is transmitted.

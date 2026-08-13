@@ -1,6 +1,7 @@
 # Specification 0001: Belgian Controller Profiles
 
-- Status: draft for owner, DPO, legal, security, and operational review
+- Status: owner-approved for synthetic implementation planning; controller, DPO,
+  legal, security, and operational review remain required before real use
 - Date: 2026-08-13
 - Product language: English
 - Initial market: Belgium
@@ -102,14 +103,15 @@ operation at the data layer.
   for development and approved non-sensitive deployments, not a universal mandate.
 - RLS or an equivalent policy layer, separate restricted and public schemas, signed
   event envelopes, encrypted object storage, and append-only security audit records.
-- A browser-first edge node, followed by a packaged node for old laptops, phones,
-  USB cameras, and approved IP cameras.
+- An Expo/React Native mobile edge node for iPhone first, followed by a packaged
+  desktop node for old laptops, USB cameras, and approved IP cameras. The mobile
+  node is foreground-only while its camera is active.
 - Self-hosted or government-accredited infrastructure adapters for profiles whose
   classification, sovereignty, availability, or accreditation rules exclude the
   public Vercel/Supabase topology.
 
 No cloud project, production dependency, or real-data pipeline is authorized by
-this draft.
+this specification approval.
 
 ## Initial Interface Shape
 
@@ -142,7 +144,7 @@ The anticipated implementation is organized by trust boundary, not customer:
 
 ```text
 apps/web/             operator and permitted public interfaces
-apps/edge-web/        browser camera node
+apps/mobile/          Expo/React Native mobile camera node and field workflows
 packages/contracts/   versioned event and policy contracts
 packages/policy/      pure fail-closed policy decisions
 packages/adapters/    storage, identity, hosting, and deployment adapters
@@ -204,9 +206,10 @@ memory/decisions/     immutable architecture decisions
 - Add face recognition, person identification, or cross-camera re-identification.
 - Infer surveillance authority from repository ownership or open-source licensing.
 
-## Success Criteria for Phase 1 Approval
+## Success Criteria for Phase 1 Institutional Approval
 
-- Product owner accepts the five-profile model and the Defence-first pilot boundary.
+- Product owner has accepted the five-profile model and the Defence-first synthetic
+  planning boundary.
 - The first controller names the exact pilot purpose and accountable service.
 - Controller and processor roles are documented for every selected provider.
 - Qualified Belgian public-sector legal/privacy reviewers approve the applicable
