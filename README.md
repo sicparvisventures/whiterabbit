@@ -8,11 +8,13 @@ Production preview: https://whiterabbit-theta.vercel.app
 
 ## Current status
 
-The public and account experience, install manifest, service worker, responsive
-workspace, controller-scoped setup form and real foreground browser-camera preview
-are implemented. Supabase is intentionally optional: without configuration, Auth and
-data mutations fail closed and operational routes show verified empty states—never
-sample users, nodes, plates, faces, events, locations or metrics.
+The public and account experience, installable PWA flow, responsive workspace,
+controller-scoped setup/settings surfaces and real foreground browser-camera preview
+with post-permission device selection are implemented. Strict node-enrollment contracts
+and fail-closed provider services are ready. Supabase is intentionally optional:
+without configuration, Auth and data mutations fail closed and operational routes show
+verified empty states—never sample users, nodes, plates, faces, events, locations or
+metrics.
 
 Once a Supabase project is connected, the existing code activates real email/password
 signup, sign-in, recovery, token confirmation, password update, cookie-backed SSR
@@ -108,7 +110,9 @@ When the project is created, provide through approved configuration channels:
 5. confirmation that email/password and email verification are enabled.
 
 Then WhiteRabbit can add versioned migrations, RLS, storage policies, generated types
-and cross-tenant negative tests. Do not send service-role credentials in chat or Git.
+and cross-tenant negative tests. Follow the exact
+[Supabase handoff runbook](docs/deployment/0001-supabase-handoff.md). Do not send
+service-role credentials in chat or Git.
 
 ## Durable memory
 

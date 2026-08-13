@@ -1,23 +1,23 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T17:11:26Z
-- Content-Fingerprint: sha256:d05f390715c37d1bf18a5de624a884f381ab3b6df8e78bd0b7aa84678156fcd7
+- Last-Updated: 2026-08-13T17:18:11Z
+- Content-Fingerprint: sha256:c621c2b5b958c3fa92c942db183d8b6ba7bda62136d18b8079516726940ca95e
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 1a83a48
-- Last-Summary: Node enrollment contracts and guarded provider service are complete; next finish truthful settings surfaces and full release verification.
+- Commit: ba0f39c
+- Last-Summary: Pre-Supabase PWA, settings, camera readiness, node contracts and Auth callbacks are verified; next owner follows the Supabase handoff runbook.
 
 ## Current Task
 
-Complete the remaining pre-Supabase PWA work in Plan 0003 without runtime mock data:
-truthful settings surfaces, full release checks and cloud deployment verification.
+Handoff the verified pre-Supabase PWA and wait for the owner-created Supabase project
+before applying any migration or enabling persistence.
 
 ## Next Verified Action
 
-Replace the generic Settings empty state with read-only account, organization,
-deployment, capability, retention, legal and device readiness derived from real public
-configuration. Then run the full repository and production deployment verification.
+Follow `docs/deployment/0001-supabase-handoff.md`: receive the project URL, publishable
+key, project ref and two Auth confirmations, authenticate the CLI through an approved
+secret channel, then implement the first migration/RLS batch test-first.
 
 ## Blockers
 

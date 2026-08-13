@@ -13,13 +13,16 @@
   optional browser/server clients, cookie refresh, verified claims, signup/signin,
   confirmation, recovery, password update and sign-out are implemented.
 - Phase 3 UI complete but persistence pending: responsive routes, empty states and the
-  controller-scoped onboarding form are implemented; migrations/RLS remain Phase 5.
+  controller-scoped onboarding form plus account/organization/deployment/capability/
+  retention/legal/device settings readiness are implemented; migrations/RLS remain
+  Phase 5.
 - Phase 4 browser readiness complete: real foreground camera permission/preview/stop,
   cleanup, post-permission camera selection, capture-zone acknowledgement and explicit
   readiness blockers are implemented. Strict enrollment input/result contracts and a
   fail-closed provider service are ready; persisted enrollment, completion proof,
   inference and signed events remain gated.
-- Phase 5 is the next external handoff. Phase 6 has not started.
+- Phase 5 runbook is complete and the owner-created project is the next external
+  handoff. Phase 6 has not started.
 
 ## Phase 1 — Consolidate and Install
 

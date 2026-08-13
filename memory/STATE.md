@@ -111,6 +111,16 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - A guarded node-enrollment service validates input before calling an optional provider,
   validates untrusted provider output, maps failures to stable non-sensitive results,
   and returns `STORAGE_NOT_PROVISIONED` with no invented node or claim when absent.
+- `/app/settings` is a dedicated responsive readiness surface for account/Auth,
+  organization/deployment, capability/policy, data/retention and local device status.
+  It derives public Auth configuration and labels every unpersisted control explicitly;
+  it exposes no fake setting or save action.
+- Signup and password recovery both normalize callback configuration to a validated
+  HTTPS origin (localhost HTTP only for development), enabling one server-side
+  token-hash confirmation route for both Auth templates and Vercel previews.
+- The Supabase handoff runbook fixes the non-secret inputs, URL allowlist, signup and
+  recovery template links, Vercel variables, prohibited secret channels, migration
+  order and acceptance gates for the owner-created project.
 - `/app/setup` now exposes the full storage-ready onboarding surface for organization,
   deployment, exact purpose, five controller profiles, ALPR/object baselines and the
   public-SaaS classification acknowledgement. Its submit action is disabled and copy
@@ -319,6 +329,15 @@ The guarded-service red run likewise failed on its absent module; 48 web tests n
 cover no-provider, pre-provider validation, parsed provider success/failure and
 request-isolated errors. Lint and TypeScript pass. Commits `6ce011d` and `1a83a48` are
 on `main`; no runtime adapter, node or claim was created.
+
+Settings and final pre-Supabase verification
+The dedicated settings route passed production builds and Playwright walkthroughs at
+390 px and 1440 px with no horizontal overflow or console warnings/errors; its UI
+commit is `9879f58`. Recovery origin normalization produced the expected red provider
+argument assertion before the corrected service passed all 48 web tests; commit
+`ba0f39c` is on `main`. Frozen install, formatting, ESLint, TypeScript, 80 Vitest
+assertions, Next.js production build, production audit with no known vulnerabilities
+and ten Python memory tests all pass.
 ```
 
 ## Not Yet Implemented
@@ -333,6 +352,7 @@ on `main`; no runtime adapter, node or claim was created.
 
 ## Next Action
 
-Complete the truthful settings readiness surface and full release verification. After
-the owner creates Supabase, add migrations, RLS, generated types and cross-tenant tests
-before enabling setup persistence. Models and operational data remain separately gated.
+Owner creates/configures Supabase according to the handoff runbook and returns the five
+non-secret confirmations. Then add migrations, RLS, generated types and cross-tenant
+tests before enabling setup persistence. Models and operational data remain separately
+gated.

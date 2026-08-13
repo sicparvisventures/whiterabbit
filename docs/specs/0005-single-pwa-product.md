@@ -17,6 +17,9 @@ standalone detection; unsupported browsers receive no invented install action. N
 Supabase project, migrations/RLS, persisted node identity, inference, event ingest or
 operational record exists. Strict browser-node enrollment contracts and a guarded
 application service now exist, but cannot create an identity without a real provider.
+Settings exposes real Auth configuration plus explicit unprovisioned account,
+organization, deployment, capability, retention, legal and device states. The Auth
+handoff has an exact redirect/template/migration runbook.
 The remaining acceptance items depend on the Supabase handoff and separately approved
 model/runtime work.
 

@@ -59,7 +59,9 @@ Tasks are ordered by dependency. A task is not complete until its verification s
   - Progress: Plan 0003 is active; Expo is removed; the installable PWA shell and
     executable account/policy contracts, guarded Supabase client and real-provider
     Auth services are implemented. Public and account routes contain no runtime mock
-    records. Supabase configuration remains optional until the owner creates a project.
+    records. Camera/node/install/settings readiness and the exact Supabase handoff
+    runbook are complete; configuration remains optional until the owner creates a
+    project.
   - Acceptance: public/account/setup/product routes contain no invented operational
     records; real Supabase Auth activates without UI changes; policy and camera
     lifecycle contracts deny unavailable capabilities explicitly.

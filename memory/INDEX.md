@@ -47,6 +47,7 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [Plan 0001: Synthetic Defence vertical slice](../docs/plans/0001-synthetic-defence-implementation.md)
 - [Plan 0002: Frontend-first, Supabase-later delivery](../docs/plans/0002-frontend-first-supabase-later.md)
 - [Plan 0003: Single PWA delivery](../docs/plans/0003-single-pwa-delivery.md)
+- [Supabase project handoff](../docs/deployment/0001-supabase-handoff.md)
 
 ## Research
 
