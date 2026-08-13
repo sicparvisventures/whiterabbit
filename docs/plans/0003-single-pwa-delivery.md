@@ -13,8 +13,9 @@
   optional browser/server clients, cookie refresh, verified claims, signup/signin,
   confirmation, recovery, password update and sign-out are implemented. Strict
   baseline signed-event header/signature primitives and minimized ALPR/object
-  envelopes are also executable; candidate application-state contracts remain in
-  progress. Evidence stays closed until its separate controls exist.
+  envelopes are also executable. The minimized baseline candidate projection, strict
+  review input and exact application-state transitions are executable. Evidence stays
+  closed until its separate controls exist.
 - Phase 3 UI complete but persistence pending: responsive routes, empty states and the
   controller-scoped onboarding form plus account/organization/deployment/capability/
   retention/legal/device settings readiness are implemented; migrations/RLS remain

@@ -121,6 +121,11 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   are closed and `PERSON_PRESENCE` remains non-identifying. Raw plates, embeddings,
   subject references, cross-camera identifiers and premature evidence descriptors are
   rejected as unknown fields.
+- The baseline candidate projection contains only ALPR/object kind, event/deployment
+  provenance, state, positive concurrency version, classification, data nature,
+  timestamps and `requiresHumanReview: true`. Its closed transition function matches
+  Spec 0004; review input accepts bounded outcome/reason codes while reviewer identity,
+  `If-Match` version and expiry authority remain server-derived.
 - `/app/settings` is a dedicated responsive readiness surface for account/Auth,
   organization/deployment, capability/policy, data/retention and local device status.
   It derives public Auth configuration and labels every unpersisted control explicitly;
@@ -364,7 +369,7 @@ camera-only permissions policy, frame denial and content-type protection were pr
   complete but cannot perform live mutations before project configuration exists.
 - Persistent camera enrollment, browser inference, desktop node packaging, ALPR
   inference pipeline, signature canonicalization/verification/ingest, evidence path,
-  review queue or public map.
+  persisted review queue or public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, security
   risk acceptance/mitigation ownership, or deployment authorization.

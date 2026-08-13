@@ -18,6 +18,12 @@ The optional evidence descriptor remains disabled until its storage, redaction,
 expiry and retrieval-grant controls exist. Canonicalization, signing, verification
 and ingest remain unimplemented.
 
+The executable baseline candidate projection contains only scope/provenance state,
+classification, data nature, optimistic-concurrency version and the mandatory human
+review marker. It excludes plate, identity and evidence detail. Candidate transition
+logic implements only the state graph below; human review input cannot claim reviewer
+identity, resource version or expiry authority.
+
 ## Contract Goals
 
 - Authenticate a node independently from a human Supabase session.

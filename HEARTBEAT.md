@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T17:29:49Z
-- Content-Fingerprint: sha256:f12748d7135623e844ac719439a0dc0c9155116365eea571f97b1a807119922d
+- Last-Updated: 2026-08-13T17:31:48Z
+- Content-Fingerprint: sha256:95166cc2da984e664230d929e607d81078ac7a70a969998895e48089e5ae2aa4
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 11a0a93
-- Last-Summary: Minimized signed ALPR/object envelopes are test-green and evidence stays denied; implement candidate review-state contracts next.
+- Commit: 148754c
+- Last-Summary: Baseline candidate and human-review state contracts are test-green; complete repository supply-chain gates next.
 
 ## Current Task
 
