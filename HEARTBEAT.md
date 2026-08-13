@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T11:57:55Z
-- Content-Fingerprint: sha256:289277ad052a11fe6c79aa98d03f241ddfb46a15eca94e5a39ca7e782fc30df2
+- Last-Updated: 2026-08-13T12:01:02Z
+- Content-Fingerprint: sha256:a1ff4783fe29347b5bb188c4b90617a1ea52f041e00cd96fcd48cc7d502f1c29
 - Status: synthetic-planning-approved
 - Branch: main
-- Commit: 1a7ebbf
-- Last-Summary: Selected Expo mobile, Next.js desktop, Supabase Auth without SSO, privileged MFA, and separate node identities; next complete the planning package.
+- Commit: 7e05fd6
+- Last-Summary: Defined the synthetic Defence pilot, mobile-edge/web architecture, and native iOS plus premium desktop UX; next specify contracts and threats.
 
 ## Current Task
 

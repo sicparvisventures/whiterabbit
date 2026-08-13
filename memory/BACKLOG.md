@@ -16,6 +16,10 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 
 ## Phase 1: Legal and Threat Boundaries
 
+- [x] Fix the synthetic Defence pilot and client architecture.
+  - Acceptance: one fictional scope, explicit data/retention boundaries, Expo mobile, Next.js desktop, Supabase Auth without SSO, separate node identity, and accessible mobile/desktop UX contract.
+  - Verify: Specs 0001–0003, ADR-0006, Architecture 0001, and Product Experience 0001 are internally consistent; tests and strict memory validation pass.
+
 - [ ] Write the Belgian deployment and data-governance specification.
   - Progress: Spec 0001 and ADR-0004 are owner-approved for synthetic implementation planning with five controller profiles; institutional review remains open.
   - Acceptance: the first Defence pilot purpose and accountable service are selected; controller/processor roles, legal basis, camera procedure, classification, hosting, retention, data-subject rights, public-record criteria, and DPIA gate are approved. Municipality and police remain separate reference profiles.
