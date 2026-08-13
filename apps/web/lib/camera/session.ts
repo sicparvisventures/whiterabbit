@@ -10,6 +10,50 @@ export type CameraState =
 
 export type CameraEvent = "REQUEST" | "GRANTED" | "DENIED" | "HIDDEN" | "STOP";
 
+export type CameraDeviceOption = Readonly<{
+  deviceId: string;
+  label: string;
+}>;
+
+type CameraDeviceDescriptor = Readonly<{
+  deviceId: string;
+  kind: string;
+  label: string;
+}>;
+
+export function buildVideoConstraints(
+  selectedDeviceId?: string,
+): MediaTrackConstraints {
+  return selectedDeviceId
+    ? { deviceId: { exact: selectedDeviceId } }
+    : { facingMode: { ideal: "environment" } };
+}
+
+export function listCameraDevices(
+  devices: ReadonlyArray<CameraDeviceDescriptor>,
+): CameraDeviceOption[] {
+  const seen = new Set<string>();
+  const cameras: CameraDeviceOption[] = [];
+
+  for (const device of devices) {
+    if (
+      device.kind !== "videoinput" ||
+      !device.deviceId ||
+      seen.has(device.deviceId)
+    ) {
+      continue;
+    }
+
+    seen.add(device.deviceId);
+    cameras.push({
+      deviceId: device.deviceId,
+      label: device.label.trim() || `Camera ${cameras.length + 1}`,
+    });
+  }
+
+  return cameras;
+}
+
 export function getInitialCameraState(capability: {
   secureContext: boolean;
   mediaDevicesAvailable: boolean;
