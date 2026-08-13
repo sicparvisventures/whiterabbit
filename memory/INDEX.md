@@ -17,10 +17,16 @@ Architecture decisions are immutable records; supersede an ADR with a new ADR ra
 - [ADR-0002: Repository-native bounded memory](decisions/ADR-0002-repository-memory.md)
 - [ADR-0003: Corroborated government-vehicle public tier](decisions/ADR-0003-public-data-boundary.md)
 - [ADR-0004: Controller-scoped Belgian policy profiles](decisions/ADR-0004-controller-policy-profiles.md)
+- [ADR-0005: Isolated tenant-scoped biometric capability](decisions/ADR-0005-isolated-biometric-capability.md)
 
 ## Active Specifications
 
 - [Spec 0001: Belgian controller profiles](../docs/specs/0001-belgian-controller-profiles.md)
+- [Spec 0002: Tenant-scoped biometric watchlists](../docs/specs/0002-biometric-watchlists.md)
+
+## Research
+
+- [Research 0001: Biometric watchlist options](../docs/research/0001-biometric-watchlist-options.md)
 
 ## Session Outcomes
 

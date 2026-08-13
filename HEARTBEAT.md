@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T11:36:08Z
-- Content-Fingerprint: sha256:45236f9e48ffc4a868c3b4908017c1ddbf4cf1645ea1b113e9cb93d40ddde9dd
+- Last-Updated: 2026-08-13T11:43:10Z
+- Content-Fingerprint: sha256:f801930ec16666afb0676956b4ee1a85d9d22e659001a375e63634c79549bbb4
 - Status: foundation-published
 - Branch: main
-- Commit: cb6176f
-- Last-Summary: Drafted Belgian controller profiles with Defence-first pilot; next select the exact pilot purpose and obtain owner, DPO, legal, security, and operational review.
+- Commit: 4c4f660
+- Last-Summary: Drafted an isolated biometric-watchlist specification and open-source research; next obtain owner approval, choose the first synthetic Defence biometric mode, and complete legal and threat-model gates
 
 ## Current Task
 
