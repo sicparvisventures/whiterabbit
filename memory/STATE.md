@@ -81,6 +81,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   responsive public landing page whose readiness panel is derived from configuration,
   plus real create-account, sign-in and recovery routes. Submitting without Supabase
   shows the truthful unavailable state and creates no local record.
+- Organization onboarding contracts validate the five distinct Belgian controller
+  profiles, purpose, deployment label, classification acknowledgement and only the
+  ALPR/object baseline capabilities. Biometrics cannot enter through ordinary setup.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -180,6 +183,11 @@ Public and account UI slice
 Next.js prerenders the landing page and all three account modes. Playwright verified
 the 390 px and desktop layouts, navigation and the unconfigured signup result with no
 browser error; the full pnpm format/lint/type/test/build and ten Python tests pass.
+
+Organization contract slice
+Five onboarding tests pass after the expected missing-module red run. They cover
+normalization, unknown controller rejection, biometric baseline rejection, mandatory
+classification acknowledgement and a storage-missing state with no invented IDs.
 ```
 
 ## Not Yet Implemented

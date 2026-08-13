@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:17:08Z
-- Content-Fingerprint: sha256:1a4ea1da9c06271790a2edac07a28b7279ab0c962f7a589a9e424c3af16daa5c
+- Last-Updated: 2026-08-13T16:18:27Z
+- Content-Fingerprint: sha256:5ae1b866d3b5103c8e455c8ab4b72963043335db3156b71266f77ae2adb44b44
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: c00703e
-- Last-Summary: Public and account routes now replace the mock dashboard and bind to real Auth services; next build the empty product shell and setup flow.
+- Commit: dd7d924
+- Last-Summary: Controller-scoped onboarding contracts are executable and exclude biometrics from baseline setup; next build the responsive empty workspace.
 
 ## Current Task
 

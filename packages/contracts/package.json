@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./account": "./src/account.ts"
+    "./account": "./src/account.ts",
+    "./organization": "./src/organization.ts"
   },
   "scripts": {
     "build": "tsc --noEmit",
