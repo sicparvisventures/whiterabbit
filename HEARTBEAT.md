@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:47:50Z
+- Last-Updated: 2026-08-13T16:49:20Z
 - Content-Fingerprint: sha256:14ddf24312afd1ae41df7b4a53d461f0e4bd61fe20820a1ded4eaca8328e7726
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: bbc1edc
-- Last-Summary: Single-PWA Auth, responsive empty workspace, onboarding and foreground camera foundation are verified; next connect owner-created Supabase and apply RLS migrations.
+- Commit: b1328ae
+- Last-Summary: PWA/Auth/onboarding/camera foundation is live and CI-green; next create/link Supabase, apply RLS migrations, then enable persisted setup.
 
 ## Current Task
 

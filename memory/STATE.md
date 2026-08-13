@@ -270,6 +270,13 @@ Account flow completion slice
 The production build exposes dynamic account modes including update-password.
 Playwright verified the allowlisted rejected-confirmation copy and 390 px password
 update form without browser errors; the temporary development server was stopped.
+
+Single-PWA release checkpoint
+Frozen install, production audit (no known vulnerabilities), formatting, ESLint,
+TypeScript, 57 Vitest assertions, Next.js production build, ten Python tests and strict
+memory validation pass. GitHub Actions run `31722502137` completed successfully for
+commit `b1328ae`. Vercel deployment `dpl_J1cqz3wPEaKcyPE7dLvSyFMt1F6a` is Ready and
+serves the current public/account PWA through https://whiterabbit-theta.vercel.app.
 ```
 
 ## Not Yet Implemented
