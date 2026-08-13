@@ -6,9 +6,10 @@ The product direction is simple: turn an old phone, laptop, webcam, or compatibl
 
 Belgian Defence is the first intended deployment. Municipalities and police are also target controllers, each with a strictly separate legal, data, oversight, hosting, and publication profile. ALPR and object detection remain the core; an optional biometric watchlist capability is now specified as a separate, fail-closed module.
 
-> **Project status:** planning package and interactive synthetic prototype complete;
-> owner review is next. Product runtime is not started. The camera, ALPR, biometric,
-> Supabase, Vercel, review, and map applications are not yet operational.
+> **Project status:** owner-approved light-only implementation foundation. The pinned
+> pnpm workspace now builds an Expo iOS field shell and Next.js command-center shell
+> from shared tokens. Camera, ALPR, biometrics, Supabase, Vercel and real map services
+> are deliberately not connected yet.
 
 ## Why WhiteRabbit
 
@@ -73,9 +74,25 @@ python3 -m http.server 4173 --directory prototypes/interactive
 
 Open <http://localhost:4173> and follow the [mobile and desktop walkthrough](prototypes/interactive/README.md).
 
-The next decision is owner approval of this product direction followed by separate
-implementation and dependency batch D1 authorization. No cloud resource, production
-dependency, model weight, dataset, or real data has been approved or added.
+The prototype direction and dependency batch D1 were approved on 2026-08-13. The
+prototype now has one light appearance and remains a generated-data interaction
+reference; no cloud resource, model weight, dataset, camera permission or real data
+has been approved or added.
+
+## Run the Implementation Foundation
+
+Use Node `24.18.0` and the Corepack-managed pnpm version pinned by the repository:
+
+```bash
+corepack pnpm install --frozen-lockfile
+corepack pnpm dev:web
+corepack pnpm dev:mobile
+```
+
+The web shell contains local synthetic interactions. The mobile shell exports a real
+iOS JavaScript bundle while remaining stopped until enrollment, camera lifecycle and
+signed policy controls are implemented. Neither development server is left running
+by repository automation.
 
 ## Durable Project Memory
 

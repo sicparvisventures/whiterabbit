@@ -37,10 +37,18 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 - [x] Define institutional gates and the phased synthetic implementation plan.
   - Acceptance: controller-profile routing, provenance, legal/DPIA/FRIA, hosting/security, model/device, human-pilot and expansion gates are explicit; implementation has dependency batches, ordered phases, tests, acceptance, stop conditions, memory and push rules.
   - Verify: Compliance 0001 and Plan 0001 are linked from README and memory; tests and strict validation pass.
-- [ ] Approve the interactive product prototype before implementation.
-  - Progress: the dependency-free mobile field flow and desktop command center are implemented, documented, and browser-verified with synthetic data; owner approval remains.
+- [x] Approve the interactive product prototype before implementation.
+  - Progress: the dependency-free mobile field flow and desktop command center were approved with a required light-only revision; synthetic implementation and D1 are authorized.
   - Acceptance: the owner can click through mobile sign-in, enrollment, sentry, alert review, and audit receipt plus desktop overview, operations, candidate, watchlist, node, policy, and audit workflows; both surfaces visibly enforce prototype, classification, tenant, provenance, and human-review boundaries.
   - Verify: responsive Playwright walkthroughs, visual inspection, keyboard/focus review, no browser-console errors, and explicit owner approval.
+
+- [ ] Complete P1 workspace and quality gates.
+  - Progress: pinned pnpm/Node tooling, TypeScript quality bases, shared tokens, Expo
+    and Next.js shells, production bundle builds, peer checks and CI are implemented.
+  - Acceptance: add repository-wide secret scanning plus durable licence/SBOM checks;
+    keep the current Expo transitive parser advisory blocked from operational input.
+  - Verify: frozen install, peer check, format, lint, typecheck, tests, builds, audit,
+    SBOM/licence/secret checks and strict memory validation pass in GitHub Actions.
 
 ## Phase 2: Single-Node Vertical Slice
 

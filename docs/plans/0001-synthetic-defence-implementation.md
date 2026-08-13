@@ -1,6 +1,6 @@
 # Plan 0001: Synthetic Defence Vertical Slice
 
-- Status: implementation-ready plan; code and dependencies await separate authorization
+- Status: P1 foundation in progress; synthetic implementation and D1 authorized
 - Date: 2026-08-13
 - Scope: Specification 0003 only
 - Delivery rule: tests first, small atomic commits, strict memory validation, frequent push
@@ -111,6 +111,10 @@ Verification: links resolve, documents agree on scope/auth/client/retention/publ
 boundaries, unit tests pass, strict memory validation passes, commits are public.
 
 ## P1 — Workspace and Quality Gates
+
+Status: **in progress**. Root manifests, pinned toolchain, shared light-only tokens,
+Next.js/Expo shells, peer checks and build/test CI are implemented. Repository-wide
+secret scanning plus durable licence/SBOM automation remain before P1 completes.
 
 Goal: a minimal monorepo that builds no product behavior yet.
 

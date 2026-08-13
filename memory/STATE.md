@@ -20,6 +20,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - The mobile client is an Expo/React Native development build for iPhone-first edge and field workflows. The desktop command center is Next.js. Supabase Auth email/password is the phase-1 human login; privileged roles require MFA `aal2`, while nodes use separate revocable device identities. SSO is deferred.
 - Supabase and Vercel are candidates for approved non-sensitive profiles. Restricted, operational, intelligence, or classified profiles require an accredited or self-hosted topology; nothing has been provisioned.
 - Frequent atomic pushes are approved after validation.
+- The combined mobile/desktop information architecture, synthetic implementation and
+  dependency batch D1 are approved. WhiteRabbit is light-only with no dark/system
+  theme selector.
 
 ## Implemented
 
@@ -44,6 +47,20 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Plan 0001 sequences the synthetic product into phases P1–P11 with dependency batches, test-first tasks, five-file implementation limits, acceptance evidence, atomic pushes, and explicit stop conditions.
 - A dependency-free interactive prototype now covers the complete mobile field flow plus a desktop command center with overview, synchronized operations workspace, candidate review, governed watchlists, node health, effective policy, audit stream, density controls, and a keyboard command palette. It is demonstrative only: no camera, inference, network, identity, or backend capability is present.
 - Product Experience 0002 and the prototype README record the review routes, interaction inventory, responsive evidence, accessibility limits, non-capabilities, and the owner approval checklist.
+- ADR-0007 pins the P1 toolchain/dependency provenance and records the single light
+  appearance. The old prototype theme selector and dark desktop shell were removed.
+- A pnpm 11 workspace now has strict TypeScript, ESLint, Prettier and Vitest baselines,
+  deterministic installs, blocked dependency build scripts and shared light-only
+  semantic design tokens with tests.
+- `apps/web` is a buildable Next.js 16.3 command-center shell with responsive light
+  navigation, generated deployment metrics, candidate selection, fictional site map,
+  guarded local review outcomes and explicit disconnected-service status.
+- `apps/mobile` is a buildable Expo SDK 57/React Native 0.86 iOS shell with a light
+  native stack, truthful camera-disconnected state, expandable readiness checks and a
+  fail-closed Sentry start control.
+- CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
+  tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
+  Python memory tests and validates durable memory.
 
 ## Verification Evidence
 
@@ -78,11 +95,22 @@ The first three prototype CI runs exposed that generated Playwright artifacts we
 
 GitHub Actions corrective run 31705516125
 Conclusion: success
+
+P1 local quality run
+Pinned install and peer check passed; Prettier, ESLint and TypeScript passed; 2 Vitest
+token-contract tests and 10 Python tests passed; Next.js generated a static production
+bundle; Expo exported a 2.3 MB iOS Hermes bundle.
+
+Dependency audit 2026-08-13
+No critical advisory. Two high `image-size@2.0.2` parser findings and one moderate
+CLI-only `uuid` finding remain in the Expo toolchain; the registry-named image-size
+patch is not published. P1 accepts no untrusted native/media input and the finding
+blocks operational processing until an Expo-compatible patch is available.
 ```
 
 ## Not Yet Implemented
 
-- Web application, Supabase project, schema, RLS, or Vercel project.
+- Supabase project, schema, RLS, Auth integration, or Vercel project.
 - Camera enrollment, native mobile inference, desktop node, ALPR pipeline, review queue, or public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, security
@@ -90,7 +118,6 @@ Conclusion: success
 
 ## Next Action
 
-Request owner approval or revision of the combined mobile/desktop experience using
-Product Experience 0002. Product implementation, dependency batch D1, cloud
-provisioning, model artifacts, camera access, and real data remain paused until
-explicit approval.
+Complete P1 with repository-wide secret scanning and licence/SBOM evidence, then make
+Spec 0004 contracts and fail-closed controller/capability policy executable test-first
+in P2. Cloud provisioning, model artifacts, camera access and real data remain paused.
