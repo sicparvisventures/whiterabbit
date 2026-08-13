@@ -13,8 +13,8 @@
     "build": "corepack pnpm -r --if-present build",
     "dev:mobile": "corepack pnpm --filter @whiterabbit/mobile start",
     "dev:web": "corepack pnpm --filter @whiterabbit/web dev",
-    "format": "prettier --write package.json pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs",
-    "format:check": "prettier --check package.json pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs",
+    "format": "prettier --write package.json pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs apps packages",
+    "format:check": "prettier --check package.json pnpm-workspace.yaml tsconfig.base.json eslint.config.mjs apps packages",
     "lint": "corepack pnpm -r --if-present lint",
     "test": "corepack pnpm -r --if-present test",
     "typecheck": "corepack pnpm -r --if-present typecheck"

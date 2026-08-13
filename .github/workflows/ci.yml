@@ -8,10 +8,38 @@ permissions:
   contents: read
 
 jobs:
-  memory-foundation:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.18.0"
+
+      - name: Install pinned dependencies
+        run: corepack pnpm install --frozen-lockfile
+
+      - name: Verify peer dependency graph
+        run: corepack pnpm peers check
+
+      - name: Check formatting
+        run: corepack pnpm format:check
+
+      - name: Lint TypeScript applications
+        run: corepack pnpm lint
+
+      - name: Typecheck workspace
+        run: corepack pnpm typecheck
+
+      - name: Run TypeScript tests
+        run: corepack pnpm test
+
+      - name: Build web and iOS bundles
+        run: corepack pnpm build
+
+      - name: Audit production graph for critical advisories
+        run: corepack pnpm audit --prod --audit-level=critical
 
       - uses: actions/setup-python@v5
         with:
