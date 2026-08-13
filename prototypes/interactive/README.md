@@ -7,6 +7,9 @@ times, watchlists, and audit records are generated and synthetic.
 It does not request a camera, run inference, authenticate a user, call an API, persist
 data, or contact Supabase, Vercel, or any other service.
 
+The prototype and product use one light appearance. There is no dark/system theme
+selector; only bounded camera, evidence, or map viewports may use dark source imagery.
+
 ## Run locally
 
 From the repository root:
@@ -53,6 +56,6 @@ at the supported desktop widths.
 
 ## Approval boundary
 
-Approval of this prototype authorizes product implementation planning only when the
-owner says so explicitly. It does not authorize production dependencies, camera
+The owner approved the interaction direction, light-only revision, synthetic product
+implementation and dependency batch D1 on 2026-08-13. This does not authorize camera
 access, model artifacts, biometric processing, cloud provisioning, or real data.

@@ -54,7 +54,6 @@
     selectedWatchlist: "SYN-WL-04",
     commandOpen: false,
     desktopReviewStatus: null,
-    theme: "system",
     density: "comfortable",
     dialog: null,
     toast: null,
@@ -97,7 +96,7 @@
 
   function prototypeChrome(content) {
     return `
-      <div class="prototype-shell" data-theme="${state.theme}" data-density="${state.density}">
+      <div class="prototype-shell" data-density="${state.density}">
         <header class="prototype-bar">
           <a class="prototype-brand" href="#mobile/signin" data-route="mobile/signin" aria-label="WhiteRabbit prototype home">
             <span class="brand-mark">${icon("rabbit", 23)}</span>
@@ -109,7 +108,6 @@
           </div>
           <div class="prototype-actions">
             <span class="synthetic-flag"><span></span>Synthetic data</span>
-            <button class="icon-button" data-action="toggle-theme" aria-label="Cycle prototype theme" title="Cycle theme">${icon("eye", 18)}</button>
             <button class="text-button" data-action="reset-prototype">Reset flow</button>
           </div>
         </header>
@@ -196,7 +194,6 @@
   function render() {
     const view = state.mode === "mobile" ? window.WhiteRabbitMobile.render() : window.WhiteRabbitDesktop.render();
     app.innerHTML = prototypeChrome(view);
-    document.documentElement.dataset.prototypeTheme = state.theme;
   }
 
   function handleClick(event) {
@@ -223,10 +220,6 @@
     if (action === "close-command" && event.target.closest("[data-command-panel]")) return;
 
     if (action === "reset-prototype") reset();
-    if (action === "toggle-theme") {
-      state.theme = state.theme === "system" ? "dark" : state.theme === "dark" ? "light" : "system";
-      showToast(`Theme set to ${state.theme}`);
-    }
     if (action === "open-dialog") {
       state.dialog = target.dataset.dialog;
       render();

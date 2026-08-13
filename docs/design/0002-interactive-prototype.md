@@ -11,8 +11,8 @@
 
 On 2026-08-13 the owner approved the combined mobile and desktop information
 architecture, authorized product implementation and dependency batch D1, and required
-one light appearance only. The prototype's theme selector and dark desktop direction
-are rejected as product requirements and must not be carried into implementation.
+one light appearance only. The theme selector was removed and the desktop prototype
+was revised to a light shell; bounded camera, evidence, or map imagery may remain dark.
 
 This prototype tests information architecture, language, hierarchy, density, and
 guarded decision flows. It is not a thin implementation of the eventual Expo or
