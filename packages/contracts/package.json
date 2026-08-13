@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     "./account": "./src/account.ts",
+    "./baseline-events": "./src/baseline-events.ts",
     "./node": "./src/node.ts",
     "./organization": "./src/organization.ts",
     "./signed-event": "./src/signed-event.ts"

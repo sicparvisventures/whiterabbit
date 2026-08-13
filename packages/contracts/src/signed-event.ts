@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { controllerProfileSchema } from "./organization";
 
-const base64UrlSha256Schema = z
+export const sha256DigestSchema = z
   .string()
   .length(43)
   .regex(/^[A-Za-z0-9_-]{43}$/);
@@ -12,7 +12,12 @@ const fixedWidthEs256JoseSignatureSchema = z
   .length(86)
   .regex(/^[A-Za-z0-9_-]{86}$/);
 
-const opaqueReferenceSchema = z.string().min(1).max(128);
+export const opaqueEventReferenceSchema = z.string().min(1).max(128);
+
+export const utcMillisecondsSchema = z.iso.datetime({
+  offset: false,
+  precision: 3,
+});
 
 export const baselineEventTypeSchema = z.enum([
   "node.heartbeat.v1",
@@ -37,17 +42,17 @@ export const baselineEventHeaderSchema = z.strictObject({
   deploymentId: z.uuid(),
   spaceId: z.uuid(),
   nodeId: z.uuid(),
-  keyId: opaqueReferenceSchema,
+  keyId: opaqueEventReferenceSchema,
   counterEpochId: z.uuid(),
   sequence: z.string().regex(/^(0|[1-9][0-9]*)$/),
-  occurredAt: z.iso.datetime({ offset: false, precision: 3 }),
+  occurredAt: utcMillisecondsSchema,
   controllerProfile: controllerProfileSchema,
-  purposeId: opaqueReferenceSchema,
-  policyVersion: opaqueReferenceSchema,
-  capabilityAuthorityId: opaqueReferenceSchema,
+  purposeId: opaqueEventReferenceSchema,
+  policyVersion: opaqueEventReferenceSchema,
+  capabilityAuthorityId: opaqueEventReferenceSchema,
   classification: dataClassificationSchema,
   dataNature: dataNatureSchema,
-  previousEventDigest: base64UrlSha256Schema.optional(),
+  previousEventDigest: sha256DigestSchema.optional(),
 });
 
 export const eventSignatureSchema = z.strictObject({
