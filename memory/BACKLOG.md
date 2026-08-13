@@ -50,18 +50,22 @@ Tasks are ordered by dependency. A task is not complete until its verification s
   - Verify: frozen install, peer check, format, lint, typecheck, tests, builds, audit,
     SBOM/licence/secret checks and strict memory validation pass in GitHub Actions.
 
-## Phase 2: Single-Node Vertical Slice
+## Phase 2: Single-PWA Vertical Slice
 
-- [ ] Build the frontend-first synthetic product behind repository ports.
-  - Progress: Plan 0002 is defined and the first web shell is deployed to Vercel.
-  - Acceptance: complete executable schemas/policy, deterministic fixture adapters,
-    web operational routes and Expo field flows without requiring Supabase.
-  - Verify: shared contract tests, Playwright, iOS export, production web build and
+- [ ] Build the real-data-ready product behind typed contracts and fail-closed ports.
+  - Progress: Plan 0003 is active; Expo is removed; the installable PWA shell and
+    executable account contracts are implemented. No runtime fixture adapter will
+    ship. Supabase configuration remains optional until the owner creates a project.
+  - Acceptance: public/account/setup/product routes contain no invented operational
+    records; real Supabase Auth activates without UI changes; policy and camera
+    lifecycle contracts deny unavailable capabilities explicitly.
+  - Verify: contract/policy tests, browser walkthroughs, production PWA build and
     automatic Vercel deployment from `main`.
 
-- [ ] Enroll one Expo iPhone camera into one authorized deployment.
-  - Acceptance: revocable node identity, explicit camera permission, approved capture zone, offline status.
-  - Verify: native integration test and signed enrollment test.
+- [ ] Enroll one browser camera node into one authorized deployment.
+  - Acceptance: revocable node identity, explicit camera permission, approved capture
+    zone and foreground-only lifecycle; enrollment persistence waits for Supabase RLS.
+  - Verify: browser camera lifecycle tests and signed enrollment contract test.
 - [ ] Detect vehicles locally without uploading video.
   - Acceptance: only minimal candidate metadata and permitted redacted evidence cross the boundary.
   - Verify: network inspection proves no raw stream or full frame is transmitted.

@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T15:50:54Z
-- Content-Fingerprint: sha256:6fafcefd9c31709ab30950fed981065747c65386168062397cbf3197c6fa9045
+- Last-Updated: 2026-08-13T16:03:48Z
+- Content-Fingerprint: sha256:5f3d2ca78cdf0b8e76235f692fd1a0670c40bb6a628aa86936f216494f949481
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: c546c1f
-- Last-Summary: Vercel production is live; frontend-first Supabase-later plan defines typed fixture adapters and next implementation slices.
+- Commit: 8b38968
+- Last-Summary: Executable account contracts now fail closed without Supabase; next implement policy decisions and the real Auth adapter.
 
 ## Current Task
 

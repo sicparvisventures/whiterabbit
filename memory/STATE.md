@@ -17,7 +17,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - SparrowMap code may be reused lawfully with attribution.
 - Person and object data are potential OSINT inputs, but identifying or persistent person tracking is not approved for implementation.
 - ALPR and object detection remain core. A tenant-scoped biometric watchlist is an additional approved product direction, with implementation and all real biometric processing still gated by Spec 0002, legal authority, DPIA/FRIA, threat model, model review, and controller approval.
-- The mobile client is an Expo/React Native development build for iPhone-first edge and field workflows. The desktop command center is Next.js. Supabase Auth email/password is the phase-1 human login; privileged roles require MFA `aal2`, while nodes use separate revocable device identities. SSO is deferred.
+- WhiteRabbit is one installable, mobile-first Next.js PWA for field and desktop workflows. Supabase Auth email/password is the phase-1 human login; privileged roles require MFA `aal2`, while nodes use separate revocable device identities. SSO is deferred.
 - Supabase and Vercel are candidates for approved non-sensitive profiles. Restricted, operational, intelligence, or classified profiles require an accredited or self-hosted topology; nothing has been provisioned.
 - Frequent atomic pushes are approved after validation.
 - The combined mobile/desktop information architecture, synthetic implementation and
@@ -52,12 +52,17 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - A pnpm 11 workspace now has strict TypeScript, ESLint, Prettier and Vitest baselines,
   deterministic installs, blocked dependency build scripts and shared light-only
   semantic design tokens with tests.
-- `apps/web` is a buildable Next.js 16.3 command-center shell with responsive light
-  navigation, generated deployment metrics, candidate selection, fictional site map,
-  guarded local review outcomes and explicit disconnected-service status.
-- `apps/mobile` is a buildable Expo SDK 57/React Native 0.86 iOS shell with a light
-  native stack, truthful camera-disconnected state, expandable readiness checks and a
-  fail-closed Sentry start control.
+- ADR-0008, Spec 0005, Architecture 0002 and Plan 0003 replace the Expo/dual-client
+  direction with one installable Next.js PWA, foreground browser camera lifecycle,
+  real empty states and an optional fail-closed Supabase adapter.
+- The Expo application and its native dependencies/scripts were removed. The lockfile
+  is 454 packages smaller and the remaining workspace passes the production audit.
+- `apps/web` has a native App Router manifest, light-only install metadata, same-origin
+  lifecycle-only service worker and explicit security/cache headers. The service
+  worker does not cache product data or credentials.
+- Executable Zod account contracts validate normalized signup, signin and recovery
+  inputs plus stable mutation results, including an explicit
+  `BACKEND_NOT_CONFIGURED` result that contains no invented user.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -122,11 +127,21 @@ Vercel production deployment
 Project `reserve4you/whiterabbit`, root `apps/web`, production branch `main`; first
 deployment completed successfully and the public alias returned the expected
 WhiteRabbit Command Center HTML.
+
+Single-PWA checkpoints
+Commits `2e5eac8`, `f61ec05` and `8b38968` document the architecture, remove Expo and
+add the installable shell. Frozen install, peer validation, production audit, format,
+lint, typecheck, tests and Next.js production build passed locally.
+
+Account contract slice
+Five Vitest cases, TypeScript and ESLint pass for `@whiterabbit/contracts`; the first
+red run failed because the account module did not yet exist, then the minimal schema
+implementation made the suite green.
 ```
 
 ## Not Yet Implemented
 
-- Supabase project, schema, RLS, Auth integration, or Vercel project.
+- Supabase project, schema, RLS, or Auth integration.
 - Camera enrollment, native mobile inference, desktop node, ALPR pipeline, review queue, or public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, security
@@ -134,7 +149,7 @@ WhiteRabbit Command Center HTML.
 
 ## Next Action
 
-Prove the Supabase-later seam by implementing Plan 0002 tasks A1–A2 test-first, then
-move the web shell onto deterministic repository fixtures. Complete P1 secret/licence/
-SBOM automation alongside this work. Supabase, models, camera access and real data
-remain separately gated.
+Finish Plan 0003 phase 2 by adding the pure policy contract and optional Supabase Auth
+adapter test-first. Then replace the deployed sample dashboard with real public,
+account, setup-required and empty product states before implementing the foreground
+camera lifecycle. Supabase, models and operational data remain separately gated.
