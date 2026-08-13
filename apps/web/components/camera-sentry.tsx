@@ -3,11 +3,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
+  buildVideoConstraints,
   getInitialCameraState,
+  listCameraDevices,
   reduceCameraState,
   stopMediaStream,
+  type CameraDeviceOption,
   type CameraState,
 } from "../lib/camera/session";
+import { CameraControls } from "./camera-controls";
 
 const stateCopy: Record<
   CameraState | "CHECKING",
@@ -54,6 +58,9 @@ export function CameraSentry({
   backendConfigured: boolean;
 }) {
   const [state, setState] = useState<CameraState | "CHECKING">("CHECKING");
+  const [cameraDevices, setCameraDevices] = useState<CameraDeviceOption[]>([]);
+  const [selectedDeviceId, setSelectedDeviceId] = useState("");
+  const [captureZoneAcknowledged, setCaptureZoneAcknowledged] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const mountedRef = useRef(false);
@@ -62,6 +69,7 @@ export function CameraSentry({
     stopMediaStream(streamRef.current);
     streamRef.current = null;
     if (videoRef.current) videoRef.current.srcObject = null;
+    setCaptureZoneAcknowledged(false);
     setState((current) =>
       current === "CHECKING" ? current : reduceCameraState(current, event),
     );
@@ -89,18 +97,20 @@ export function CameraSentry({
     };
   }, [releaseStream]);
 
-  async function enableCamera() {
+  async function enableCamera(deviceId?: string) {
     if (!navigator.mediaDevices?.getUserMedia || !window.isSecureContext)
       return;
 
-    setState((current) =>
-      current === "CHECKING" ? current : reduceCameraState(current, "REQUEST"),
-    );
+    stopMediaStream(streamRef.current);
+    streamRef.current = null;
+    if (videoRef.current) videoRef.current.srcObject = null;
+    setCaptureZoneAcknowledged(false);
+    setState("REQUESTING");
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: false,
-        video: { facingMode: { ideal: "environment" } },
+        video: buildVideoConstraints(deviceId),
       });
 
       if (!mountedRef.current || document.hidden) {
@@ -114,11 +124,43 @@ export function CameraSentry({
         videoRef.current.srcObject = stream;
         await videoRef.current.play();
       }
-      setState((current) =>
-        current === "CHECKING"
-          ? current
-          : reduceCameraState(current, "GRANTED"),
-      );
+
+      if (
+        !mountedRef.current ||
+        document.hidden ||
+        streamRef.current !== stream
+      ) {
+        stopMediaStream(stream);
+        if (mountedRef.current) setState("INTERRUPTED");
+        return;
+      }
+
+      setState("PREVIEWING");
+
+      if (navigator.mediaDevices.enumerateDevices) {
+        try {
+          const devices = listCameraDevices(
+            await navigator.mediaDevices.enumerateDevices(),
+          );
+          if (!mountedRef.current || streamRef.current !== stream) return;
+
+          const activeDeviceId =
+            stream.getVideoTracks()[0]?.getSettings().deviceId ??
+            deviceId ??
+            "";
+          const selectedCamera = devices.find(
+            (camera) => camera.deviceId === activeDeviceId,
+          );
+
+          setCameraDevices(devices);
+          setSelectedDeviceId(
+            selectedCamera?.deviceId ?? devices[0]?.deviceId ?? "",
+          );
+        } catch {
+          setCameraDevices([]);
+          setSelectedDeviceId("");
+        }
+      }
     } catch {
       stopMediaStream(streamRef.current);
       streamRef.current = null;
@@ -131,9 +173,6 @@ export function CameraSentry({
   }
 
   const copy = stateCopy[state];
-  const canEnable = ["IDLE", "DENIED", "INTERRUPTED", "STOPPED"].includes(
-    state,
-  );
 
   return (
     <div className="sentry-grid">
@@ -152,72 +191,18 @@ export function CameraSentry({
         </div>
       </section>
 
-      <aside className="sentry-controls">
-        <div className="sentry-status-heading">
-          <span className="kicker">Camera session</span>
-          <h2>{copy.label}</h2>
-          <p>{copy.detail}</p>
-        </div>
-
-        <div className="camera-actions">
-          {state === "PREVIEWING" ? (
-            <button
-              className="button button-secondary"
-              onClick={() => releaseStream("STOP")}
-              type="button"
-            >
-              Stop camera
-            </button>
-          ) : (
-            <button
-              className="button button-primary"
-              disabled={!canEnable}
-              onClick={enableCamera}
-              type="button"
-            >
-              {state === "REQUESTING" ? "Requesting…" : "Enable camera"}
-            </button>
-          )}
-          <button className="button sentry-disabled" disabled type="button">
-            Start detection
-          </button>
-        </div>
-
-        <dl className="sentry-diagnostics">
-          <div>
-            <dt>Browser camera</dt>
-            <dd className={state === "PREVIEWING" ? "diagnostic-ready" : ""}>
-              {copy.label}
-            </dd>
-          </div>
-          <div>
-            <dt>Backend</dt>
-            <dd className={backendConfigured ? "diagnostic-ready" : ""}>
-              {backendConfigured ? "Configured" : "Not connected"}
-            </dd>
-          </div>
-          <div>
-            <dt>Node identity</dt>
-            <dd>Not enrolled</dd>
-          </div>
-          <div>
-            <dt>Effective policy</dt>
-            <dd>Not approved</dd>
-          </div>
-          <div>
-            <dt>Detection model</dt>
-            <dd>Not installed</dd>
-          </div>
-        </dl>
-
-        <div className="privacy-note">
-          <strong>Preview is not detection</strong>
-          <p>
-            This page does not upload frames or claim ALPR, object or biometric
-            results. Detection stays locked until every readiness gate is real.
-          </p>
-        </div>
-      </aside>
+      <CameraControls
+        backendConfigured={backendConfigured}
+        cameraDevices={cameraDevices}
+        captureZoneAcknowledged={captureZoneAcknowledged}
+        copy={copy}
+        onCameraChange={(deviceId) => void enableCamera(deviceId)}
+        onCaptureZoneChange={setCaptureZoneAcknowledged}
+        onEnable={() => void enableCamera()}
+        onStop={() => releaseStream("STOP")}
+        selectedDeviceId={selectedDeviceId}
+        state={state}
+      />
     </div>
   );
 }

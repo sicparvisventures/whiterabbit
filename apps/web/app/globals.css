@@ -2014,6 +2014,60 @@ p {
   line-height: 1.5;
 }
 
+.camera-field {
+  display: grid;
+  gap: 7px;
+  margin-top: 22px;
+}
+
+.camera-field label,
+.capture-zone-control strong {
+  font-size: 11px;
+  font-weight: 760;
+}
+
+.camera-field select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 38px 0 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  color: var(--text);
+  background: #fff;
+  font: inherit;
+  font-size: 12px;
+}
+
+.camera-field p,
+.capture-zone-control small {
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.capture-zone-control {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--canvas);
+}
+
+.capture-zone-control input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--primary);
+}
+
+.capture-zone-control span {
+  display: grid;
+  gap: 4px;
+}
+
 .camera-actions {
   display: grid;
   gap: 9px;
