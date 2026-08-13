@@ -13,6 +13,7 @@
   "dependencies": {
     "@supabase/ssr": "0.12.4",
     "@supabase/supabase-js": "2.112.3",
+    "@whiterabbit/contracts": "workspace:*",
     "@whiterabbit/design-tokens": "workspace:*",
     "next": "16.3.0",
     "react": "19.2.8",

@@ -38,6 +38,9 @@ importers:
       '@supabase/supabase-js':
         specifier: 2.112.3
         version: 2.112.3
+      '@whiterabbit/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@whiterabbit/design-tokens':
         specifier: workspace:*
         version: link:../../packages/design-tokens

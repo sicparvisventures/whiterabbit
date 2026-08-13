@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:07:05Z
-- Content-Fingerprint: sha256:56adf66fc5ec7bc52b04bafee567684d810efcdb301c7dbe21f1eef48396eaee
+- Last-Updated: 2026-08-13T16:08:17Z
+- Content-Fingerprint: sha256:1ba81fd09454bcbba0f1bc677bd0a103046d5cc9aacebbcbf3f94312ea85376e
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: a5318c1
-- Last-Summary: Pinned Supabase dependencies and validated optional browser configuration now fail closed; next bind real Auth actions.
+- Commit: cfc7ea8
+- Last-Summary: The browser factory creates a real Supabase client only for validated config; next implement account mutations and forms.
 
 ## Current Task
 

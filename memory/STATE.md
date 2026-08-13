@@ -70,6 +70,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - The approved Supabase browser/SSR dependencies are pinned. Public configuration is
   validated as absent, invalid or configured; partial, non-HTTPS and malformed values
   fail closed before any client or request can be created.
+- A browser-client factory constructs the real Supabase client only after that
+  validation succeeds. Absent or invalid configuration returns a typed unavailable
+  result, and the committed environment example contains names and safety guidance
+  but no values.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -154,6 +158,11 @@ Supabase configuration slice
 Four Vitest cases, TypeScript, ESLint, formatting and the production dependency audit
 pass. The red run failed on the absent configuration module; the implementation now
 accepts only a complete HTTPS URL and publishable browser key.
+
+Supabase browser-client slice
+Three factory cases pass alongside the configuration suite. The red run failed on the
+absent factory; the green implementation creates no client in either unavailable
+state and constructs `@supabase/ssr` only from validated browser values.
 ```
 
 ## Not Yet Implemented
