@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:30:08Z
-- Content-Fingerprint: sha256:f1a02d0f255f30de44bf410c32d876f06b6bef0e2301d539c6c76aed6324d687
+- Last-Updated: 2026-08-13T16:33:20Z
+- Content-Fingerprint: sha256:333b4246e92176c69727b5272dbf5e7ffc753c2fab7aeb4725ce664922681d60
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 7842262
-- Last-Summary: The controller-scoped onboarding UI is complete but truthfully non-persistent; next implement request-scoped Supabase sessions and route protection.
+- Commit: e5c4ad3
+- Last-Summary: Conditional Supabase SSR session refresh and verified-claims route protection are ready; next bind authenticated identity in the layout and add sign-out/callback flows.
 
 ## Current Task
 

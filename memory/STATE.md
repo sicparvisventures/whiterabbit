@@ -96,6 +96,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   deployment, exact purpose, five controller profiles, ALPR/object baselines and the
   public-SaaS classification acknowledgement. Its submit action is disabled and copy
   explicitly states that typed input is neither submitted nor stored before migrations.
+- Request-scoped Supabase server and proxy adapters now use cookies and verified JWT
+  claims. `/app` remains available as an explicit unconfigured preview before a
+  project exists; once valid Supabase configuration is present, missing/invalid claims
+  redirect to sign-in and no server authorization path trusts `getSession()`.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -216,6 +220,12 @@ Onboarding UI slice
 The production build renders `/app/setup` as a dedicated route. Playwright verified
 all controller/capability/classification fields, disabled persistence and 390 px
 layout with no browser errors; the temporary development server was stopped.
+
+Session protection infrastructure slice
+Four access-decision tests pass as part of twenty-four web tests. Next.js detects the
+root Proxy, production build passes, and a local production smoke test confirmed that
+unconfigured `/app` preview, account routes and the manifest return HTTP 200. The
+temporary production server was stopped.
 ```
 
 ## Not Yet Implemented
