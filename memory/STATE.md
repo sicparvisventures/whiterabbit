@@ -338,6 +338,14 @@ argument assertion before the corrected service passed all 48 web tests; commit
 `ba0f39c` is on `main`. Frozen install, formatting, ESLint, TypeScript, 80 Vitest
 assertions, Next.js production build, production audit with no known vulnerabilities
 and ten Python memory tests all pass.
+
+Green handoff release
+GitHub Actions run `31725036519` passed every quality step for commit `d0f139c`.
+Vercel production deployment `dpl_G5VPkCB47Mb1nvJt24nqfZpMtcRw` is Ready and aliased
+to https://whiterabbit-theta.vercel.app. Live HTTP checks returned 200 for landing,
+settings, Sentry, manifest and the 192 px icon; the manifest is standalone/light and
+contains 192 px, 512 px and maskable raster assets. The PNG dimensions/content type,
+camera-only permissions policy, frame denial and content-type protection were present.
 ```
 
 ## Not Yet Implemented

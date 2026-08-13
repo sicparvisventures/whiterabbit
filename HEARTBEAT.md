@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T17:18:11Z
+- Last-Updated: 2026-08-13T17:20:10Z
 - Content-Fingerprint: sha256:c621c2b5b958c3fa92c942db183d8b6ba7bda62136d18b8079516726940ca95e
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: ba0f39c
-- Last-Summary: Pre-Supabase PWA, settings, camera readiness, node contracts and Auth callbacks are verified; next owner follows the Supabase handoff runbook.
+- Commit: d0f139c
+- Last-Summary: Pre-Supabase PWA is CI-green and live on Vercel; next owner creates/configures Supabase from the handoff runbook.
 
 ## Current Task
 
