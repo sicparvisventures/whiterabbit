@@ -88,6 +88,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   navigation for overview, Sentry, candidates, watchlists, nodes, policies, audit and
   settings. Overview readiness is derived from configuration; every operational route
   renders a truthful empty state rather than a fabricated row, metric or map.
+- `/sentry` now provides a real foreground browser-camera permission, preview and stop
+  flow. It requests the environment-facing camera only after a user action, keeps the
+  stream local, releases tracks on stop/hide/unmount and leaves detection disabled
+  while node, policy and model gates are absent.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -197,6 +201,12 @@ Empty product workspace slice
 The production build prerenders `/app`, `/app/setup` and eight product destinations.
 Playwright verified the 1440 px command center, 390 px field navigation and Operations
 empty state without browser errors; the temporary development server was stopped.
+
+Foreground camera slice
+Seven camera lifecycle cases pass as part of twenty web tests. The production build
+prerenders `/sentry`; Playwright verified the 390 px idle state, explicit permission
+request state and disabled detection control. The browser prompt was not granted by
+the headless test, and the temporary server was stopped.
 ```
 
 ## Not Yet Implemented

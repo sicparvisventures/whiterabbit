@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:23:06Z
-- Content-Fingerprint: sha256:c55d84675b26222fb19ce83c6e417a2ded255846b8e00c6c09b7e74ddb23ad56
+- Last-Updated: 2026-08-13T16:27:18Z
+- Content-Fingerprint: sha256:316811ad01575fddfe74b44ea6fd510690422e6963a0eee9798d837217506e58
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 9dba9f2
-- Last-Summary: Responsive mobile/desktop product routes now show only real readiness and empty states; next implement the browser camera lifecycle.
+- Commit: a10baf5
+- Last-Summary: Real local camera preview and fail-closed Sentry readiness are implemented; next add the onboarding form and session-aware protection.
 
 ## Current Task
 
