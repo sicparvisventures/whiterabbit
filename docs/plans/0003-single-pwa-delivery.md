@@ -6,8 +6,9 @@
 
 ## Implementation Status — 2026-08-13
 
-- Phase 1 complete: Expo removed; install manifest, service worker and security headers
-  are live; runtime mock operational records were removed.
+- Phase 1 complete: Expo removed; install manifest with Chromium raster fallbacks,
+  real install-state guidance, service worker and security headers are live; runtime
+  mock operational records were removed.
 - Phase 2 Auth seam complete pending external configuration: account/policy contracts,
   optional browser/server clients, cookie refresh, verified claims, signup/signin,
   confirmation, recovery, password update and sign-out are implemented.

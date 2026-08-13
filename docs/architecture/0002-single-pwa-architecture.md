@@ -25,6 +25,10 @@ requirement for browser camera APIs. The PWA shell does not proxy or upload vide
 Frames remain inside the browser unless a later inference adapter explicitly consumes
 them under policy. No service worker caches credentials, API responses, evidence or
 product routes; its first role is install/update lifecycle and offline shell guidance.
+The manifest provides SVG sources plus non-transparent 192 px, 512 px and maskable
+512 px PNG fallbacks. A client boundary retains the browser's deferred install event
+only in memory, detects standalone mode and renders iOS manual instructions without
+claiming a programmable install operation.
 
 ## Application Boundaries
 

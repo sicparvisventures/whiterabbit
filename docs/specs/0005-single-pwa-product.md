@@ -11,7 +11,9 @@
 The installable shell, public/account/setup/product routes, real Supabase Auth seam,
 conditional verified-claims route protection and foreground camera lifecycle are
 implemented and tested. Camera selection is populated from real browser devices only
-after permission, and capture-zone acknowledgement is explicit and session-only. No
+after permission, and capture-zone acknowledgement is explicit and session-only. PWA
+installation exposes a real deferred Chromium prompt, iOS manual guidance, and
+standalone detection; unsupported browsers receive no invented install action. No
 Supabase project, migrations/RLS, node identity, inference, event ingest or operational
 record exists. The remaining acceptance items depend on the Supabase handoff and
 separately approved model/runtime work.

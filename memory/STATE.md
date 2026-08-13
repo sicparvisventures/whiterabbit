@@ -64,6 +64,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - `apps/web` has a native App Router manifest, light-only install metadata, same-origin
   lifecycle-only service worker and explicit security/cache headers. The service
   worker does not cache product data or credentials.
+- The manifest now includes explicit 192 px, 512 px and maskable 512 px PNG fallbacks
+  generated from the committed WhiteRabbit SVG sources. Install UI stores no durable
+  state: it responds only to a genuine deferred browser prompt, iOS-like manual
+  instructions or standalone detection, and remains absent when unsupported.
 - Executable Zod account contracts validate normalized signup, signin and recovery
   inputs plus stable mutation results, including an explicit
   `BACKEND_NOT_CONFIGURED` result that contains no invented user.
@@ -289,6 +293,16 @@ production build pass. A 390 px Playwright production walkthrough verified the i
 and permission-denied states, disabled session acknowledgement without preview,
 readiness diagnostics and zero browser console errors/warnings. The temporary browser
 and production server were stopped. Commits `980162e` and `556f58e` are on `main`.
+
+PWA installability slice
+The expected red run failed because the install-state module did not exist; seven new
+decision/platform assertions now pass as part of 43 web tests. Chrome's current PWA
+guidance was checked before adding the 192 px and 512 px raster fallbacks. A 390 px
+production walkthrough verified that unsupported state renders no fake action, a
+deferred test browser event is prevented and produces an accessible install action,
+dismissal hides it, and the console remains clean. ESLint, TypeScript and production
+build pass; the temporary browser and server were stopped. Commits `67dc59b` and
+`923c845` are on `main`.
 ```
 
 ## Not Yet Implemented
@@ -303,7 +317,7 @@ and production server were stopped. Commits `980162e` and `556f58e` are on `main
 
 ## Next Action
 
-Add truthful PWA install-state guidance and repeat the browser/production verification.
-After the owner creates Supabase, add migrations, RLS, generated types and cross-tenant
-tests before enabling setup persistence. Models and operational data remain separately
-gated.
+Complete the backend-independent node enrollment/input contracts without persistence
+or invented identities. After the owner creates Supabase, add migrations, RLS,
+generated types and cross-tenant tests before enabling setup persistence. Models and
+operational data remain separately gated.
