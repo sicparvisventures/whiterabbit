@@ -6,7 +6,8 @@
   "exports": {
     "./account": "./src/account.ts",
     "./node": "./src/node.ts",
-    "./organization": "./src/organization.ts"
+    "./organization": "./src/organization.ts",
+    "./signed-event": "./src/signed-event.ts"
   },
   "scripts": {
     "build": "tsc --noEmit",
