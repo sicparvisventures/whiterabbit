@@ -101,21 +101,23 @@ This register is engineering context, not legal advice. Production deployment re
 - Mitigation: model registry with digest, code/weight/data licences, lineage, intended use, evaluation, approval and expiry; forbid InsightFace community weights without production rights; block mixed model versions; re-evaluate every artifact change.
 - Release gate: legal and model-risk approval for every exact artifact in the build.
 
-## R-016: Mobile Capture Failure and Spoofing
+## R-016: Browser Capture Failure and Spoofing
 
 - Severity: High
-- Risk: iOS releases the camera when the Expo app backgrounds, an old device overheats, a printed/photo-screen face spoofs a match, or a compromised node forges alerts.
-- Mitigation: explicit foreground `Sentry Mode`; visible health, power, and thermal state; signed monotonic events; device attestation where approved; capture recovery tests; presentation-attack testing; multi-observation corroboration; supported-device policy.
-- Release gate: sustained tests on every supported iPhone tier and no claim of background operation without native proof.
+- Risk: iOS or another browser releases the camera when the PWA hides, an old device
+  overheats, a printed/photo-screen face spoofs a match, or a compromised node forges
+  alerts.
+- Mitigation: explicit foreground `Sentry Mode`; track cleanup on hide/unmount;
+  visible health, power and thermal state; signed monotonic events; capture recovery
+  and presentation-attack testing; multi-observation corroboration; supported-device
+  policy.
+- Release gate: sustained tests on every supported browser/device tier and no claim of
+  background operation.
 
-## R-017: Unpatched Expo Toolchain Parser
+## R-017: Removed Expo Toolchain Parser — closed
 
-- Severity: High for untrusted build/native input; Low for the current static P1 shell
-- Risk: Expo SDK 57 resolves `image-size@2.0.2`; the registry reports denial-of-service
-  parser advisories and names `2.0.3` as the fix, but that version is not published as
-  of 2026-08-13. A moderate `uuid` CLI advisory is also transitive.
-- Mitigation: no real/untrusted image, camera or model input in P1; keep the finding
-  visible in dependency audits; do not force unsupported transitive major overrides;
-  upgrade to the Expo-supported patched graph when published.
-- Release gate: zero unaccepted critical/high runtime findings before native camera or
-  media processing and an explicit review of every parser reachable from input.
+- Status: closed by ADR-0008 and commit `f61ec05`.
+- Outcome: Expo and its affected transitive parser graph were removed; the production
+  dependency audit reports no known vulnerability.
+- Continuing gate: every future camera, image or model parser still requires a fresh
+  reachability and dependency review before untrusted media processing.

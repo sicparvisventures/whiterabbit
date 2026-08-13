@@ -17,8 +17,10 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 ## Phase 1: Legal and Threat Boundaries
 
 - [x] Fix the synthetic Defence pilot and client architecture.
-  - Acceptance: one fictional scope, explicit data/retention boundaries, Expo mobile, Next.js desktop, Supabase Auth without SSO, separate node identity, and accessible mobile/desktop UX contract.
-  - Verify: Specs 0001–0003, ADR-0006, Architecture 0001, and Product Experience 0001 are internally consistent; tests and strict memory validation pass.
+  - Historical acceptance: the dual-client boundary was documented in ADR-0006 and
+    later superseded by ADR-0008. The current accepted architecture is one PWA with
+    Supabase Auth and separate node identity.
+  - Verify: Spec 0005, ADR-0008, Architecture 0002 and Plan 0003 are active.
 
 - [ ] Write the Belgian deployment and data-governance specification.
   - Progress: Spec 0001 and ADR-0004 are owner-approved for synthetic implementation planning with five controller profiles; institutional review remains open.
@@ -43,10 +45,11 @@ Tasks are ordered by dependency. A task is not complete until its verification s
   - Verify: responsive Playwright walkthroughs, visual inspection, keyboard/focus review, no browser-console errors, and explicit owner approval.
 
 - [ ] Complete P1 workspace and quality gates.
-  - Progress: pinned pnpm/Node tooling, TypeScript quality bases, shared tokens, Expo
-    and Next.js shells, production bundle builds, peer checks and CI are implemented.
+  - Progress: pinned pnpm/Node tooling, TypeScript quality bases, shared tokens,
+    Next.js PWA production builds, peer checks and CI are implemented. Expo and its
+    parser finding were removed.
   - Acceptance: add repository-wide secret scanning plus durable licence/SBOM checks;
-    keep the current Expo transitive parser advisory blocked from operational input.
+    preserve zero unaccepted critical/high runtime findings.
   - Verify: frozen install, peer check, format, lint, typecheck, tests, builds, audit,
     SBOM/licence/secret checks and strict memory validation pass in GitHub Actions.
 

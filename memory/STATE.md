@@ -18,7 +18,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Person and object data are potential OSINT inputs, but identifying or persistent person tracking is not approved for implementation.
 - ALPR and object detection remain core. A tenant-scoped biometric watchlist is an additional approved product direction, with implementation and all real biometric processing still gated by Spec 0002, legal authority, DPIA/FRIA, threat model, model review, and controller approval.
 - WhiteRabbit is one installable, mobile-first Next.js PWA for field and desktop workflows. Supabase Auth email/password is the phase-1 human login; privileged roles require MFA `aal2`, while nodes use separate revocable device identities. SSO is deferred.
-- Supabase and Vercel are candidates for approved non-sensitive profiles. Restricted, operational, intelligence, or classified profiles require an accredited or self-hosted topology; nothing has been provisioned.
+- Vercel hosts the public PWA. Supabase remains unprovisioned and is a candidate only
+  for approved non-sensitive profiles. Restricted, operational, intelligence or
+  classified profiles require an accredited or self-hosted topology.
 - Frequent atomic pushes are approved after validation.
 - The combined mobile/desktop information architecture, synthetic implementation and
   dependency batch D1 are approved. WhiteRabbit is light-only with no dark/system
@@ -37,7 +39,9 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Tagged foundation release `v0.1.0-foundation`.
 - Owner-approved synthetic-planning Belgian controller-profile specification and ADR-0004 covering Defence administration, armed-forces operations, intelligence, police, and municipalities.
 - Owner-approved synthetic-planning biometric-watchlist specification and ADR-0005 defining isolated modes, scoped watchlists, local matching, human review, and government data-plane cells.
-- ADR-0006 selecting Expo/React Native mobile, Next.js desktop, Supabase Auth without SSO in phase 1, and separate node identities.
+- ADR-0006 historically selected Expo/React Native mobile and Next.js desktop;
+  ADR-0008 supersedes that client choice while preserving Supabase Auth without SSO
+  and separate node identities.
 - Spec 0003 fixes the first executable boundary at one fictional `BE-DEFENCE-ADMIN` site, 1–10 iPhone nodes, synthetic ALPR/objects, a maximum 1,000-identity synthetic real-time 1:N benchmark, 24-hour candidate evidence, no public projection, and no federation.
 - Architecture 0001 defines the planned mobile edge, web command center, provider boundaries, separate human/node identity, edge pipeline, storage domains, and deployment topologies.
 - Product Experience 0001 defines a native iOS 26 field instrument and an accessible, premium, information-dense desktop command center without copying third-party trade dress.
@@ -118,14 +122,14 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   current origin to signup, and translate only allowlisted callback/proxy reason codes
   into user copy. Unknown query text is never reflected, and unconfigured submission
   continues to return the explicit backend-unavailable result.
-- CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
-  tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
-  Python memory tests and validates durable memory.
+- CI now installs the frozen lockfile, verifies peers and formatting, lints,
+  typechecks, tests, builds Next.js, audits critical advisories, runs the Python memory
+  tests and validates durable memory.
 - The `apps/web` monorepo project is connected to the public GitHub repository in
   Vercel with root directory `apps/web`, Node 24 and production branch `main`. The
   first production deployment is available at https://whiterabbit-theta.vercel.app.
-- Plan 0002 defines stable repository ports and generated fixture adapters so the web
-  and mobile product can be completed before Supabase is connected.
+- Plan 0003 is active. It rejects runtime fixture adapters and sequences the PWA,
+  Auth, onboarding, camera, Supabase and inference work.
 
 ## Verification Evidence
 
@@ -270,15 +274,17 @@ update form without browser errors; the temporary development server was stopped
 
 ## Not Yet Implemented
 
-- Supabase project, schema, RLS, or Auth integration.
-- Camera enrollment, native mobile inference, desktop node, ALPR pipeline, review queue, or public map.
+- Supabase project, schema, RLS or persisted organization/deployment data. Auth code is
+  complete but cannot perform live mutations before project configuration exists.
+- Persistent camera enrollment, browser inference, desktop node packaging, ALPR
+  pipeline, review queue or public map.
 - Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, security
   risk acceptance/mitigation ownership, or deployment authorization.
 
 ## Next Action
 
-Replace the deployed sample dashboard with real public/account forms, setup-required
-and empty product states bound to the implemented Auth services. Then implement the
-foreground camera lifecycle. Supabase, models and operational data remain separately
-gated.
+Verify the latest GitHub Actions and Vercel deployment, then hand the owner the exact
+Supabase project inputs. After the project exists, add migrations, RLS, generated
+types and cross-tenant tests before enabling setup persistence. Models and operational
+data remain separately gated.

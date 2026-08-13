@@ -6,6 +6,14 @@
 - Deployment: Vercel-hosted Next.js PWA; light appearance only
 - Data rule: no runtime mock, generated or seeded operational records
 
+## Implementation Checkpoint — 2026-08-13
+
+The installable shell, public/account/setup/product routes, real Supabase Auth seam,
+conditional verified-claims route protection and foreground camera lifecycle are
+implemented and tested. No Supabase project, migrations/RLS, node identity, inference,
+event ingest or operational record exists. The remaining acceptance items depend on
+the Supabase handoff and separately approved model/runtime work.
+
 ## Objective
 
 Build WhiteRabbit as one installable, mobile-first web application that lets a user

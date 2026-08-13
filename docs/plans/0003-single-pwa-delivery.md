@@ -4,6 +4,19 @@
 - Date: 2026-08-13
 - Delivery: test-first, at most five implementation files per slice, atomic push
 
+## Implementation Status — 2026-08-13
+
+- Phase 1 complete: Expo removed; install manifest, service worker and security headers
+  are live; runtime mock operational records were removed.
+- Phase 2 Auth seam complete pending external configuration: account/policy contracts,
+  optional browser/server clients, cookie refresh, verified claims, signup/signin,
+  confirmation, recovery, password update and sign-out are implemented.
+- Phase 3 UI complete but persistence pending: responsive routes, empty states and the
+  controller-scoped onboarding form are implemented; migrations/RLS remain Phase 5.
+- Phase 4 preview lifecycle complete: real foreground camera permission/preview/stop
+  and cleanup are implemented; enrollment, inference and signed events remain gated.
+- Phase 5 is the next external handoff. Phase 6 has not started.
+
 ## Phase 1 — Consolidate and Install
 
 1. Remove `apps/mobile`, Expo dependencies/scripts and native CI/export steps.

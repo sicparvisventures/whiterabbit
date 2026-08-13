@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:43:47Z
-- Content-Fingerprint: sha256:6128a8bb7dec8e9ee5cfd37750e12e518995f1b6bc9b2d790d18a6c297d6e008
+- Last-Updated: 2026-08-13T16:47:50Z
+- Content-Fingerprint: sha256:14ddf24312afd1ae41df7b4a53d461f0e4bd61fe20820a1ded4eaca8328e7726
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: c09cf82
-- Last-Summary: Signup, sign-in, recovery, confirmation, password update and sign-out UI paths are complete; next refresh core docs and verify deployment automation.
+- Commit: bbc1edc
+- Last-Summary: Single-PWA Auth, responsive empty workspace, onboarding and foreground camera foundation are verified; next connect owner-created Supabase and apply RLS migrations.
 
 ## Current Task
 
