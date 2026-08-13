@@ -1,0 +1,31 @@
+{
+  "name": "@whiterabbit/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "build": "expo export --platform ios --output-dir dist",
+    "lint": "eslint app",
+    "start": "expo start --dev-client",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@whiterabbit/design-tokens": "workspace:*",
+    "expo": "57.0.12",
+    "expo-router": "57.0.12",
+    "expo-status-bar": "57.0.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.2",
+    "react-native-reanimated": "4.5.1",
+    "react-native-safe-area-context": "5.7.0",
+    "react-native-screens": "4.26.0",
+    "react-native-web": "0.21.2",
+    "react-native-worklets": "0.10.1"
+  },
+  "devDependencies": {
+    "@react-native/metro-config": "0.86.2",
+    "@types/react": "19.2.18"
+  }
+}

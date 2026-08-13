@@ -11,6 +11,7 @@ build/
 .expo/
 __pycache__/
 *.py[cod]
+*.tsbuildinfo
 .DS_Store
 
 # Codex runtime output. Durable project memory lives in /memory instead.

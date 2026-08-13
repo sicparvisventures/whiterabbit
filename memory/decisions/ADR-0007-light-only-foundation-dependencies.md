@@ -33,12 +33,13 @@ initial pins:
 | TypeScript ESLint | `8.67.0` | typescript-eslint/typescript-eslint | MIT | TypeScript lint parser and rules |
 | Prettier | `3.9.6` | prettier/prettier | MIT | deterministic formatting |
 | Zod | `4.4.3` | colinhacks/zod | MIT | runtime schema validation |
-| Next.js | `16.2.11` | vercel/next.js | MIT | Active-LTS web shell |
+| Next.js | `16.3.0` | vercel/next.js | MIT | current stable web shell; selected after audit of 16.2.11 transitive pins |
 | React / React DOM (web) | `19.2.8` | facebook/react | MIT | web UI runtime |
 | Expo | `57.0.12` | expo/expo | MIT | managed native toolchain |
 | React Native | `0.86.2` | facebook/react-native | MIT | Expo SDK 57 native runtime |
 | React (mobile) | `19.2.3` | facebook/react | MIT | Expo SDK 57 compatibility |
 | Expo Router | `57.0.12` | expo/expo | MIT | file-based mobile navigation |
+| React Native supporting peers | Expo SDK 57 template pins | Expo and React Native upstreams | MIT | deterministic Metro/router compatibility |
 | Expo development client | `57.0.11` | expo/expo | MIT | future native-module builds |
 | Expo Camera | `57.0.3` | expo/expo | MIT | future explicit Sentry camera boundary |
 | Supabase JavaScript | `2.112.3` | supabase/supabase-js | MIT | future Auth/data client |
@@ -60,6 +61,15 @@ with each dependency-changing commit.
   delta, build impact, and rollback note.
 - No model, weight, dataset, real identity, camera feed, cloud project, credential, or
   operational endpoint is authorized by this ADR.
+
+Initial audit note: Next.js `16.2.11` was replaced before merge because its fixed
+`postcss` and optional `sharp` lines were reported vulnerable on 2026-08-13. Expo SDK
+57 currently resolves `image-size@2.0.2`, for which the audit registry reports a high
+severity denial-of-service issue while naming an unpublished `2.0.3` fix, plus a
+moderate CLI-only `uuid` issue. Those parsers receive no remote or user-controlled
+input in P1. The finding remains open and blocks operational/native input processing;
+upgrade to the Expo-supported patch as soon as it exists rather than forcing an
+unsupported transitive override.
 
 ## Consequences
 
