@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     "./account": "./src/account.ts",
+    "./node": "./src/node.ts",
     "./organization": "./src/organization.ts"
   },
   "scripts": {
