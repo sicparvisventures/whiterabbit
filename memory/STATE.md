@@ -106,6 +106,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - The workspace layout now resolves claims request-by-request when configured, renders
   the verified account email/initials in an accessible account menu and exposes a real
   server-side local-session sign-out. Unconfigured preview still links to sign-in.
+- Auth confirmation now has a dynamic token-hash endpoint that accepts only supported
+  OTP types and local next paths, exchanges the token through the request-scoped server
+  client and strips secrets from success/error redirects. Signup supports an approved
+  HTTPS or local-development redirect origin.
 - CI now installs the frozen lockfile, verifies peers and formatting, lints, typechecks,
   tests, exports the iOS bundle, builds Next.js, audits critical advisories, runs the
   Python memory tests and validates durable memory.
@@ -240,6 +244,11 @@ malformed claims and initials that never include the email domain.
 Session-aware account menu slice
 The full twenty-seven web tests, ESLint (including `proxy.ts`), TypeScript and the
 production build pass with conditional identity rendering and server-side sign-out.
+
+Email confirmation slice
+Four confirmation parsing tests plus the updated signup redirect assertion pass as
+part of thirty-one web tests. The production route table includes dynamic
+`/auth/confirm`; lint, types and build pass.
 ```
 
 ## Not Yet Implemented

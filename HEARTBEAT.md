@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:36:06Z
-- Content-Fingerprint: sha256:da8049f71175805bd24f14d13dfa7653be49faa0acaed01a65e11d39dea3d3b9
+- Last-Updated: 2026-08-13T16:38:44Z
+- Content-Fingerprint: sha256:b44d5c685b2ecb2d551cad7ec5c6955c4763595c21d74c32766d080a3a85f775
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 613c938
-- Last-Summary: The workspace now renders verified account identity and real server-side sign-out; next implement email confirmation and password-update callbacks.
+- Commit: 2c9d8a2
+- Last-Summary: Email token confirmation is local-redirect-only and server-verified; next add password update and account-flow status handling.
 
 ## Current Task
 

@@ -10,7 +10,11 @@ type ProviderError = { message: string } | null;
 type ProviderUser = { id: string } | null;
 
 export type AccountAuthProvider = Readonly<{
-  signUp(credentials: { email: string; password: string }): Promise<{
+  signUp(credentials: {
+    email: string;
+    password: string;
+    options?: { emailRedirectTo: string };
+  }): Promise<{
     data: { user: ProviderUser; session: unknown | null };
     error: ProviderError;
   }>;
@@ -52,6 +56,7 @@ function serviceUnavailable(): AccountMutationResult {
 export async function createAccount(
   provider: AccountAuthProvider | null,
   input: unknown,
+  emailRedirectBaseUrl?: string,
 ): Promise<AccountMutationResult> {
   const parsed = createAccountInputSchema.safeParse(input);
   if (!parsed.success) return invalidInputResult;
@@ -59,10 +64,23 @@ export async function createAccount(
 
   let response: Awaited<ReturnType<AccountAuthProvider["signUp"]>>;
   try {
-    response = await provider.signUp({
+    const credentials: Parameters<AccountAuthProvider["signUp"]>[0] = {
       email: parsed.data.email,
       password: parsed.data.password,
-    });
+    };
+
+    if (emailRedirectBaseUrl) {
+      const redirectUrl = new URL(emailRedirectBaseUrl);
+      const secure = redirectUrl.protocol === "https:";
+      const localDevelopment =
+        redirectUrl.protocol === "http:" &&
+        ["localhost", "127.0.0.1"].includes(redirectUrl.hostname);
+      if (secure || localDevelopment) {
+        credentials.options = { emailRedirectTo: redirectUrl.origin };
+      }
+    }
+
+    response = await provider.signUp(credentials);
   } catch {
     return serviceUnavailable();
   }

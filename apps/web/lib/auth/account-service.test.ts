@@ -50,16 +50,21 @@ describe("createAccount", () => {
 
   it("returns the real user and verification state", async () => {
     const provider = createProvider();
-    const result = await createAccount(provider, {
-      email: " Operator@Example.BE ",
-      password: "correct horse battery staple",
-      passwordConfirmation: "correct horse battery staple",
-      acceptsTerms: true,
-    });
+    const result = await createAccount(
+      provider,
+      {
+        email: " Operator@Example.BE ",
+        password: "correct horse battery staple",
+        passwordConfirmation: "correct horse battery staple",
+        acceptsTerms: true,
+      },
+      "https://app.example.be",
+    );
 
     expect(provider.signUp).toHaveBeenCalledWith({
       email: "operator@example.be",
       password: "correct horse battery staple",
+      options: { emailRedirectTo: "https://app.example.be" },
     });
     expect(result).toEqual({
       status: "CREATED",
