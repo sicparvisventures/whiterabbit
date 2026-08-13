@@ -72,3 +72,38 @@ This register is engineering context, not legal advice. Production deployment re
 - Risk: military-operational, intelligence, police-investigation, or classified details enter Vercel, managed Supabase, logs, telemetry, support systems, Git history, or a public projection.
 - Mitigation: synthetic/non-classified first pilot; data-classification field and fail-closed policy; profile-specific hosting accreditation; public-cloud deny rule for restricted profiles; no operational configuration or data in the public repository.
 - Release gate: approved data-flow diagram, classification decision, hosting authority, logging inventory, incident plan, and negative exfiltration tests.
+
+## R-012: False Biometric Identification
+
+- Severity: Critical
+- Risk: poor lighting, pose, occlusion, demographic performance differences, model drift, threshold errors, or a similar-looking person generates a false watchlist alert and harmful intervention.
+- Mitigation: deployment-representative FPIR/FNIR calibration with confidence intervals; quality gates; temporal corroboration; trained two-person review where required; clear uncertainty; no autonomous adverse action; correction and incident paths.
+- Release gate: controller-approved operating point and subgroup evaluation with no unresolved critical disparity or unsafe workflow.
+
+## R-013: Unlawful Watchlist or Mass Surveillance
+
+- Severity: Critical
+- Risk: public/OSINT photos, CCTV, broad subject categories, excessive locations, or expired cases silently become a persistent face database or untargeted tracking system.
+- Mitigation: prohibit untargeted scraping; signed purpose/site/time authority; lawful provenance; maker-checker enrollment; permitted-category allowlist; automatic expiry; immutable audit; no global search or history merge.
+- Release gate: approved legal basis, DPIA/FRIA, watchlist policy, independent oversight path, and red-team abuse test.
+
+## R-014: Irrevocable Biometric Breach
+
+- Severity: Critical
+- Risk: reference images or embeddings leak across tenants, providers, devices, backups, logs, or support tooling; unlike passwords, faces cannot be replaced.
+- Mitigation: minimal edge packages; authority-specific data-plane cells and keys; no biometric public route; encrypted storage and transport; device revocation; short retention; no templates in logs; tested deletion and breach response.
+- Release gate: key/data-flow review and cross-tenant, backup, log, export, and deletion tests.
+
+## R-015: Model Licence, Lineage, Bias, and Drift
+
+- Severity: Critical
+- Risk: permissive repository code hides restricted pretrained weights or training data; an unversioned model change invalidates embeddings, thresholds, or fairness evidence.
+- Mitigation: model registry with digest, code/weight/data licences, lineage, intended use, evaluation, approval and expiry; forbid InsightFace community weights without production rights; block mixed model versions; re-evaluate every artifact change.
+- Release gate: legal and model-risk approval for every exact artifact in the build.
+
+## R-016: Mobile Capture Failure and Spoofing
+
+- Severity: High
+- Risk: iOS suspends or breaks the PWA camera, an old device overheats, a printed/photo-screen face spoofs a match, or a compromised node forges alerts.
+- Mitigation: foreground-only claim; visible health/thermal state; signed monotonic events; device attestation where approved; capture recovery tests; presentation-attack testing; multi-observation corroboration; native adapter fallback.
+- Release gate: sustained tests on every supported iPhone tier and no claim of background operation without native proof.

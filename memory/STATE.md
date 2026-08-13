@@ -16,6 +16,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - Government-vehicle detections may become public only when the controller profile permits it, after corroboration and human review. Military, police, investigative, and other sensitive movements are restricted by default.
 - SparrowMap code may be reused lawfully with attribution.
 - Person and object data are potential OSINT inputs, but identifying or persistent person tracking is not approved for implementation.
+- ALPR and object detection remain core. A tenant-scoped biometric watchlist is an additional approved product direction, with implementation and all real biometric processing still gated by Spec 0002, legal authority, DPIA/FRIA, threat model, model review, and controller approval.
 - Supabase and Vercel are candidates for approved non-sensitive profiles. Restricted, operational, intelligence, or classified profiles require an accredited or self-hosted topology; nothing has been provisioned.
 - Frequent atomic pushes are approved after validation.
 
@@ -31,6 +32,7 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
 - GitHub Actions CI for tests and strict memory validation.
 - Tagged foundation release `v0.1.0-foundation`.
 - Draft Belgian controller-profile specification and proposed ADR-0004 covering Defence administration, armed-forces operations, intelligence, police, and municipalities.
+- Draft biometric-watchlist specification, open-source/model research, and proposed ADR-0005 defining isolated modes, scoped watchlists, local matching, human review, and government data-plane cells.
 
 ## Verification Evidence
 
@@ -53,8 +55,9 @@ https://github.com/sicparvisventures/whiterabbit/releases/tag/v0.1.0-foundation
 
 - Web application, Supabase project, schema, RLS, or Vercel project.
 - Camera enrollment, browser inference, desktop node, ALPR pipeline, review queue, or public map.
+- Face detection, embedding, watchlist enrollment/sync, matching, biometric alerts, model registry, or iPhone benchmark.
 - Production legal assessment, DPIA, controller agreement, retention schedule, or deployment authorization.
 
 ## Next Action
 
-Obtain owner feedback on Spec 0001, select the exact `BE-DEFENCE-ADMIN` pilot purpose, and then submit the profile, DPIA, hosting, retention, and publication boundaries to the accountable Defence, DPO, legal, security, and operational reviewers before implementing real surveillance data flows.
+Obtain owner feedback on Specs 0001 and 0002 and select the exact `BE-DEFENCE-ADMIN` ALPR/object and first synthetic biometric modes. Then complete the repository-grounded threat model and submit purpose, profile, DPIA/FRIA, model, hosting, retention, watchlist, alert, and publication boundaries to accountable Defence, DPO, legal, security, fundamental-rights, model-risk, and operational reviewers before any real data flow.

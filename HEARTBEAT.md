@@ -1,21 +1,21 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T11:43:10Z
-- Content-Fingerprint: sha256:f801930ec16666afb0676956b4ee1a85d9d22e659001a375e63634c79549bbb4
-- Status: foundation-published
+- Last-Updated: 2026-08-13T11:45:27Z
+- Content-Fingerprint: sha256:0204b088c580c8d4b2a0608d9b6fa97a1c6f0f95804fefc5258e0fa43c0fc1fa
+- Status: specifications-awaiting-review
 - Branch: main
-- Commit: 4c4f660
-- Last-Summary: Drafted an isolated biometric-watchlist specification and open-source research; next obtain owner approval, choose the first synthetic Defence biometric mode, and complete legal and threat-model gates
+- Commit: b5c89c3
+- Last-Summary: Recorded ALPR/object detection as core plus an isolated biometric-watchlist direction; next approve Specs 0001/0002, select the synthetic Defence modes, and complete the threat model and institutional
 
 ## Current Task
 
-Begin the Belgian deployment and data-governance specification using the published memory foundation.
+Review the Belgian controller-profile and isolated biometric-watchlist specifications. ALPR and object detection remain core; biometrics are an additional gated capability.
 
 ## Next Verified Action
 
-Define controller roles, legal basis, purposes, camera-law procedures, retention, public-record criteria, data-subject rights, and the DPIA gate before cloud or ALPR implementation.
+Select the exact synthetic `BE-DEFENCE-ADMIN` ALPR/object and biometric pilot modes, then complete the repository-grounded threat model and institutional review gates before implementation.
 
 ## Blockers
 
-None for the memory foundation. Cloud resources and surveillance features remain gated by later approved specifications.
+Implementation is gated on project-owner approval of Specs 0001 and 0002. Real surveillance and biometric data additionally require controller, legal basis, DPIA/FRIA, model, hosting, security, oversight, and operational approvals.

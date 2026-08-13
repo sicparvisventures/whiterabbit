@@ -28,11 +28,14 @@ These instructions apply to the entire repository.
 - OCR, a single classifier, or one unverified camera must never independently publish a plate or identity.
 - Civilian plate text must not be persisted centrally. Any necessary local comparison must use short-lived, rotating, deployment-scoped pseudonyms and approved retention.
 - Raw video remains on the node. Upload only minimal signed events and explicitly permitted, redacted evidence.
-- Person and object detection defaults to non-identifying categories and counts. Facial recognition, persistent person re-identification, covert surveillance, or public person search require a new approved spec, legal basis, DPIA, threat model, and explicit owner authorization.
+- Person and object detection defaults to non-identifying categories and counts. Biometric identification is specified only as an isolated, tenant-scoped capability in Spec 0002; real processing, persistent person re-identification, covert surveillance, or public person search still require an approved purpose, legal basis, DPIA/FRIA, threat model, controller authorization, and applicable independent oversight.
 - Treat exact camera coordinates, node tokens, signing keys, and unredacted evidence as sensitive.
 - “For the Belgian state” means deployment by or for an authorized controller; it does not confer authority on this repository or its contributors.
 - Defence, armed-forces operations, intelligence, police, and municipalities use separate fail-closed controller profiles. Never pool or relabel their histories; sharing requires an explicit, scoped, audited bridge.
 - Supabase and Vercel are candidates only for approved classifications and profiles. Never route classified, operational, intelligence, or police-investigation data through the public SaaS topology.
+- Keep ALPR/object events separate from biometric templates and alerts. No global watchlist, cross-tenant person search, public biometric projection, or automatic adverse decision is permitted.
+- Never create or expand facial watchlists through untargeted internet, social-media, or CCTV scraping. Public availability is not enrollment authority.
+- A repository licence and a model licence are separate checks. Do not add face-recognition code, weights, datasets, or real reference images without recorded provenance, licence approval, model-risk review, and explicit owner approval.
 
 ## Engineering Workflow
 

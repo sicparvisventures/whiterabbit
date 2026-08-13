@@ -1,4 +1,4 @@
-# Spec: WhiteRabbit Belgian Government-Vehicle ALPR
+# Spec: WhiteRabbit Belgian Public-Sector Visual Event Platform
 
 Status: foundation published; controller-profile direction is under review in Spec 0001.
 
@@ -6,14 +6,14 @@ Status: foundation published; controller-profile direction is under review in Sp
 
 1. The product is an English-language, international web application with Belgium as the first compliance and deployment profile.
 2. The primary users are authorized Belgian public-sector controllers and their approved operators or processors. Deployment authority and legal basis must be established outside the software.
-3. Cameras perform detection locally. Raw video does not leave the device; the cloud receives only minimal events and explicitly permitted, redacted evidence.
+3. Cameras perform ALPR, object detection, and any separately authorized biometric inference locally. Raw video does not leave the device; the cloud receives only minimal events and explicitly permitted, redacted evidence.
 4. The project will be public and AGPL-3.0-compatible, with a new name, visual identity, and explicit SparrowMap attribution where code or assets are reused.
 5. Supabase and Vercel are candidates for approved non-sensitive deployments. Provider boundaries must support accredited or self-hosted infrastructure for restricted profiles. Long-running inference stays on camera devices.
 6. GitHub commits use the repository-local author `sicparvisventures <238694570+sicparvisventures@users.noreply.github.com>`.
 
 ## Objective
 
-Build a privacy-first ALPR and visual-event mesh that lets an authorized operator turn an old phone, laptop, webcam, or compatible IP camera into a local detector. Reviewed events remain restricted unless the active controller profile separately authorizes an auditable public projection.
+Build a privacy-first ALPR and visual-event mesh that lets an authorized operator turn an old phone, laptop, webcam, or compatible IP camera into a local detector. ALPR and object detection remain core. An optional, isolated biometric capability may compare local face embeddings to a tenant-scoped watchlist under Spec 0002. Reviewed events remain restricted unless the active controller profile separately authorizes an auditable public projection; biometrics are never public.
 
 Belgian Defence is the first intended deployment. The same core must support municipalities and police without treating them as one controller or pooling their records. See `docs/specs/0001-belgian-controller-profiles.md`.
 
@@ -32,13 +32,14 @@ The first product is useful for one authorized operator with one camera. Collabo
 ### Non-goals for the first release
 
 - No publication of exact camera locations.
-- No facial recognition.
+- No facial recognition outside the separately approved modes, purposes, and deployment gates in Spec 0002.
 - No public or cross-circle civilian licence-plate search.
 - No covert surveillance features.
 - No central raw-video archive.
 - No silent group merge or inherited access to historical events.
 - No default publication of military, police, investigative, or protected movements.
 - No persistent person identification without a separately approved legal and technical specification.
+- No global face database, untargeted face scraping, or cross-tenant person search.
 
 ## Proposed Stack
 
@@ -48,6 +49,7 @@ The first product is useful for one authorized operator with one camera. Collabo
 - Browser node: local WebAssembly/ONNX inference with `getUserMedia`, wake lock, and a foreground-only operating model.
 - Desktop node: small Python agent for USB, RTSP, ONVIF, or MJPEG sources and hardware-accelerated inference when available.
 - Shared contracts: versioned event schema and signed node envelopes.
+- Biometric benchmark candidate: ONNX Runtime Web with permissively licensed YuNet and SFace artifacts, synthetic data only until model and controller approval.
 - Licence: AGPL-3.0 unless later legal review requires stricter separation from SparrowMap-derived code.
 
 ## Commands
@@ -119,6 +121,7 @@ export type DetectionEvent = Readonly<{
 - Browser tests for enrollment, camera permission failure, offline recovery, event review, invite revocation, and bridge expiry.
 - Synthetic camera fixtures; no real people's footage in the public test suite.
 - Threat-model review before any cross-user sharing feature ships.
+- Model licence/provenance, representative accuracy and bias evaluation, DPIA/FRIA, and red-team review before any real biometric pilot.
 
 ## Boundaries
 
@@ -138,7 +141,7 @@ export type DetectionEvent = Readonly<{
 ### Never
 
 - Commit or publish secrets, raw transcripts, private footage, exact private camera locations, or production data.
-- Build public person/vehicle tracking, covert recording, facial recognition, or silent historical-data merging.
+- Build public person/vehicle tracking, covert recording, facial recognition outside Spec 0002's approved modes and gates, or silent historical-data merging.
 - Represent the product as legal advice or as affiliated with SparrowMap.
 
 ## Success Criteria for the Foundation
@@ -157,4 +160,4 @@ export type DetectionEvent = Readonly<{
 2. Gate: Spec 0001 and proposed ADR-0004 require owner and institutional review before implementation.
 3. Gate: real deployment requires an identified authorized controller, exact purpose, legal basis, camera procedure, classification, DPIA decision, retention policy, hosting approval, and security review.
 4. Gate: publication requires profile authorization, corroborated evidence, and human review; one OCR or classifier result never suffices.
-5. Gate: identifying or persistent person tracking requires a new approved specification, legal basis, DPIA, threat model, and explicit authorization.
+5. Gate: Spec 0002 now defines isolated biometric watchlists, but implementation requires owner approval; real biometric processing additionally requires the exact legal basis, DPIA/FRIA, model approval, threat model, controller authorization, and applicable independent oversight.

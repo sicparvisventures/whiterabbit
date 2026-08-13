@@ -20,11 +20,15 @@ Tasks are ordered by dependency. A task is not complete until its verification s
   - Progress: Spec 0001 is drafted with five controller profiles; owner and institutional review remain open.
   - Acceptance: the first Defence pilot purpose and accountable service are selected; controller/processor roles, legal basis, camera procedure, classification, hosting, retention, data-subject rights, public-record criteria, and DPIA gate are approved. Municipality and police remain separate reference profiles.
   - Verify: review by the project owner and qualified Belgian public-sector privacy/legal stakeholders.
+- [ ] Approve the tenant-scoped biometric-watchlist specification.
+  - Progress: Spec 0002 and ADR-0005 are drafted; no biometric dependency or real processing is authorized.
+  - Acceptance: the owner selects the first synthetic mode; controller, DPO, legal, security, fundamental-rights, model-risk, and operational reviewers approve capability, purpose, watchlist authority, data flow, human response, retention, rights, and hosting gates.
+  - Verify: signed review record linked without sensitive operational details.
 - [ ] Write a repository-grounded threat model.
-  - Acceptance: assets, trust boundaries, attacker capabilities, abuse paths, and mitigations cover nodes, Supabase, Vercel, reviewers, public map, and federation.
+  - Acceptance: assets, trust boundaries, attacker capabilities, abuse paths, and mitigations cover nodes, Supabase/Vercel candidates, government data-plane cells, models, watchlists, templates, alerts, reviewers, public map, and federation.
   - Verify: security review with no unresolved critical risk.
 - [ ] Define the versioned signed-event contract.
-  - Acceptance: deployment, controller profile, purpose, policy version, classification, candidate, restricted, review, authorized-public, retracted, and expired states are machine-readable and privacy-safe.
+  - Acceptance: deployment, controller profile, biometric mode, authority, purpose, policy/model version, classification, candidate, restricted, biometric-alert, review, authorized-public, retracted, and expired states are machine-readable and privacy-safe.
   - Verify: schema tests and abuse-case fixtures.
 
 ## Phase 2: Single-Node Vertical Slice
@@ -45,6 +49,18 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 - [ ] Add privacy masks, redaction proof, audit exports, and data-subject workflows.
 - [ ] Package a desktop node for USB and IP cameras.
 - [ ] Run a synthetic pilot before any real-world footage is processed.
+
+## Phase 3B: Synthetic Biometric Vertical Slice
+
+- [ ] Implement fail-closed biometric authority and watchlist-package contracts test-first.
+  - Acceptance: expired, revoked, cross-tenant, wrong-purpose, wrong-node, and wrong-model packages cannot execute embedding or matching.
+  - Verify: table-driven contract and abuse-case tests.
+- [ ] Benchmark permissively licensed face detection and embedding on an approved iPhone tier.
+  - Acceptance: reproducible latency, throughput, memory, battery, thermal, camera-recovery, FPIR/FNIR, model digest, and licence report using synthetic or explicitly consented evaluation data.
+  - Verify: signed evaluation artifact; no network request contains a frame, crop, non-match embedding, or real identity.
+- [ ] Raise and review one synthetic biometric candidate alert.
+  - Acceptance: local temporal corroboration, signed candidate, human review, deny/revoke/expire path, and no public projection.
+  - Verify: synthetic end-to-end test and cross-tenant negative test.
 
 ## Phase 4: Collaboration and Federation
 
