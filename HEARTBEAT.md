@@ -1,23 +1,23 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T17:06:59Z
-- Content-Fingerprint: sha256:735892ec6d27b28f98fb58f722235704768d2e4976b2080e7c66defbc7699684
+- Last-Updated: 2026-08-13T17:11:26Z
+- Content-Fingerprint: sha256:d05f390715c37d1bf18a5de624a884f381ab3b6df8e78bd0b7aa84678156fcd7
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: 923c845
-- Last-Summary: PWA install metadata and guidance are production-verified; next define backend-independent node enrollment contracts before Supabase handoff.
+- Commit: 1a83a48
+- Last-Summary: Node enrollment contracts and guarded provider service are complete; next finish truthful settings surfaces and full release verification.
 
 ## Current Task
 
 Complete the remaining pre-Supabase PWA work in Plan 0003 without runtime mock data:
-typed node-enrollment boundaries, honest adapter contracts and browser checks.
+truthful settings surfaces, full release checks and cloud deployment verification.
 
 ## Next Verified Action
 
-Define the node-enrollment input/result schemas test-first: separate human and device
-identity, require deployment/capture-zone binding and return no fabricated identifier
-when persistence is unavailable. Then wire only after Supabase RLS exists.
+Replace the generic Settings empty state with read-only account, organization,
+deployment, capability, retention, legal and device readiness derived from real public
+configuration. Then run the full repository and production deployment verification.
 
 ## Blockers
 

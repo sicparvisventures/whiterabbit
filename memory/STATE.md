@@ -104,6 +104,13 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   the local preview against an exact operator-selected device. An authorized
   capture-zone acknowledgement is visible, session-only, reset on camera stop/switch
   or page hide, and remains insufficient to unlock detection by itself.
+- Strict browser-node enrollment contracts accept only existing deployment/space IDs,
+  a bounded node/capture-zone reference, the ALPR/object baseline and explicit
+  approved-zone/foreground/local-video acknowledgements. Unknown fields such as exact
+  coordinates are rejected; human identity and controller scope are server-derived.
+- A guarded node-enrollment service validates input before calling an optional provider,
+  validates untrusted provider output, maps failures to stable non-sensitive results,
+  and returns `STORAGE_NOT_PROVISIONED` with no invented node or claim when absent.
 - `/app/setup` now exposes the full storage-ready onboarding surface for organization,
   deployment, exact purpose, five controller profiles, ALPR/object baselines and the
   public-SaaS classification acknowledgement. Its submit action is disabled and copy
@@ -303,6 +310,15 @@ deferred test browser event is prevented and produces an accessible install acti
 dismissal hides it, and the console remains clean. ESLint, TypeScript and production
 build pass; the temporary browser and server were stopped. Commits `67dc59b` and
 `923c845` are on `main`.
+
+Node enrollment contract slice
+The contract red run failed because `./node` did not exist. Nineteen contract tests now
+cover strict inputs, baseline-only capabilities, mandatory capture acknowledgements,
+no coordinate authority, storage absence, opaque minimum-length claims and UTC expiry.
+The guarded-service red run likewise failed on its absent module; 48 web tests now
+cover no-provider, pre-provider validation, parsed provider success/failure and
+request-isolated errors. Lint and TypeScript pass. Commits `6ce011d` and `1a83a48` are
+on `main`; no runtime adapter, node or claim was created.
 ```
 
 ## Not Yet Implemented
@@ -317,7 +333,6 @@ build pass; the temporary browser and server were stopped. Commits `67dc59b` and
 
 ## Next Action
 
-Complete the backend-independent node enrollment/input contracts without persistence
-or invented identities. After the owner creates Supabase, add migrations, RLS,
-generated types and cross-tenant tests before enabling setup persistence. Models and
-operational data remain separately gated.
+Complete the truthful settings readiness surface and full release verification. After
+the owner creates Supabase, add migrations, RLS, generated types and cross-tenant tests
+before enabling setup persistence. Models and operational data remain separately gated.

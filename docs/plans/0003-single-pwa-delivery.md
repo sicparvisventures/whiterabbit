@@ -16,8 +16,9 @@
   controller-scoped onboarding form are implemented; migrations/RLS remain Phase 5.
 - Phase 4 browser readiness complete: real foreground camera permission/preview/stop,
   cleanup, post-permission camera selection, capture-zone acknowledgement and explicit
-  readiness blockers are implemented; persisted enrollment, inference and signed
-  events remain gated.
+  readiness blockers are implemented. Strict enrollment input/result contracts and a
+  fail-closed provider service are ready; persisted enrollment, completion proof,
+  inference and signed events remain gated.
 - Phase 5 is the next external handoff. Phase 6 has not started.
 
 ## Phase 1 — Consolidate and Install

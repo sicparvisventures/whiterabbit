@@ -14,9 +14,11 @@ implemented and tested. Camera selection is populated from real browser devices 
 after permission, and capture-zone acknowledgement is explicit and session-only. PWA
 installation exposes a real deferred Chromium prompt, iOS manual guidance, and
 standalone detection; unsupported browsers receive no invented install action. No
-Supabase project, migrations/RLS, node identity, inference, event ingest or operational
-record exists. The remaining acceptance items depend on the Supabase handoff and
-separately approved model/runtime work.
+Supabase project, migrations/RLS, persisted node identity, inference, event ingest or
+operational record exists. Strict browser-node enrollment contracts and a guarded
+application service now exist, but cannot create an identity without a real provider.
+The remaining acceptance items depend on the Supabase handoff and separately approved
+model/runtime work.
 
 ## Objective
 

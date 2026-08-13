@@ -69,8 +69,9 @@ Tasks are ordered by dependency. A task is not complete until its verification s
 - [ ] Enroll one browser camera node into one authorized deployment.
   - Progress: explicit browser permission, local preview state, track cleanup,
     foreground-only interruption, post-permission real-device selection, session-only
-    capture-zone acknowledgement and readiness diagnostics are implemented;
-    persistence and node identity wait for Supabase RLS.
+    capture-zone acknowledgement, readiness diagnostics, strict enrollment schemas and
+    a guarded provider service are implemented; persistence, claim completion proof and
+    node identity wait for Supabase RLS.
   - Acceptance: revocable node identity, explicit camera permission, approved capture
     zone and foreground-only lifecycle; enrollment persistence waits for Supabase RLS.
   - Verify: browser camera lifecycle tests and signed enrollment contract test.

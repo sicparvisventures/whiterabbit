@@ -51,6 +51,12 @@ clients. Auth actions expose stable results rather than leaking Supabase errors.
 Database repositories follow RLS-scoped interfaces after migrations exist. Missing
 configuration is a first-class denied state, not a fixture adapter.
 
+Node enrollment validates a strict application input before any provider call. Tenant,
+controller profile, membership and human identity are never accepted as client-granted
+scope; the future provider derives them from the authenticated deployment. Missing
+persistence returns `STORAGE_NOT_PROVISIONED` without a fabricated node or claim, and
+provider output is parsed again before it crosses into the application.
+
 ### Camera
 
 The camera component owns one `MediaStream`. It requests `facingMode: environment`,
