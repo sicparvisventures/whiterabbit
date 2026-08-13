@@ -80,8 +80,9 @@ class MemoryValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
             write_minimal_memory(root)
+            fake_token = "gh" + "p_abcdefghijklmnopqrstuvwxyz1234567890"
             (root / "memory" / "STATE.md").write_text(
-                "# Current State\n\nghp_abcdefghijklmnopqrstuvwxyz1234567890\n",
+                f"# Current State\n\n{fake_token}\n",
                 encoding="utf-8",
             )
 
