@@ -10,9 +10,11 @@
 
 The installable shell, public/account/setup/product routes, real Supabase Auth seam,
 conditional verified-claims route protection and foreground camera lifecycle are
-implemented and tested. No Supabase project, migrations/RLS, node identity, inference,
-event ingest or operational record exists. The remaining acceptance items depend on
-the Supabase handoff and separately approved model/runtime work.
+implemented and tested. Camera selection is populated from real browser devices only
+after permission, and capture-zone acknowledgement is explicit and session-only. No
+Supabase project, migrations/RLS, node identity, inference, event ingest or operational
+record exists. The remaining acceptance items depend on the Supabase handoff and
+separately approved model/runtime work.
 
 ## Objective
 

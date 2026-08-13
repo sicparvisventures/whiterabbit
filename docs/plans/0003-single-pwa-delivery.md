@@ -13,8 +13,10 @@
   confirmation, recovery, password update and sign-out are implemented.
 - Phase 3 UI complete but persistence pending: responsive routes, empty states and the
   controller-scoped onboarding form are implemented; migrations/RLS remain Phase 5.
-- Phase 4 preview lifecycle complete: real foreground camera permission/preview/stop
-  and cleanup are implemented; enrollment, inference and signed events remain gated.
+- Phase 4 browser readiness complete: real foreground camera permission/preview/stop,
+  cleanup, post-permission camera selection, capture-zone acknowledgement and explicit
+  readiness blockers are implemented; persisted enrollment, inference and signed
+  events remain gated.
 - Phase 5 is the next external handoff. Phase 6 has not started.
 
 ## Phase 1 — Consolidate and Install
@@ -59,8 +61,10 @@ are ready to bind to migrations/RLS and never claim unsaved input was saved.
 
 1. Implement camera capability/state module with unit tests.
 2. Add explicit permission/preview/stop UI and visibility/unmount cleanup.
-3. Add capture-zone acknowledgement, camera selector and readiness diagnostics.
-4. Define—but do not fake—policy, model, backend and signed-node readiness blockers.
+3. [complete] Add capture-zone acknowledgement, camera selector and readiness
+   diagnostics.
+4. [complete] Define—but do not fake—policy, model, backend and signed-node readiness
+   blockers.
 
 Acceptance: supported HTTPS browsers show a real local camera preview; stopping or
 hiding releases tracks; no request contains frames; Sentry inference stays blocked

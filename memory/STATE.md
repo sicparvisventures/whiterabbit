@@ -96,6 +96,10 @@ The SparrowMap upstream is available as an ignored, clean research checkout in `
   flow. It requests the environment-facing camera only after a user action, keeps the
   stream local, releases tracks on stop/hide/unmount and leaves detection disabled
   while node, policy and model gates are absent.
+- After permission, `/sentry` enumerates only real `videoinput` devices and can restart
+  the local preview against an exact operator-selected device. An authorized
+  capture-zone acknowledgement is visible, session-only, reset on camera stop/switch
+  or page hide, and remains insufficient to unlock detection by itself.
 - `/app/setup` now exposes the full storage-ready onboarding surface for organization,
   deployment, exact purpose, five controller profiles, ALPR/object baselines and the
   public-SaaS classification acknowledgement. Its submit action is disabled and copy
@@ -277,6 +281,14 @@ TypeScript, 57 Vitest assertions, Next.js production build, ten Python tests and
 memory validation pass. GitHub Actions run `31722502137` completed successfully for
 commit `b1328ae`. Vercel deployment `dpl_J1cqz3wPEaKcyPE7dLvSyFMt1F6a` is Ready and
 serves the current public/account PWA through https://whiterabbit-theta.vercel.app.
+
+Camera readiness slice
+The expected red run failed four new tests before selectable-camera helpers existed.
+The web suite now has 36 passing assertions; ESLint, TypeScript and the Next.js
+production build pass. A 390 px Playwright production walkthrough verified the idle
+and permission-denied states, disabled session acknowledgement without preview,
+readiness diagnostics and zero browser console errors/warnings. The temporary browser
+and production server were stopped. Commits `980162e` and `556f58e` are on `main`.
 ```
 
 ## Not Yet Implemented
@@ -291,9 +303,7 @@ serves the current public/account PWA through https://whiterabbit-theta.vercel.a
 
 ## Next Action
 
-Complete Plan 0003 Phase 4 step 3 before the Supabase handoff: add capture-zone
-acknowledgement, camera enumeration/selection after permission and explicit readiness
-diagnostics without persisting or uploading media. Then add install-state guidance
-and repeat the browser/production verification. After the owner creates Supabase, add
-migrations, RLS, generated types and cross-tenant tests before enabling setup
-persistence. Models and operational data remain separately gated.
+Add truthful PWA install-state guidance and repeat the browser/production verification.
+After the owner creates Supabase, add migrations, RLS, generated types and cross-tenant
+tests before enabling setup persistence. Models and operational data remain separately
+gated.

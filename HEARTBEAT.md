@@ -1,12 +1,12 @@
 # Heartbeat
 
 - Schema-Version: 1
-- Last-Updated: 2026-08-13T16:53:28Z
-- Content-Fingerprint: sha256:14ddf24312afd1ae41df7b4a53d461f0e4bd61fe20820a1ded4eaca8328e7726
+- Last-Updated: 2026-08-13T16:59:38Z
+- Content-Fingerprint: sha256:1883ba11ab5e6059971c515cf8b39c991778cb207bb6e84a187939dadaba1b6a
 - Status: light-only-p1-foundation-in-progress
 - Branch: main
-- Commit: a087302
-- Last-Summary: PWA/Auth/onboarding/camera foundation is live and CI-green; next complete camera-node readiness and install guidance before Supabase handoff.
+- Commit: 556f58e
+- Last-Summary: Camera readiness is implemented and production-verified; next add truthful PWA install-state guidance before Supabase handoff.
 
 ## Current Task
 
@@ -15,9 +15,9 @@ camera-node readiness, install guidance, honest adapter boundaries and browser c
 
 ## Next Verified Action
 
-Implement Plan 0003 Phase 4 step 3 test-first: capture-zone acknowledgement, real
-camera enumeration/selection after permission and readiness diagnostics. Then verify
-the production PWA and document the Supabase handoff boundary.
+Add a test-first PWA install-state decision module and a small client surface that
+distinguishes installed, browser-prompt, iOS manual-install and unavailable states.
+Then repeat the mobile browser and Vercel production checks.
 
 ## Blockers
 

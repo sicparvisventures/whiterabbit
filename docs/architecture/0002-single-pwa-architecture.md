@@ -50,10 +50,12 @@ configuration is a first-class denied state, not a fixture adapter.
 ### Camera
 
 The camera component owns one `MediaStream`. It requests `facingMode: environment`,
-attaches the stream to one video element, and calls `stop()` on every track for user
-stop, hidden document, component cleanup or setup failure. A remote API has no start
-operation. The state machine distinguishes unsupported, insecure, idle, requesting,
-previewing, denied, interrupted and stopped.
+attaches the stream to one video element, enumerates selectable video devices only
+after permission, and calls `stop()` on every track for user stop, device switch,
+hidden document, component cleanup or setup failure. A capture-zone acknowledgement
+exists only for the visible browser session until an approved persistence boundary
+exists. A remote API has no start operation. The state machine distinguishes
+unsupported, insecure, idle, requesting, previewing, denied, interrupted and stopped.
 
 ## Data and Trust Boundaries
 
